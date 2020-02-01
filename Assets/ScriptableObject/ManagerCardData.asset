@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ManagerCardData
   m_EditorClassIdentifier: 
   MaxCardInHand: 10
-  DrawCardAtStartTurn: 5
+  DrawCardAtStartTurn: 3
   CardPrefab: {fileID: 2905902147597637931, guid: 4ff05e089abde284dad5e858aa1f8ef9,
     type: 3}
-  DrawOneCardTime: 0.2
+  DrawOneCardTime: 0.3
   CardSize: 160
   InitialCard:
   - {fileID: 11400000, guid: 15db960f242b71148a8156c34c9427e4, type: 2}
@@ -27,10 +27,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
   - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
   - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
-  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
-  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
-  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
-  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
-  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
-  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
-  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
+  - {fileID: 11400000, guid: a4a04749bd7b56f42a00040a245f8721, type: 2}
+  - {fileID: 11400000, guid: a4a04749bd7b56f42a00040a245f8721, type: 2}
+  - {fileID: 11400000, guid: add68ce5b128c8e4ea35fb48ceb8cb46, type: 2}
+  - {fileID: 11400000, guid: add68ce5b128c8e4ea35fb48ceb8cb46, type: 2}
+  - {fileID: 11400000, guid: add68ce5b128c8e4ea35fb48ceb8cb46, type: 2}
+  - {fileID: 11400000, guid: dbac74b61f30c8143bb3fca98576f0a7, type: 2}
+  - {fileID: 11400000, guid: dbac74b61f30c8143bb3fca98576f0a7, type: 2}

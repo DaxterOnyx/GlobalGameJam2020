@@ -8,11 +8,23 @@ public class CardData : ScriptableObject
 	public string Description;
 	public int Cost;
 	public CardAction Action;
-	public string Range;
+	public int Range;
+	public TargetType[] targetTypes;
 
 	public enum CardAction
 	{
 		Attack,
-		Repair
+		Repair,
+		CaC,
+		Armor,
+		Heal
+	}
+
+	public enum TargetType
+	{
+		Player,
+		Himself,
+		Monster,
+		Object
 	}
 }
