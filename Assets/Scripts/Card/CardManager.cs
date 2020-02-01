@@ -39,7 +39,7 @@ public class CardManager : MonoBehaviour
 		}
 	}
 
-	public bool isShufflingi;
+	internal bool isShuffling;
 
 	/// <summary>
 	/// NB of card draw each turn
@@ -83,7 +83,7 @@ public class CardManager : MonoBehaviour
 			Debug.Break();
 
 		//DRAW ALL CARD WITH ANIMATION
-		if (isDrawing &&  !isShufflingi) {
+		if (isDrawing &&  !isShuffling) {
 			lastDrawCard += Time.deltaTime;
 			if (lastDrawCard >= data.DrawOneCardTime) {
 				lastDrawCard = 0;
@@ -136,13 +136,13 @@ public class CardManager : MonoBehaviour
 
 	private void DiscardAtDeck()
 	{
-		isShufflingi = true;
+		isShuffling = true;
 		Invoke("EndShuffle", data.DrawOneCardTime*3);
 	}
 
 	private void EndShuffle()
 	{
-		isShufflingi = false;
+		isShuffling = false;
 		deck.AddRange(discard);
 		UpdateShowCount();
 		discard.Clear();
