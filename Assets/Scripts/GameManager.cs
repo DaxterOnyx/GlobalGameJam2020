@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && SelectingTarget) {
 			//Ask at map map manager the object clicked
 			var target = MapManager.Instance.TryGetObjectByPos(MapManager.Instance.V3toV2I(MainCamera.ScreenToWorldPoint(Input.mousePosition)));
-			//TODO CHECK IF IS A TARGET OF THE CARD AND IN AREA OF CARD
+			//check if is a target of the card and in area of card
 			if (target != null && CardSelected.IsValableTarget(PlayerSelected, target)) {
 
 				CardSelected.Action(PlayerSelected, TargetSelected);

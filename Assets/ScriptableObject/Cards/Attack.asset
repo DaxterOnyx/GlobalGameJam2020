@@ -17,4 +17,5 @@ MonoBehaviour:
   Description: "Le personnage frappe au corps \xE0 corps."
   Cost: 1
   Action: 0
-  Range: 2
+  Range: 0
+  targetTypes: 02000000

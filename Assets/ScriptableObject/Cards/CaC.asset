@@ -17,4 +17,5 @@ MonoBehaviour:
   Description: Not yet description
   Cost: 1
   Action: 2
-  Range: 1
+  Range: 0
+  targetTypes: 02000000

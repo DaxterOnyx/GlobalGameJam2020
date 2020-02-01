@@ -35,6 +35,7 @@ public class Card : MonoBehaviour
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:
+				//TODO ADD ARMOR EFFECT
 			case CardData.CardAction.Heal:
 				//TODO REMOVE HARC VALUE
 				target.TakeDamage(-2);
