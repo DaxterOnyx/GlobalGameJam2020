@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonstersManager : CharactersManager
+public class MonstersManager : Location
 {
     private static MonstersManager _instance;
     public static MonstersManager Instance
@@ -23,26 +23,50 @@ public class MonstersManager : CharactersManager
 
     private void Update()
     {
-        if (Input.GetKeyDown("a"))
+        
+    }
+
+    public void MonsterTurn()
+    {
+        foreach (var item in objectList)
         {
-            Vector2Int pos;
-            MapManager.Instance.WhereIsObject(PlayersManager.Instance.Nearest(this.gameObject), out pos);
-            if(pos == null)
+            if(item.GetComponent<Monster>().data.target == target.Objective)
             {
-                Debug.LogError("Error : object not found!");
+                Vector2Int pos;
+                MapManager.Instance.WhereIsObject(ObjectsManager.Instance.NearestObjective(item),out pos);
+                ActionGesture(item, pos);
             }
-            GotoDest(objectList[0],pos);
+            else
+            {
+                Vector2Int pos;
+                MapManager.Instance.WhereIsObject(PlayersManager.Instance.Nearest(item), out pos);
+                ActionGesture(item, pos);
+            }
         }
     }
 
-    public void GotoDest(GameObject gameObject,Vector2Int destination)
+    public void ActionGesture(GameObject gameObject,Vector2Int destination)
     {
         Sequence sequence = DOTween.Sequence();
         List<Vector2Int> path = Pathfinding.Instance.findPath(V3toV2I(gameObject.transform.position), destination);
+        int moveCount = gameObject.GetComponent<Monster>().data.nbActionPoint;
         foreach (var item in path)
         {
-            sequence.Append(gameObject.transform.DOMove(V2ItoV3(item), MapManager.Instance.data.moveDuration));
+            if (moveCount > 0)
+            {
+                sequence.Append(gameObject.transform.DOMove(V2ItoV3(item), MapManager.Instance.data.moveDuration));
+                moveCount--;
+            }
         }
+        while (moveCount > 0)
+        {
+            Attack(MapManager.Instance.TryGetObjectByPos(destination).GetComponent<Character>());
+        }
+    }
+
+    public void Attack(Character target)
+    {
+        
     }
 
     private Vector3 V2ItoV3(Vector2Int vector)

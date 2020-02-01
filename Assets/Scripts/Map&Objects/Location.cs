@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharactersManager : MonoBehaviour
+public abstract class Location : MonoBehaviour
 {
 
     protected List<GameObject> objectList = new List<GameObject>();
-    private float startDist;
+    protected float startDist;
     // Start is called before the first frame update
 
     /// <summary>
     /// Instantiate object and add them to objectList
     /// </summary>
-    public void Initialize(CharacterManagerData data)
+    public void Initialize(LocationData data)
     {
         foreach (var item in data.characterPositionList)
         {

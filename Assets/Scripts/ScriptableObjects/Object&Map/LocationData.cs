@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class CharacterManagerData : ScriptableObject
+public abstract class LocationData : ScriptableObject
 {
     public float StartDist;
     [SerializeField]

@@ -42,7 +42,7 @@ public class Pathfinding : MonoBehaviour
         }
         else
         {
-            FulfillPath(iCase);
+            FulfillPath(iCase.parent);
         }
         return path;
     }

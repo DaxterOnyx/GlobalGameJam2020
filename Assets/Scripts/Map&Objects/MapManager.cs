@@ -65,6 +65,25 @@ public class MapManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Return a game object by getting his position
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns></returns>
+    public GameObject TryGetObjectByPos(Vector2Int position)
+    {
+        GameObject gObj = null;
+        foreach (var item in dico)
+        {
+            if (item.Value == position)
+            {
+                gObj = item.Key;
+            }
+        }
+        return gObj;
+
+    }
+
+    /// <summary>
     /// Return if an object is found, and where it is if found
     /// </summary>
     /// <param name="item">The item to find</param>

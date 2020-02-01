@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerManagerData", menuName = "Data/PlayerManagerData")]
-public class PlayerManagerData : CharacterManagerData
+public class PlayerManagerData : LocationData
 {
 
 }
