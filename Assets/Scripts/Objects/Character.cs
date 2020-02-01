@@ -7,9 +7,9 @@ public class Character : MonoBehaviour
 {
     public CharacterData initialData;
 
-	private int LifePoint;
+	protected int LifePoint;
 
-	private void Start()
+	protected virtual void Start()
 	{
 		LifePoint = initialData.nbMaxLP;
 	}
