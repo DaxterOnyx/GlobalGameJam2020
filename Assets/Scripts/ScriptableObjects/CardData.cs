@@ -7,4 +7,12 @@ public class CardData : ScriptableObject
 	public Sprite Image;
 	public string Description;
 	public int Cost;
+	public CardAction Action;
+	public string Range;
+
+	public enum CardAction
+	{
+		Attack,
+		Repair
+	}
 }

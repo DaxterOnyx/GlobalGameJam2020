@@ -1,16 +1,17 @@
-﻿using DG.Tweening;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class Card : MonoBehaviour
 {
 	public CardData data;
 	public RectTransform RecTransform;
 	public Image Image;
-	public Text Name;
-	public Text Cost;
-	public Text Description;
+	public TextMeshProUGUI Name;
+	public TextMeshProUGUI Cost;
+	public TextMeshProUGUI Description;
+	public TextMeshProUGUI Range;
 
 	private void Start()
 	{
@@ -25,16 +26,34 @@ public class Card : MonoBehaviour
 		Name.text = data.Name;
 		Cost.text = data.Cost.ToString();
 		Description.text = data.Description;
+		Range.text = data.Range;
 	}
 
-	private void Update()
+	public void OnClick()
 	{
-		
+		//TODO ACTION
+		switch (data.Action) {
+			case CardData.CardAction.Attack:
+			case CardData.CardAction.Repair:
+			default:
+				Debug.LogError("Not Defined Action : " + data.Action.ToString());
+				break;
+		}
 	}
 
 	public void SetLastSibling()
 	{
 		Debug.Log("SetLastSibling");
 		RecTransform.SetAsLastSibling();
+	}
+
+	internal void Discard(float time)
+	{
+		Invoke("ReelDiscard", time);
+	}
+
+	void ReelDiscard()
+	{
+		gameObject.SetActive(false);
 	}
 }
