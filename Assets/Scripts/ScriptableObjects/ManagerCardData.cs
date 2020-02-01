@@ -6,6 +6,9 @@ using UnityEngine;
 public class ManagerCardData : ScriptableObject
 {
 	public int MaxCardInHand;
+	public int DrawCardAtStartTurn;
 	public GameObject CardPrefab;
-
+	public float DrawOneCardTime;
+	public float CardSize;
+	public CardData[] InitialCard;
 }
