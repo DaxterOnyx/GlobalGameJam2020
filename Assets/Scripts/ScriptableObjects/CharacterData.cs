@@ -6,16 +6,26 @@ using UnityEngine;
 public abstract class CharacterData : ScriptableObject
 {
     public int nbMaxLP;
+    public int nbActionPoint;
 }
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData")]
 public class PlayerData : CharacterData
 {
-    public int nbActionPoint;
+
 }
 
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Data/MonsterData")]
 public class MonsterData : CharacterData
 {
-
+    public target target;
 }
+
+[CreateAssetMenu(fileName = "ObjectData", menuName = "Data/ObjectData")]
+public class ObjectData : CharacterData
+{
+    public int repairCount;
+    public bool isObjective;
+}
+
+public enum target { Player, Objective };

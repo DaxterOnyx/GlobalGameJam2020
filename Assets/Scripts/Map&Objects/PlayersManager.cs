@@ -1,4 +1,4 @@
-﻿public class PlayersManager : CharactersManager
+﻿public class PlayersManager : Location
 {
     private static PlayersManager _instance;
     public static PlayersManager Instance
