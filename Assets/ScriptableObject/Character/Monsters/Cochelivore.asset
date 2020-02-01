@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   nbMaxLP: 15
   nbActionPoint: 20
+  Strengh: 2
   target: 0

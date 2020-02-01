@@ -19,6 +19,7 @@ public class MonstersManager : Location
     private List<GameObj_Vect2> hitList;
     void Start()
     {
+        hitList = new List<GameObj_Vect2>();
         _instance = this;
         Initialize(data);
     }
@@ -32,6 +33,7 @@ public class MonstersManager : Location
         if(atkCount>0&&hitList.Count > 0)
         {
             MapManager.Instance.TryGetObjectByPos(hitList[0].vector).TakeDamage(hitList[0].obj.GetComponent<Monster>().data.Strengh);
+            hitList.RemoveAt(0);
         }
 
     }
@@ -75,6 +77,7 @@ public class MonstersManager : Location
             hit.obj = gameObject;
             hit.vector = destination;
             hitList.Add(hit);
+            moveCount--;
         }
     }
 
