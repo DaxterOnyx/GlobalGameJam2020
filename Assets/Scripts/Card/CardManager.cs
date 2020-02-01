@@ -68,8 +68,8 @@ public class CardManager : MonoBehaviour
 		if (count * cardSize > HandSize)
 			delta = HandSize / count;
 
-		float originPosition = HandStack.rect.center.x;
-		return new Vector3(originPosition + delta * (index-((count-1)/2f)), HandStack.rect.center.x, 0);
+		float originPosition = HandStack.anchoredPosition.x;
+		return new Vector3(originPosition - delta * (index-((count-1)/2f)), HandStack.anchoredPosition.y, 0);
 	}
 
 	public void EndPlayerTurn()
@@ -88,15 +88,17 @@ public class CardManager : MonoBehaviour
 			return;
 		}
 		isDrawing = true;
-		nbCardToDraw = nbCard;
+		nbCardToDraw += nbCard;
 	}
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape)) {
+		if (Input.GetKeyDown(KeyCode.Space)) {
 			Debug.Log("Draw 5 cards");
 			Draw(5);
 		}
+		if (Input.GetKeyDown(KeyCode.Escape))
+			Debug.Break();
 
 		if (isDrawing) {
 			lastDrawCard += Time.deltaTime;
@@ -143,4 +145,6 @@ public class CardManager : MonoBehaviour
 		hand.Remove(card);
 		discard.Add(card);
 	}
+
+	
 }
