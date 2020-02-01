@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData")]
 public class PlayerData : CharacterData
 {
-    public int Strengh;
+
     public int FireGunDamage;
 }
