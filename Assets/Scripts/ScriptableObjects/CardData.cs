@@ -13,6 +13,9 @@ public class CardData : ScriptableObject
 	public enum CardAction
 	{
 		Attack,
-		Repair
+		Repair,
+		CaC,
+		Armor,
+		Heal
 	}
 }
