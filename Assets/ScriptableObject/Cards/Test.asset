@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   Name: Card
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 37dfb8b6a4e95df4cb1798d4a9150d6b, type: 3}
   Description: Not yet description
   Cost: -1
+  Action: 1

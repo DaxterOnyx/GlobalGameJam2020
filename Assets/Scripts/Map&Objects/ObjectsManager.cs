@@ -17,7 +17,7 @@ public class ObjectsManager : Location
         }
     }
     public ObjectsManagerData data;
-    void Start()
+    void Awake()
     {
         _instance = this;
         Initialize(data);

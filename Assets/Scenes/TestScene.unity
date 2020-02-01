@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 08bd00576b09f0f4cadb9484d30a1706, type: 2}
+  caseList: []
 --- !u!4 &739320568
 Transform:
   m_ObjectHideFlags: 0

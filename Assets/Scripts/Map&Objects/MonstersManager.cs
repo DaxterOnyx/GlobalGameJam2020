@@ -15,15 +15,27 @@ public class MonstersManager : Location
         }
     }
     public MonsterManagerData data;
+    private float atkCount;
+    private List<GameObj_Vect2> hitList;
     void Start()
     {
+        hitList = new List<GameObj_Vect2>();
         _instance = this;
         Initialize(data);
     }
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown("a"))
+        {
+            MonsterTurn();
+        }
+        if(atkCount>0&&hitList.Count > 0)
+        {
+            MapManager.Instance.TryGetObjectByPos(hitList[0].vector).TakeDamage(hitList[0].obj.GetComponent<Monster>().data.Strengh);
+            hitList.RemoveAt(0);
+        }
+
     }
 
     public void MonsterTurn()
@@ -60,14 +72,15 @@ public class MonstersManager : Location
         }
         while (moveCount > 0)
         {
-            Attack(MapManager.Instance.TryGetObjectByPos(destination).GetComponent<Character>());
+            sequence.Append(DOTween.To(() => atkCount, x => atkCount = x, 1, MapManager.Instance.data.moveDuration));
+            GameObj_Vect2 hit;
+            hit.obj = gameObject;
+            hit.vector = destination;
+            hitList.Add(hit);
+            moveCount--;
         }
     }
 
-    public void Attack(Character target)
-    {
-        
-    }
 
     private Vector3 V2ItoV3(Vector2Int vector)
     {

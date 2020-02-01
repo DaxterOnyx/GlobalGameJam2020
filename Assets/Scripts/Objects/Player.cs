@@ -1,8 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
-    public PlayerData data;
+	public PlayerData data;
+	protected override void Start()
+	{
+		LifePoint = data.nbMaxLP;
+	}
+	internal void Unselect()
+	{
+		//TODO SHOW PLAYER
+		throw new NotImplementedException();
+	}
+
+	internal void Select()
+	{//TODO SHOW PLAYER
+		throw new NotImplementedException();
+	}
+
+	internal void OnClick()
+	{
+		GameManager.Instance.SelectPlayer(this);
+	}
 }

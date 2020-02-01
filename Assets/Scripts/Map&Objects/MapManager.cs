@@ -16,11 +16,55 @@ public class MapManager : MonoBehaviour
     }
 
     public MapData data;
+    public List<GameObject> caseList = new List<GameObject>();
     private Dictionary<GameObject, Vector2Int> dico = new Dictionary<GameObject, Vector2Int>();
     private void Awake()
     {
         _instance = this;
+        GenerateCaseMap(new Vector2Int(0, 0), 5);
     }
+
+    public bool GenerateCaseMap(Vector2Int position,int maxDist)
+    {
+
+        return true;
+    }
+    public void recCreationCase(Vector2Int pos, GameObject parent, int maxDist)
+    {
+        GameObject curCase;
+        curCase = CreateCase(pos, parent, maxDist);
+        recCreationCase(pos + new Vector2Int(0, 1), curCase, maxDist);
+        recCreationCase(pos + new Vector2Int(1, 0), curCase, maxDist);
+        recCreationCase(pos + new Vector2Int(0, -1), curCase, maxDist);
+        recCreationCase(pos + new Vector2Int(-1, 0), curCase, maxDist);
+    }
+
+    public GameObject CreateCase(Vector2Int pos,GameObject parent,int maxDist)
+    {
+        GameObject curCase = null;
+        if (!containByPos(caseList, pos) && parent.GetComponent<CaseObject>().curCase.g+1<=maxDist)
+        {
+            curCase = Instantiate(data.caseObject);
+            curCase.transform.position = V2ItoV3(pos);
+            caseList.Add(curCase);
+            curCase.GetComponent<CaseObject>().curCase = Pathfinding.Instance.CreateCase(pos,pos,parent.GetComponent<CaseObject>().curCase);
+        }
+        return curCase;
+    }
+
+    public bool containByPos(List<GameObject> listObj, Vector2 pos)
+    {
+        foreach (var item in listObj)
+        {
+            if (V3toV2I(item.transform.position) == pos)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
     /// <summary>
     /// Move the object to the given position, relative to its position, if it's not taken
@@ -69,14 +113,14 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="position"></param>
     /// <returns></returns>
-    public GameObject TryGetObjectByPos(Vector2Int position)
+    public Character TryGetObjectByPos(Vector2Int position)
     {
-        GameObject gObj = null;
+        Character gObj = null;
         foreach (var item in dico)
         {
             if (item.Value == position)
             {
-                gObj = item.Key;
+                gObj = item.Key.GetComponent<Character>();
             }
         }
         return gObj;
@@ -134,7 +178,7 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="vector"></param>
     /// <returns></returns>
-    private Vector3 V2ItoV3(Vector2Int vector)
+    public Vector3 V2ItoV3(Vector2Int vector)
     {
         return new Vector3(vector.x, vector.y, 0);
     }
@@ -144,7 +188,7 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="vector"></param>
     /// <returns></returns>
-    private Vector2Int V3toV2I(Vector3 vector)
+    public Vector2Int V3toV2I(Vector3 vector)
     {
         return new Vector2Int((int)vector.x, (int)vector.y);
     }

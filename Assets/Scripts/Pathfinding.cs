@@ -176,6 +176,7 @@ public class Pathfinding : MonoBehaviour
 
 }
 
+[System.Serializable]
 public class Case
 {
     public Vector2Int position;
