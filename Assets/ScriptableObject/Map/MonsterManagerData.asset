@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDist: 100
   characterPositionList:
-  - obj: {fileID: 9000150085139168938, guid: 27e3e7a8dd9c1c7488c839d6205baa3b, type: 3}
+  - obj: {fileID: 430869390369772873, guid: 3cb499add1b65ba42ae21c038bb98a69, type: 3}
     vector: {x: 0, y: 0}
