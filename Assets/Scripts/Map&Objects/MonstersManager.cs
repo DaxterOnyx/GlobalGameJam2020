@@ -29,6 +29,10 @@ public class MonstersManager : Location
         {
             MonsterTurn();
         }
+        if(atkCount>0&&hitList.Count > 0)
+        {
+            MapManager.Instance.TryGetObjectByPos(hitList[0].vector).TakeDamage(hitList[0].obj.GetComponent<Monster>().data.Strengh);
+        }
 
     }
 
