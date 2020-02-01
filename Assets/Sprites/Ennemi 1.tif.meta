@@ -1,0 +1,274 @@
+fileFormatVersion: 2
+guid: edee1f637da19054cbdae9d613ead910
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 202453529209812935
+    second: Ennemi 1_0
+  - first:
+      213: 6016312876298993951
+    second: Ennemi 1_1
+  - first:
+      213: -5281185572530997797
+    second: Ennemi 1_2
+  - first:
+      213: -4510471462185186395
+    second: Ennemi 1_3
+  - first:
+      213: -2663580807917860961
+    second: Ennemi 1_4
+  - first:
+      213: 2903668143942182296
+    second: Ennemi 1_5
+  - first:
+      213: -4318623824030439525
+    second: Ennemi 1_6
+  - first:
+      213: 4881761637287726110
+    second: Ennemi 1_7
+  - first:
+      213: 7955627609170234685
+    second: Ennemi 1_8
+  - first:
+      213: 7673958506816224420
+    second: Ennemi 1_9
+  - first:
+      213: 1390772933311434422
+    second: Ennemi 1_10
+  - first:
+      213: 7478221406059114905
+    second: Ennemi 1_11
+  - first:
+      213: -8629479301306110151
+    second: Ennemi 1_12
+  - first:
+      213: 2011178542373433844
+    second: Ennemi 1_13
+  - first:
+      213: 128016104879854744
+    second: Ennemi 1_14
+  - first:
+      213: -3854643678730946002
+    second: Ennemi 1_15
+  - first:
+      213: 3315068595616277360
+    second: Ennemi 1_16
+  - first:
+      213: -535699357421729556
+    second: Ennemi 1_17
+  - first:
+      213: 4444008292444933946
+    second: Ennemi 1_18
+  - first:
+      213: 8020550041191241841
+    second: Ennemi 1_19
+  - first:
+      213: -1108574346740588890
+    second: Ennemi 1_20
+  - first:
+      213: 7857511709847048321
+    second: Ennemi 1_21
+  - first:
+      213: 5202922493670585854
+    second: Ennemi 1_22
+  - first:
+      213: 4335196722594743475
+    second: Ennemi 1_23
+  - first:
+      213: 986664449391079450
+    second: Ennemi 1_24
+  - first:
+      213: -3016656559790001120
+    second: Ennemi 1_25
+  - first:
+      213: 2851141944277690406
+    second: Ennemi 1_26
+  - first:
+      213: 2432313829104034433
+    second: Ennemi 1_27
+  - first:
+      213: 4629162651794503379
+    second: Ennemi 1_28
+  - first:
+      213: 5312175293251330388
+    second: Ennemi 1_29
+  - first:
+      213: -5823024523229642528
+    second: Ennemi 1_30
+  - first:
+      213: 2598620105609387005
+    second: Ennemi 1_31
+  - first:
+      213: 4049879135902857039
+    second: Ennemi 1_32
+  - first:
+      213: 6469071690763762527
+    second: Ennemi 1_33
+  - first:
+      213: -4689058999891823673
+    second: Ennemi 1_34
+  - first:
+      213: -999095722170872798
+    second: Ennemi 1_35
+  - first:
+      213: 2875259281576192197
+    second: Ennemi 1_36
+  - first:
+      213: 8421290951412110070
+    second: Ennemi 1_37
+  - first:
+      213: -2838017364283240991
+    second: Ennemi 1_38
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ennemi 1_0
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 418
+        width: 537
+        height: 561
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c7331489624fc200800000000000000
+      internalID: 202453529209812935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi 1_1
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 226
+        width: 440
+        height: 318
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1109696fac3e7350800000000000000
+      internalID: 6016312876298993951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
