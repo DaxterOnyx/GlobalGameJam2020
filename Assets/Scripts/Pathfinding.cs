@@ -1,17 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
     private static Pathfinding _instance;
-    public static Pathfinding Instance { get { return _instance; } }
+    public static Pathfinding Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindObjectOfType<Pathfinding>();
+            return _instance;
+        }
+    }
     private List<Case> openList;
     private List<Case> closedList;
     private List<Vector2Int> path;
-    private CaseComp CaseC;
+    public int LimitLoop;
 
-    private void Start()
+    private void Awake()
     {
         _instance = this;
         openList = new List<Case>();
@@ -24,12 +31,12 @@ public class Pathfinding : MonoBehaviour
         openList.Clear();
         closedList.Clear();
         path.Clear();
-        
-        
+
+
         Case iCase = CreateCase(initialPos, finalPos, null);
         openList.Add(iCase);
-        iCase = recPathfinding(finalPos);
-        if(iCase == null)
+        iCase = recPathfinding(finalPos,0);
+        if (iCase == null)
         {
             Debug.LogError("Error: No path found!");
         }
@@ -42,7 +49,7 @@ public class Pathfinding : MonoBehaviour
 
     public void FulfillPath(Case curCase)
     {
-        if(curCase.parent == null)
+        if (curCase.parent == null)
         {
             path.Add(curCase.position);
         }
@@ -53,32 +60,35 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    public Case recPathfinding(Vector2Int finalPos)
+    public Case recPathfinding(Vector2Int finalPos, int counter)
     {
-        openList.Sort(CaseC);
-        Case curCase = openList[0];
+        Case curCase = caseWithSmallestF(openList);
+        Debug.Log(curCase.position + " " + finalPos);
         // Calculationg for neighbor cases
-        if (ListContainsNodeAt(closedList, finalPos, out curCase))
+        if (ListContainsNodeAt(closedList, finalPos, ref curCase))
         {
             return curCase;
         }
-        else if (openList.Count == 0)
+        else if (openList.Count == 0 || counter>LimitLoop)
         {
+            Debug.Log("No path Found");
             return null;
         }
+        closedList.Add(curCase);
+        openList.Remove(curCase);
         calculatingCase(curCase.position + new Vector2Int(0, 1), curCase, finalPos);
         calculatingCase(curCase.position + new Vector2Int(1, 0), curCase, finalPos);
         calculatingCase(curCase.position + new Vector2Int(0, -1), curCase, finalPos);
         calculatingCase(curCase.position + new Vector2Int(-1, 0), curCase, finalPos);
-        return recPathfinding(finalPos);
+        return recPathfinding(finalPos,counter+1);
     }
 
-    public void calculatingCase (Vector2Int pos,Case parent,Vector2Int finalPos)
+    public void calculatingCase(Vector2Int pos, Case parent, Vector2Int finalPos)
     {
-        Case curCase;
-        if(!(MapManager.Instance.CaseTaken(pos) || ListContainsNodeAt(closedList, pos)))
+        Case curCase = new Case();
+        if (!((MapManager.Instance.CaseTaken(pos) && finalPos!=pos) || ListContainsNodeAt(closedList, pos)))
         {
-            if (!ListContainsNodeAt(openList, pos,out curCase))
+            if (!ListContainsNodeAt(openList, pos, ref curCase))
             {
                 curCase = CreateCase(pos, finalPos, parent);
                 openList.Add(curCase);
@@ -104,39 +114,66 @@ public class Pathfinding : MonoBehaviour
         }
         return false;
     }
+    
+    public Case caseWithSmallestF(List<Case> list)
+    {
+        Case retCase = list[0];
+        foreach (var item in list)
+        {
+            if (item.f < retCase.f)
+            {
+                retCase = item;
+            }
+        }
+        return retCase;
+    }
 
-    public bool ListContainsNodeAt(List<Case> lCase,Vector2Int pos,out Case pCase)
+    public bool ListContainsNodeAt(List<Case> lCase, Vector2Int pos, ref Case pCase)
     {
         foreach (var item in lCase)
         {
-            if(item.position == pos)
+            if (item.position == pos)
             {
                 pCase = item;
                 return true;
             }
         }
-        pCase = null;
         return false;
     }
 
-    public void ChangeParent(Case curCase,Case parentCase)
+    public void ChangeParent(Case curCase, Case parentCase)
     {
         curCase.parent = parentCase;
-        curCase.g = parentCase.g + 1;
+        if (parentCase == null)
+        {
+            curCase.g = 0;
+        }
+        else
+        {
+            curCase.g = parentCase.g + 1;
+            curCase.f = curCase.g + curCase.h;
+        }
     }
 
-    public Case CreateCase(Vector2Int position,Vector2Int finalPos,Case parent)
+    public Case CreateCase(Vector2Int position, Vector2Int finalPos, Case parent)
     {
         Case curCase = new Case();
         curCase.position = position;
         curCase.parent = parent;
-        curCase.g = parent.g + 1;
-        curCase.h =(int) Vector2Int.Distance(position,finalPos);
+        if(parent == null)
+        {
+            curCase.g = 0;
+        }
+        else
+        {
+            curCase.g = parent.g + 1;
+        }
+        curCase.h = (int) Mathf.Pow(Vector2Int.Distance(position, finalPos),2);
         curCase.f = curCase.g + curCase.h;
         return curCase;
     }
-    
-    
+
+
 }
 
 public class Case
@@ -146,12 +183,5 @@ public class Case
     public int f;
     public int g;
     public int h;
-}
-public class CaseComp : IComparer<Case>
-{
-    public int Compare (Case c1, Case c2)
-    {
-        return c1.f - c2.f;
-    }
 }
 
