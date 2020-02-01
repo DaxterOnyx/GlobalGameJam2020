@@ -12,6 +12,7 @@ public class Card : MonoBehaviour
 	public TextMeshProUGUI Cost;
 	public TextMeshProUGUI Description;
 	public TextMeshProUGUI Range;
+	private bool selected;
 
 	private void Start()
 	{
@@ -29,7 +30,7 @@ public class Card : MonoBehaviour
 		Range.text = data.Range;
 	}
 
-	public void OnClick()
+	internal void Action(Player playerSelected, Location targetSelected)
 	{
 		//TODO ACTION
 		switch (data.Action) {
@@ -39,6 +40,19 @@ public class Card : MonoBehaviour
 				Debug.LogError("Not Defined Action : " + data.Action.ToString());
 				break;
 		}
+	}
+
+	internal void Unselect()
+	{
+		//TODO SHOW TO PLAYER
+		selected = false;
+	}
+
+	public void OnClick()
+	{
+		//TODO SHOW TO PLAYER
+		GameManager.Instance.SelectCard(this);
+		selected = true;
 	}
 
 	public void SetLastSibling()
