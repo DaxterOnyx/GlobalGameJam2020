@@ -12,7 +12,8 @@ public abstract class CharacterData : ScriptableObject
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData")]
 public class PlayerData : CharacterData
 {
-
+	internal int Strengh;
+	internal int FireGunDamage;
 }
 
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Data/MonsterData")]

@@ -1,14 +1,22 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
-    public PlayerData data;
+	public PlayerData data;
 
 	internal void Unselect()
 	{
+		//TODO SHOW PLAYER
 		throw new NotImplementedException();
+	}
+
+	internal void Select()
+	{//TODO SHOW PLAYER
+		throw new NotImplementedException();
+	}
+
+	internal void OnClick()
+	{
+		GameManager.Instance.SelectPlayer(this);
 	}
 }

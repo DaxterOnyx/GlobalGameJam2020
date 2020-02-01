@@ -69,14 +69,14 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="position"></param>
     /// <returns></returns>
-    public GameObject TryGetObjectByPos(Vector2Int position)
+    public Character TryGetObjectByPos(Vector2Int position)
     {
-        GameObject gObj = null;
+        Character gObj = null;
         foreach (var item in dico)
         {
             if (item.Value == position)
             {
-                gObj = item.Key;
+                gObj = item.Key.GetComponent<Character>();
             }
         }
         return gObj;
@@ -134,7 +134,7 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="vector"></param>
     /// <returns></returns>
-    private Vector3 V2ItoV3(Vector2Int vector)
+    public Vector3 V2ItoV3(Vector2Int vector)
     {
         return new Vector3(vector.x, vector.y, 0);
     }
@@ -144,7 +144,7 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="vector"></param>
     /// <returns></returns>
-    private Vector2Int V3toV2I(Vector3 vector)
+    public Vector2Int V3toV2I(Vector3 vector)
     {
         return new Vector2Int((int)vector.x, (int)vector.y);
     }

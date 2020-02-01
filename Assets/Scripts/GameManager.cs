@@ -5,9 +5,11 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance { get; private set; }
 
-	public Card CardSelected;
-	public Player PlayerSelected;
-	public Location TargetSelected;
+	public Camera MainCamera;
+
+	internal Card CardSelected;
+	internal Player PlayerSelected;
+	internal Character TargetSelected;
 	private bool SelectingTarget;
 
 	// Start is called before the first frame update
@@ -20,10 +22,14 @@ public class GameManager : MonoBehaviour
 	void Update()
 	{
 		if (Input.GetMouseButtonDown(0) && SelectingTarget) {
-			//TODO ASK TO MAP MANAGER THE OBJECT CLIKED
+			//Ask at map map manager the object clicked
+			var target = MapManager.Instance.TryGetObjectByPos(MapManager.Instance.V3toV2I(MainCamera.ScreenToWorldPoint(Input.mousePosition)));
 			//TODO CHECK IF IS A TARGET OF THE CARD AND IN AREA OF CARD
-			CardSelected.Action(PlayerSelected, TargetSelected);
-			UnSelectTarget();
+			if (target != null && CardSelected.IsValableTarget(PlayerSelected, target)) {
+
+				CardSelected.Action(PlayerSelected, TargetSelected);
+				UnSelectTarget();
+			}
 		}
 	}
 
@@ -32,6 +38,7 @@ public class GameManager : MonoBehaviour
 		if (PlayerSelected != null && selected != PlayerSelected)
 			PlayerSelected.Unselect();
 		PlayerSelected = selected;
+		PlayerSelected.Select();
 
 		if (CardSelected != null)
 			SelectTarget();
@@ -42,6 +49,7 @@ public class GameManager : MonoBehaviour
 		if (CardSelected != null && selected != CardSelected)
 			CardSelected.Unselect();
 		CardSelected = selected;
+		CardSelected.Select();
 		if (PlayerSelected != null)
 			SelectTarget();
 	}
