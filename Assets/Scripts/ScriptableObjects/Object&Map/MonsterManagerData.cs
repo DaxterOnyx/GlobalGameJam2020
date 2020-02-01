@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MonsterManagerData", menuName = "Data/MonsterManagerData")]
 public class MonsterManagerData : CharacterManagerData
 {
-    public int nbMonst;
+
 }

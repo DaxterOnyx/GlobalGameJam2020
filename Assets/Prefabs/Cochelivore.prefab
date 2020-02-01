@@ -328,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 5731790363939349460, guid: b6fe4cfc94e46fc43843c20534adaae7,
         type: 3}
       propertyPath: m_Name
-      value: Ennemy 1_1
+      value: Cochelivore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6fe4cfc94e46fc43843c20534adaae7, type: 3}
