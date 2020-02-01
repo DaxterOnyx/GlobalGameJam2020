@@ -31,4 +31,10 @@ public class Card : MonoBehaviour
 	{
 		
 	}
+
+	public void SetLastSibling()
+	{
+		Debug.Log("SetLastSibling");
+		RecTransform.SetAsLastSibling();
+	}
 }
