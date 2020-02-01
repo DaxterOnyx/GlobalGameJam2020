@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class CardManager : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class CardManager : MonoBehaviour
 			return cards;
 		}
 	}
+
+	public bool isShufflingi;
+
 	/// <summary>
 	/// NB of card draw each turn
 	/// </summary>
@@ -79,7 +83,7 @@ public class CardManager : MonoBehaviour
 			Debug.Break();
 
 		//DRAW ALL CARD WITH ANIMATION
-		if (isDrawing) {
+		if (isDrawing &&  !isShufflingi) {
 			lastDrawCard += Time.deltaTime;
 			if (lastDrawCard >= data.DrawOneCardTime) {
 				lastDrawCard = 0;
@@ -112,11 +116,7 @@ public class CardManager : MonoBehaviour
 	private void DrawOneCard()
 	{
 		if (deck.Count <= 0) {
-			//TODO Shuffle Discard
-			deck.AddRange(discard);
-			UpdateShowCount();
-			discard.Clear();
-			ShuffleDeck();
+			DiscardAtDeck();
 		}
 
 		//Draw Card
@@ -132,6 +132,21 @@ public class CardManager : MonoBehaviour
 			hand.Add(card);
 			OrganizeHand();
 		}
+	}
+
+	private void DiscardAtDeck()
+	{
+		isShufflingi = true;
+		Invoke("EndShuffle", data.DrawOneCardTime*3);
+	}
+
+	private void EndShuffle()
+	{
+		isShufflingi = false;
+		deck.AddRange(discard);
+		UpdateShowCount();
+		discard.Clear();
+		ShuffleDeck();
 	}
 
 	private void ShuffleDeck()

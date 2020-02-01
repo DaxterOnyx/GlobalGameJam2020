@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   Name: Attack
-  Image: {fileID: 4695149069802882794, guid: d9368068cb38ceb49bdb6904ece347bc, type: 3}
+  Image: {fileID: 21300000, guid: d9368068cb38ceb49bdb6904ece347bc, type: 3}
   Description: "Le personnage frappe au corps \xE0 corps."
   Cost: 1
   Action: 0
