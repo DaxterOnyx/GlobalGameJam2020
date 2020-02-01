@@ -6,11 +6,11 @@ public class MonstersManager : CharactersManager
 {
     private static MonstersManager _instance;
     public static MonstersManager Instance { get { return _instance; } }
-
+    public MonsterManagerData data;
     void Start()
     {
         _instance = this;
-        Initialize();
+        Initialize(data);
     }
 
 }
