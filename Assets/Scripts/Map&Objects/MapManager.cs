@@ -1,16 +1,23 @@
 ﻿using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
     private static MapManager _instance;
-    public static MapManager Instance { get { return _instance; } }
+    public static MapManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindObjectOfType<MapManager>();
+            return _instance;
+        }
+    }
 
     public MapData data;
     private Dictionary<GameObject, Vector2Int> dico = new Dictionary<GameObject, Vector2Int>();
-    private void Start()
+    private void Awake()
     {
         _instance = this;
     }
@@ -63,9 +70,9 @@ public class MapManager : MonoBehaviour
     /// <param name="item">The item to find</param>
     /// <param name="position"> The Vector2 of the position to return</param>
     /// <returns></returns>
-    public bool WhereIsObject(GameObject item,out Vector2Int position)
+    public bool WhereIsObject(GameObject item, out Vector2Int position)
     {
-        if(dico.TryGetValue(item,out position))
+        if (dico.TryGetValue(item, out position))
         {
             return true;
         }
@@ -78,17 +85,18 @@ public class MapManager : MonoBehaviour
     /// <param name="item">The GameObject you want to instantiate</param>
     /// <param name="position">The position on the grid</param>
     /// <returns>The game object instance</returns>
-    public GameObject CreateObject(GameObject item, Vector2Int position)
+    public Transform CreateObject(GameObject item, Vector2Int position)
     {
         if (dico.ContainsValue(position))
         {
             Debug.LogError("Error: Can't create object, position already taken!");
-                return null;
+            return null;
         }
         GameObject obj = Instantiate(item, transform);
         dico.Add(obj, position);
-        MoveObject(obj, position);
-        return obj;
+        obj.transform.position = V2ItoV3(position);
+        Debug.Log("Object succefully created!");
+        return obj.transform;
     }
 
     /// <summary>

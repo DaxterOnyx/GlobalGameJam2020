@@ -5,20 +5,21 @@ using UnityEngine;
 public abstract class CharactersManager : MonoBehaviour
 {
 
-    private List<GameObject> objectList = new List<GameObject>();
+    protected List<GameObject> objectList = new List<GameObject>();
     private float startDist;
     // Start is called before the first frame update
 
     /// <summary>
     /// Instantiate object and add them to objectList
     /// </summary>
-    public virtual void Initialize(CharacterManagerData data)
+    public void Initialize(CharacterManagerData data)
     {
         foreach (var item in data.characterPositionList)
         {
-            objectList.Add(MapManager.Instance.CreateObject(item.obj, item.vector));
-            startDist = data.StartDist;
+            Transform obj = MapManager.Instance.CreateObject(item.obj, item.vector);
+            objectList.Add(obj.gameObject);
         }
+        startDist = data.StartDist;
     }
 
 
@@ -34,7 +35,7 @@ public abstract class CharactersManager : MonoBehaviour
 
 
     /// <summary>
-    /// Return the nearest player from this position
+    /// Return the nearest Object from parameter
     /// </summary>
     /// <param name="position"></param>
     /// <returns></returns>

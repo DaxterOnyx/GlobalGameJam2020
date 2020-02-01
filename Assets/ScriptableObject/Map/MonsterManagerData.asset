@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MonsterManagerData
   m_EditorClassIdentifier: 
   StartDist: 100
-  characterPositionList: []
-  nbMonst: 0
+  characterPositionList:
+  - obj: {fileID: 9000150085139168938, guid: 27e3e7a8dd9c1c7488c839d6205baa3b, type: 3}
+    vector: {x: 2, y: 3}
