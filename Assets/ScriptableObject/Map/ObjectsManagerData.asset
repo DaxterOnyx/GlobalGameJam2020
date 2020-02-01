@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDist: 0
   characterPositionList:
-  - obj: {fileID: 6371791978114439536, guid: d68bee4ff23d77342abbcf8751667cf5, type: 3}
+  - obj: {fileID: 1790164126863469712, guid: 86b57ed0d49ee4649ad80ecb8d16ef89, type: 3}
     vector: {x: -1, y: 2}
-  - obj: {fileID: 6371791978114439536, guid: d68bee4ff23d77342abbcf8751667cf5, type: 3}
+  - obj: {fileID: 1790164126863469712, guid: 86b57ed0d49ee4649ad80ecb8d16ef89, type: 3}
     vector: {x: -1, y: 3}
-  - obj: {fileID: 6371791978114439536, guid: d68bee4ff23d77342abbcf8751667cf5, type: 3}
+  - obj: {fileID: 1790164126863469712, guid: 86b57ed0d49ee4649ad80ecb8d16ef89, type: 3}
     vector: {x: 0, y: 3}
-  - obj: {fileID: 6371791978114439536, guid: d68bee4ff23d77342abbcf8751667cf5, type: 3}
+  - obj: {fileID: 1790164126863469712, guid: 86b57ed0d49ee4649ad80ecb8d16ef89, type: 3}
     vector: {x: 1, y: 3}
-  - obj: {fileID: 6371791978114439536, guid: d68bee4ff23d77342abbcf8751667cf5, type: 3}
+  - obj: {fileID: 1790164126863469712, guid: 86b57ed0d49ee4649ad80ecb8d16ef89, type: 3}
     vector: {x: 1, y: 7}
-  - obj: {fileID: 6371791978114439536, guid: d68bee4ff23d77342abbcf8751667cf5, type: 3}
+  - obj: {fileID: 1790164126863469712, guid: 86b57ed0d49ee4649ad80ecb8d16ef89, type: 3}
     vector: {x: 2, y: 7}
-  - obj: {fileID: 6371791978114439536, guid: d68bee4ff23d77342abbcf8751667cf5, type: 3}
+  - obj: {fileID: 1790164126863469712, guid: 86b57ed0d49ee4649ad80ecb8d16ef89, type: 3}
     vector: {x: 3, y: 8}

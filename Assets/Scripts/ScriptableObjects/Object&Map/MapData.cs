@@ -6,4 +6,5 @@ using UnityEngine;
 public class MapData : ScriptableObject
 {
     public float moveDuration;
+    public GameObject caseObject;
 }

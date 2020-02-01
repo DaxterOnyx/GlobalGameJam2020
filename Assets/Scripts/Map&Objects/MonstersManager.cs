@@ -15,6 +15,8 @@ public class MonstersManager : Location
         }
     }
     public MonsterManagerData data;
+    private float atkCount;
+    private List<GameObj_Vect2> hitList;
     void Start()
     {
         _instance = this;
@@ -23,7 +25,11 @@ public class MonstersManager : Location
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown("a"))
+        {
+            MonsterTurn();
+        }
+
     }
 
     public void MonsterTurn()
@@ -60,14 +66,14 @@ public class MonstersManager : Location
         }
         while (moveCount > 0)
         {
-            Attack(MapManager.Instance.TryGetObjectByPos(destination).GetComponent<Character>());
+            sequence.Append(DOTween.To(() => atkCount, x => atkCount = x, 1, MapManager.Instance.data.moveDuration));
+            GameObj_Vect2 hit;
+            hit.obj = gameObject;
+            hit.vector = destination;
+            hitList.Add(hit);
         }
     }
 
-    public void Attack(Character target)
-    {
-        
-    }
 
     private Vector3 V2ItoV3(Vector2Int vector)
     {
