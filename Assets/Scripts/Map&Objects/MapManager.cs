@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+    private static MapManager _instance;
+    public static MapManager Instance { get { return _instance; } }
+
     public MapData data;
     private Dictionary<GameObject, Vector2Int> dico = new Dictionary<GameObject, Vector2Int>();
-    
+    private void Start()
+    {
+        _instance = this;
+    }
+
     /// <summary>
     /// Move the object to the given position, relative to its position, if it's not taken
     /// </summary>
@@ -61,18 +68,18 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="item">The GameObject you want to instantiate</param>
     /// <param name="position">The position on the grid</param>
-    /// <returns>true if the game objject is instantiated, false in other case</returns>
-    public bool CreateObject(GameObject item, Vector2Int position)
+    /// <returns>The game object instance</returns>
+    public GameObject CreateObject(GameObject item, Vector2Int position)
     {
         if (dico.ContainsValue(position))
         {
             Debug.LogError("Error: Can't create object, position already taken!");
-                return false;
+                return null;
         }
         GameObject obj = Instantiate(item, transform);
         dico.Add(obj, position);
         MoveObject(obj, position);
-        return true;
+        return obj;
     }
 
     /// <summary>
