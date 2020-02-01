@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharactersManager : MonoBehaviour
+public abstract class CharactersManager : MonoBehaviour
 {
 
-    public CharacterManagerData data;
     private List<GameObject> objectList = new List<GameObject>();
+    private float startDist;
     // Start is called before the first frame update
 
     /// <summary>
     /// Instantiate object and add them to objectList
     /// </summary>
-    public virtual void Initialize()
+    public virtual void Initialize(CharacterManagerData data)
     {
         foreach (var item in data.characterPositionList)
         {
             objectList.Add(MapManager.Instance.CreateObject(item.obj, item.vector));
+            startDist = data.StartDist;
         }
     }
 
@@ -42,7 +43,7 @@ public class CharactersManager : MonoBehaviour
         Vector2Int position;
         MapManager.Instance.WhereIsObject(gameObject, out position);
         Vector2Int playerPos;
-        (float, GameObject) smallestDist_Obj = (data.StartDist,null);
+        (float, GameObject) smallestDist_Obj = (startDist,null);
         foreach (var item in objectList)
         {
             MapManager.Instance.WhereIsObject(item,out playerPos);

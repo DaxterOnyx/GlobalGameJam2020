@@ -37,6 +37,15 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Return if the case is taken by something
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    public bool CaseTaken(Vector2Int pos)
+    {
+        return dico.ContainsValue(pos);
+    }
 
     /// <summary>
     /// Return if an object is found, and where it is if found

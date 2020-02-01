@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a343cb0c5625674f9eec1181f8a8637, type: 3}
-  m_Name: MonstersData
-  m_EditorClassIdentifier: 
-  StartDist: 100
-  characterPositionList: []
+  m_Script: {fileID: 0}
+  m_Name: ClassicPlayer
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  nbMaxLP: 0
+  nbActionPoint: 0
