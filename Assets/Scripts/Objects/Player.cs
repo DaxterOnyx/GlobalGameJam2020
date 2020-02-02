@@ -11,7 +11,7 @@ public class Player : Character
 
 	public Animator animator;
 	public GameObject Selector;
-	public int actionLeft;
+	public int actionLeft { get; private set; }
 	public TextMeshProUGUI ActionDisplay;
 	private Sequence sequence;
 	private bool isWalking;
