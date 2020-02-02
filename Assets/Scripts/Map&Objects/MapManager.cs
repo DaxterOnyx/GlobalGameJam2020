@@ -29,19 +29,19 @@ public class MapManager : MonoBehaviour
 
     public bool GenerateCaseMap(Vector2Int position,int maxCost)
     {
-        recCreationCase(position, position, maxCost);
+        RecCreationCase(position, position, maxCost);
         return true;
     }
-    public void recCreationCase(Vector2Int pos, Vector2Int initialPos, int maxCost)
+    public void RecCreationCase(Vector2Int pos, Vector2Int initialPos, int maxCost)
     {
         GameObject curCase;
         curCase = CreateCase(pos, initialPos, maxCost);
         if (curCase != null)
         {
-            recCreationCase(pos + new Vector2Int(0, 1), initialPos, maxCost);
-            recCreationCase(pos + new Vector2Int(1, 0), initialPos, maxCost);
-            recCreationCase(pos + new Vector2Int(0, -1), initialPos, maxCost);
-            recCreationCase(pos + new Vector2Int(-1, 0), initialPos, maxCost);
+            RecCreationCase(pos + new Vector2Int(0, 1), initialPos, maxCost);
+            RecCreationCase(pos + new Vector2Int(1, 0), initialPos, maxCost);
+            RecCreationCase(pos + new Vector2Int(0, -1), initialPos, maxCost);
+            RecCreationCase(pos + new Vector2Int(-1, 0), initialPos, maxCost);
         }
     }
 
@@ -97,7 +97,7 @@ public class MapManager : MonoBehaviour
             {
                 dico.Remove(item);
                 dico.Add(item, position + V3toV2I(item.transform.position));
-                sequence.Append(item.transform.DOMove(V2ItoV3(position) + item.transform.position, data.moveDuration));
+                sequence.Append(item.transform.DOMove(V2ItoV3(position), data.moveDuration));
             }
         }
         return sequence;
