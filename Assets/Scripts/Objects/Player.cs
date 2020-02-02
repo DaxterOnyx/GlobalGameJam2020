@@ -6,6 +6,7 @@ public class Player : Character
 	public PlayerData data;
 
 	public Animator animator;
+	public GameObject Selector;
 
 	protected override void Start()
 	{
@@ -24,15 +25,16 @@ public class Player : Character
 	internal void Unselect()
 	{
 		//TODO SHOW PLAYER
-		throw new NotImplementedException();
+		Selector.SetActive(false);
 	}
 
 	internal void Select()
-	{//TODO SHOW PLAYER
-		throw new NotImplementedException();
+	{
+		//TODO SHOW PLAYER
+		Selector.SetActive(true);
 	}
 
-	internal void OnClick()
+	internal void OnMouseDown()
 	{
 		GameManager.Instance.SelectPlayer(this);
 	}
