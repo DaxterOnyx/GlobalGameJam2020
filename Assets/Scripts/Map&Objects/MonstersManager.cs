@@ -21,6 +21,9 @@ public class MonstersManager : Location
     private bool monsterTurn;
     private bool actionCompleted = true;
     private Sequence sequence;
+    public float timeAdvretising;
+    private float time;
+    public GameObject advert;
     void Start()
     {
         hitList = new List<GameObj_Vect2>();
@@ -31,6 +34,15 @@ public class MonstersManager : Location
 
     private void Update()
     {
+        if(time > 0)
+        {
+            advert.SetActive(true);
+            time -= Time.deltaTime;
+        }
+        else if(advert.activeSelf)
+        {
+            advert.SetActive(false);
+        }
         if (monsterTurn)
         {
             if (attakingMonsters.Count > 0 && actionCompleted)
@@ -81,6 +93,14 @@ public class MonstersManager : Location
 
     public void MonsterTurn()
     {
+        foreach (var item in data.retardedSpawns)
+        {
+            if (item.turn == TurnManager.Instance.Turn)
+            {
+                time = timeAdvretising;
+                SpawnMonster(item.newObject);
+            }
+        }
         monsterTurn = true;
         attakingMonsters = new List<GameObject>();
 		//TODO SET TIME TO ADD ANIMATIOn OR SE THIS IN UPDATE
@@ -89,6 +109,12 @@ public class MonstersManager : Location
             attakingMonsters.Add(item);
             
         }
+    }
+
+    public void SpawnMonster(GameObj_Vect2 item)
+    {
+        Transform obj = MapManager.Instance.CreateObject(item.obj, item.vector);
+        objectList.Add(obj.gameObject);
     }
 
     public Sequence ActionGesture(GameObject gameObject,Vector2Int destination)
@@ -116,4 +142,11 @@ public class MonstersManager : Location
         }
         return sequence;
     }
+}
+
+[System.Serializable]
+public struct retardedSpawn
+{
+    public int turn;
+    public GameObj_Vect2 newObject;
 }
