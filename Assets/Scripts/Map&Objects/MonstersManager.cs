@@ -26,10 +26,6 @@ public class MonstersManager : Location
 
     private void Update()
     {
-        if (Input.GetKeyDown("a"))
-        {
-            MonsterTurn();
-        }
         if(atkCount>0&&hitList.Count > 0)
         {
             if (MapManager.Instance.TryGetObjectByPos(hitList[0].vector)!=null)
@@ -47,21 +43,26 @@ public class MonstersManager : Location
 
     public void MonsterTurn()
     {
+		//TODO SET TIME TO ADD ANIMATIOn OR SE THIS IN UPDATE
         foreach (var item in objectList)
         {
             if(item.GetComponent<Monster>().data.target == target.Objective)
             {
+			//Target is Destroy Object
                 Vector2Int pos;
                 MapManager.Instance.WhereIsObject(ObjectsManager.Instance.NearestObjective(item),out pos);
                 ActionGesture(item, pos);
             }
             else
             {
+				//Target is players
                 Vector2Int pos;
                 MapManager.Instance.WhereIsObject(PlayersManager.Instance.Nearest(item), out pos);
                 ActionGesture(item, pos);
             }
         }
+
+		TurnManager.Instance.NextTurn();
     }
 
     public void ActionGesture(GameObject gameObject,Vector2Int destination)

@@ -206,6 +206,6 @@ public class MapManager : MonoBehaviour
     /// <returns></returns>
     public Vector2Int V3toV2I(Vector3 vector)
     {
-        return new Vector2Int((int)vector.x, (int)vector.y);
+        return new Vector2Int(Mathf.FloorToInt(vector.x), Mathf.FloorToInt(vector.y));
     }
 }

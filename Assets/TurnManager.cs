@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
-	public TurnManager Instance { get; private set; }
+	public static TurnManager Instance { get; private set; }
 
 	[HideInInspector]
 	public int Turn = 0;
@@ -57,7 +57,7 @@ public class TurnManager : MonoBehaviour
 	private void StartMonsterTurn()
 	{
 		//TODO Start monster Turn
-		//MonstersManager.StartMonsterTurn();
+		MonstersManager.Instance.MonsterTurn();
 	}
 
 	private void StartPlayerTurn()
