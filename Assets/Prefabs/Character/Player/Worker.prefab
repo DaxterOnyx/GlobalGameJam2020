@@ -1394,6 +1394,7 @@ MonoBehaviour:
   - {fileID: 7861110059660538129}
   - {fileID: 7146277704727487639}
   - {fileID: 4654284668281693628}
+  stepSound: 
 --- !u!1001 &8683272189467754179
 PrefabInstance:
   m_ObjectHideFlags: 0
