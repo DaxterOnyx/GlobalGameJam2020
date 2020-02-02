@@ -11,12 +11,32 @@ public class Card : MonoBehaviour
 	public TextMeshProUGUI Cost;
 	public TextMeshProUGUI Description;
 	public TextMeshProUGUI Range;
+	public Button button;
+
+	public GameObject Face;
+	public GameObject Back;
+
+	delegate void Action();
+	Action action;
+	float actionTimer;
+
+	private bool interactable;
+	public bool Interactable
+	{
+		get { return interactable; }
+		set {
+			if (!value)
+				Unselect();
+			interactable = value;
+		}
+	}
 
 	private void Start()
 	{
 		if (data != null)
 			Init(data);
 	}
+
 	public void Init(CardData data)
 	{
 		this.data = data;
@@ -28,19 +48,34 @@ public class Card : MonoBehaviour
 		Range.text = data.Range.ToString();
 	}
 
-	internal void Action(Player actor, Character target)
+	private void Update()
+	{
+		if(action != null) {
+			actionTimer -= Time.deltaTime;
+			if(actionTimer <=0) {
+				action();
+				action = null;
+			}
+		}
+	}
+
+	internal void ActionCard(Player actor, Character target)
 	{
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
+				actor.Kick();
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:
-				//TODO ADD ARMOR EFFECT
+			//TODO ADD ARMOR EFFECT
+			//TODO ADD VISUAL EFFECT
 			case CardData.CardAction.Heal:
+				//TODO ADD VISUAL EFFECT
 				//TODO REMOVE HARC VALUE
 				target.TakeDamage(-2);
 				break;
 			case CardData.CardAction.Attack:
+				actor.Shoot();
 				target.TakeDamage(actor.data.FireGunDamage);
 				break;
 			case CardData.CardAction.Repair:
@@ -51,16 +86,18 @@ public class Card : MonoBehaviour
 				Debug.LogError("Not Defined Action : " + data.Action.ToString());
 				break;
 		}
+		CardManager.Instance.DiscardCard(this);
 	}
 
 	public bool IsValableTarget(Player actor, Character target)
 	{
 		bool isValable = false;
 		//Check distance
-		MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos);
-		MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos);
+		if (!MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
+		 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
+			return false;
 
-		if (Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
+		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
 			return false;
 
 		//Check target match
@@ -94,7 +131,10 @@ public class Card : MonoBehaviour
 
 	internal void Unselect()
 	{
+		if (GameManager.Instance.CardSelected == this)
+			GameManager.Instance.CardSelected = null;
 		//TODO SHOW TO PLAYER
+
 	}
 
 	internal void Select()
@@ -105,22 +145,47 @@ public class Card : MonoBehaviour
 	public void OnClick()
 	{
 		//TODO SHOW TO PLAYER
-		GameManager.Instance.SelectCard(this);
+		if (Interactable)
+			GameManager.Instance.SelectCard(this);
 	}
 
 	public void SetLastSibling()
 	{
-		Debug.Log("SetLastSibling");
 		RecTransform.SetAsLastSibling();
 	}
 
 	internal void Discard(float time)
 	{
-		Invoke("ReelDiscard", time);
+		action = ReelDiscard;
+		actionTimer = time;
+		Disapear(time);
+	}
+
+	public void Disapear(float time)
+	{
+		action = Disapear;
+		actionTimer = time;
+	}
+
+	private void Disapear()
+	{
+		gameObject.SetActive(false);
+	}
+
+	public void Show()
+	{
+		gameObject.SetActive(true);
+
 	}
 
 	void ReelDiscard()
 	{
-		gameObject.SetActive(false);
+		Return(false);
+	}
+
+	public void Return(bool faced)
+	{
+		Face.SetActive(faced);
+		Back.SetActive(!faced);
 	}
 }

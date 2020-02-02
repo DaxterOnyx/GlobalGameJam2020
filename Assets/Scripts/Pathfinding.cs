@@ -63,7 +63,6 @@ public class Pathfinding : MonoBehaviour
     public Case recPathfinding(Vector2Int finalPos, int counter)
     {
         Case curCase = caseWithSmallestF(openList);
-        Debug.Log(curCase.position + " " + finalPos);
         // Calculationg for neighbor cases
         if (ListContainsNodeAt(closedList, finalPos, ref curCase))
         {
@@ -172,6 +171,7 @@ public class Pathfinding : MonoBehaviour
         curCase.f = curCase.g + curCase.h;
         return curCase;
     }
+
 
 
 }

@@ -311,6 +311,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: df79f58fe5309a04a93022fe05013708,
         type: 2}
+    - target: {fileID: -8923126375767967356, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: -4203326868297354445}
+    - target: {fileID: -8923126375767967356, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: Selector
+      value: 
+      objectReference: {fileID: 547929964124615774}
+    - target: {fileID: 2459220728734884447, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459220728734884447, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3966060467261824273, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -381,6 +401,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 4159999234198515742, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808583850125953995, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256088335562703885, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256088335562703885, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256088335562703885, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1678b96a106b88a4fb6c71de79e0dd3e, type: 3}
 --- !u!1 &7992789197064036994 stripped
@@ -392,6 +437,12 @@ GameObject:
 --- !u!4 &7992789197064036996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3966060467261824273, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6477954818895298453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &547929964124615774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6808583850125953995, guid: 1678b96a106b88a4fb6c71de79e0dd3e,
     type: 3}
   m_PrefabInstance: {fileID: 6477954818895298453}
   m_PrefabAsset: {fileID: 0}

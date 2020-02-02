@@ -17,59 +17,91 @@ public class MonstersManager : Location
     public MonsterManagerData data;
     private float atkCount;
     private List<GameObj_Vect2> hitList;
+    private List<GameObject> attakingMonsters;
+    private bool monsterTurn;
+    private bool actionCompleted = true;
+    private Sequence sequence;
     void Start()
     {
         hitList = new List<GameObj_Vect2>();
         _instance = this;
         Initialize(data);
+        monsterTurn = false;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown("a"))
+        if (monsterTurn)
         {
-            MonsterTurn();
+            if (attakingMonsters.Count > 0 && actionCompleted)
+            {
+                actionCompleted = false;
+                GameObject curMonster = attakingMonsters[0];
+                attakingMonsters.RemoveAt(0);
+                if (curMonster.GetComponent<Monster>().data.target == target.Objective)
+                {
+                    //Target is Destroy Object
+                    Vector2Int pos;
+                    MapManager.Instance.WhereIsObject(ObjectsManager.Instance.NearestObjective(curMonster), out pos);
+                    sequence = ActionGesture(curMonster, pos);
+                }
+                else
+                {
+                    //Target is players
+                    Vector2Int pos;
+                    MapManager.Instance.WhereIsObject(PlayersManager.Instance.Nearest(curMonster), out pos);
+                    sequence = ActionGesture(curMonster, pos);
+                }
+            }
+            else if (sequence.Elapsed()>= sequence.Duration())
+            {
+                actionCompleted = true;
+            }
+            
+            if (attakingMonsters.Count == 0 && actionCompleted)
+            {
+                monsterTurn = false;
+                TurnManager.Instance.NextTurn();
+            }
         }
-        if(atkCount>0&&hitList.Count > 0)
+        //Hit the player only when in contact & end this monster action
+        if (atkCount > 0 && hitList.Count > 0)
         {
-            MapManager.Instance.TryGetObjectByPos(hitList[0].vector).TakeDamage(hitList[0].obj.GetComponent<Monster>().data.Strengh);
+            if (MapManager.Instance.TryGetObjectByPos(hitList[0].vector) != null)
+            {
+                MapManager.Instance.TryGetObjectByPos(hitList[0].vector).TakeDamage(hitList[0].obj.GetComponent<Monster>().data.Strengh);
+            }
             hitList.RemoveAt(0);
+            atkCount = 0;
         }
+        
+
 
     }
 
     public void MonsterTurn()
     {
+        monsterTurn = true;
+        attakingMonsters = new List<GameObject>();
+		//TODO SET TIME TO ADD ANIMATIOn OR SE THIS IN UPDATE
         foreach (var item in objectList)
         {
-            if(item.GetComponent<Monster>().data.target == target.Objective)
-            {
-                Vector2Int pos;
-                MapManager.Instance.WhereIsObject(ObjectsManager.Instance.NearestObjective(item),out pos);
-                ActionGesture(item, pos);
-            }
-            else
-            {
-                Vector2Int pos;
-                MapManager.Instance.WhereIsObject(PlayersManager.Instance.Nearest(item), out pos);
-                ActionGesture(item, pos);
-            }
+            attakingMonsters.Add(item);
+            
         }
     }
 
-    public void ActionGesture(GameObject gameObject,Vector2Int destination)
+    public Sequence ActionGesture(GameObject gameObject,Vector2Int destination)
     {
-        Sequence sequence = DOTween.Sequence();
-        List<Vector2Int> path = Pathfinding.Instance.findPath(V3toV2I(gameObject.transform.position), destination);
         int moveCount = gameObject.GetComponent<Monster>().data.nbActionPoint;
-        foreach (var item in path)
+        List<Vector2Int> pathComplete = Pathfinding.Instance.findPath(MapManager.Instance.V3toV2I(gameObject.transform.position), destination);
+        List<Vector2Int> finalpath = new List<Vector2Int>();
+        for(int i =0; i <= Mathf.Min(moveCount, pathComplete.Count - 1); i++)
         {
-            if (moveCount > 0)
-            {
-                sequence.Append(gameObject.transform.DOMove(V2ItoV3(item), MapManager.Instance.data.moveDuration));
-                moveCount--;
-            }
+            finalpath.Add(pathComplete[i]);
         }
+        Sequence sequence = MapManager.Instance.Move(gameObject, finalpath);
+        moveCount -= pathComplete.Count;
         while (moveCount > 0)
         {
             sequence.Append(DOTween.To(() => atkCount, x => atkCount = x, 1, MapManager.Instance.data.moveDuration));
@@ -79,16 +111,6 @@ public class MonstersManager : Location
             hitList.Add(hit);
             moveCount--;
         }
-    }
-
-
-    private Vector3 V2ItoV3(Vector2Int vector)
-    {
-        return new Vector3(vector.x, vector.y, 0);
-    }
-
-    private Vector2Int V3toV2I(Vector3 vector)
-    {
-        return new Vector2Int((int)vector.x, (int)vector.y);
+        return sequence;
     }
 }

@@ -21,37 +21,52 @@ public class MapManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        GenerateCaseMap(new Vector2Int(0, 0), 5);
+    }
+    private void Update()
+    {
+        
     }
 
-    public bool GenerateCaseMap(Vector2Int position,int maxDist)
+    public bool GenerateCaseMap(Vector2Int position,int maxCost)
     {
-
+        RecCreationCase(position, position, maxCost);
         return true;
     }
-    public void recCreationCase(Vector2Int pos, GameObject parent, int maxDist)
+    public void RecCreationCase(Vector2Int pos, Vector2Int initialPos, int maxCost)
     {
         GameObject curCase;
-        curCase = CreateCase(pos, parent, maxDist);
-        recCreationCase(pos + new Vector2Int(0, 1), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(1, 0), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(0, -1), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(-1, 0), curCase, maxDist);
+        curCase = CreateCase(pos, initialPos, maxCost);
+        if (curCase != null)
+        {
+            RecCreationCase(pos + new Vector2Int(0, 1), initialPos, maxCost);
+            RecCreationCase(pos + new Vector2Int(1, 0), initialPos, maxCost);
+            RecCreationCase(pos + new Vector2Int(0, -1), initialPos, maxCost);
+            RecCreationCase(pos + new Vector2Int(-1, 0), initialPos, maxCost);
+        }
     }
 
-    public GameObject CreateCase(Vector2Int pos,GameObject parent,int maxDist)
+    public GameObject CreateCase(Vector2Int pos,Vector2Int initialPos,int maxCost)
     {
         GameObject curCase = null;
-        if (!containByPos(caseList, pos) && parent.GetComponent<CaseObject>().curCase.g+1<=maxDist)
+        if (!containByPos(caseList, pos) && (!CaseTaken(pos)||pos==initialPos) && CalculateCost(pos, initialPos)<=maxCost)
         {
             curCase = Instantiate(data.caseObject);
-            curCase.transform.position = V2ItoV3(pos);
-            caseList.Add(curCase);
-            curCase.GetComponent<CaseObject>().curCase = Pathfinding.Instance.CreateCase(pos,pos,parent.GetComponent<CaseObject>().curCase);
+			Vector3 vector3 = V2ItoV3(pos);
+			vector3.z = 10;
+			curCase.transform.position = vector3;
+
+			caseList.Add(curCase);
+            curCase.GetComponent<CaseObject>().moveCost = CalculateCost(pos,initialPos);
+            curCase.GetComponent<CaseObject>().UpdateMaterial();
+
         }
         return curCase;
     }
 
+    public int CalculateCost(Vector2Int posA, Vector2Int posB)
+    {
+        return  Mathf.CeilToInt((Mathf.Abs((float) posA.x - posB.x) + Mathf.Abs((float) posA.y - posB.y))/2) ;
+    }
     public bool containByPos(List<GameObject> listObj, Vector2 pos)
     {
         foreach (var item in listObj)
@@ -72,20 +87,24 @@ public class MapManager : MonoBehaviour
     /// <param name="item">the </param>
     /// <param name="position"></param>
     /// <returns></returns>
-    public bool MoveObject(GameObject item, Vector2Int position)
+    public Sequence Move(GameObject item, List<Vector2Int> path)
     {
-        if (dico.ContainsValue(position))
+        Sequence sequence = DOTween.Sequence();
+        foreach (var position in path)
         {
-            Debug.LogError("Error: Current Position Already Taken!");
-            return false;
+            if (dico.ContainsValue(position))
+            {
+                Debug.LogError("Error: Current Position Already Taken!");
+            }
+            else
+            {
+                dico.Remove(item);
+                dico.Add(item, position + V3toV2I(item.transform.position));
+                sequence.Append(item.transform.DOMove(V2ItoV3(position), data.moveDuration));
+            }
         }
-        else
-        {
-            dico.Remove(item);
-            dico.Add(item, position + V3toV2I(item.transform.position));
-            item.transform.DOMove(V2ItoV3(position) + item.transform.position, data.moveDuration);
-            return true;
-        }
+        return sequence;
+        
     }
 
     /// <summary>
@@ -190,6 +209,6 @@ public class MapManager : MonoBehaviour
     /// <returns></returns>
     public Vector2Int V3toV2I(Vector3 vector)
     {
-        return new Vector2Int((int)vector.x, (int)vector.y);
+        return new Vector2Int(Mathf.FloorToInt(vector.x), Mathf.FloorToInt(vector.y));
     }
 }
