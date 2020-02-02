@@ -21,22 +21,24 @@ public class MapManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        GenerateCaseMap(new Vector2Int(0, 0), 5);
     }
 
     public bool GenerateCaseMap(Vector2Int position,int maxDist)
     {
-
+        recCreationCase(position, null, maxDist);
         return true;
     }
     public void recCreationCase(Vector2Int pos, GameObject parent, int maxDist)
     {
         GameObject curCase;
         curCase = CreateCase(pos, parent, maxDist);
-        recCreationCase(pos + new Vector2Int(0, 1), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(1, 0), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(0, -1), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(-1, 0), curCase, maxDist);
+        if (curCase != null)
+        {
+            recCreationCase(pos + new Vector2Int(0, 1), curCase, maxDist);
+            recCreationCase(pos + new Vector2Int(1, 0), curCase, maxDist);
+            recCreationCase(pos + new Vector2Int(0, -1), curCase, maxDist);
+            recCreationCase(pos + new Vector2Int(-1, 0), curCase, maxDist);
+        }
     }
 
     public GameObject CreateCase(Vector2Int pos,GameObject parent,int maxDist)
@@ -72,20 +74,24 @@ public class MapManager : MonoBehaviour
     /// <param name="item">the </param>
     /// <param name="position"></param>
     /// <returns></returns>
-    public bool MoveObject(GameObject item, Vector2Int position)
+    public Sequence Move(GameObject item, List<Vector2Int> path)
     {
-        if (dico.ContainsValue(position))
+        Sequence sequence = DOTween.Sequence();
+        foreach (var position in path)
         {
-            Debug.LogError("Error: Current Position Already Taken!");
-            return false;
+            if (dico.ContainsValue(position))
+            {
+                Debug.LogError("Error: Current Position Already Taken!");
+            }
+            else
+            {
+                dico.Remove(item);
+                dico.Add(item, position + V3toV2I(item.transform.position));
+                sequence.Append(item.transform.DOMove(V2ItoV3(position) + item.transform.position, data.moveDuration));
+            }
         }
-        else
-        {
-            dico.Remove(item);
-            dico.Add(item, position + V3toV2I(item.transform.position));
-            item.transform.DOMove(V2ItoV3(position) + item.transform.position, data.moveDuration);
-            return true;
-        }
+        return sequence;
+        
     }
 
     /// <summary>

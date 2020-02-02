@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 			PlayerSelected.Unselect();
 		PlayerSelected = selected;
 		PlayerSelected.Select();
-
+		Debug.Log("Player Selected " + PlayerSelected.name);
 		if (CardSelected != null)
 			SelectTarget();
 	}
@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
 			CardSelected.Unselect();
 		CardSelected = selected;
 		CardSelected.Select();
+		Debug.Log("Card Selected " + CardSelected.name);
+
 		if (PlayerSelected != null)
 			SelectTarget();
 	}

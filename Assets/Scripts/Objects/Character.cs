@@ -17,13 +17,13 @@ public class Character : MonoBehaviour
 	internal virtual void TakeDamage(int damage)
 	{
 		LifePoint -= damage;
-		Debug.Log(damage + "Damages taken!");
+		Debug.Log(damage + " Damages taken!");
 		if (LifePoint <= 0)
 			Die();
 	}
 
-	private void Die()
-	{
-		Destroy(gameObject);
+	protected virtual void Die()
+	{ 
+
 	}
 }
