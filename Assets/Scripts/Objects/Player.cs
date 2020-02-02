@@ -2,6 +2,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Character
 {
@@ -13,6 +14,7 @@ public class Player : Character
 	public TextMeshProUGUI ActionDisplay;
 	private Sequence sequence;
 	private bool isWalking;
+	public Image lifeBar;
 
 	protected override void Start()
 	{
@@ -42,6 +44,7 @@ public class Player : Character
 	{
 		Hurt();
 		base.TakeDamage(damage);
+		lifeBar.fillAmount =(float) LifePoint / data.nbMaxLP;
 	}
 
 	internal void Unselect()

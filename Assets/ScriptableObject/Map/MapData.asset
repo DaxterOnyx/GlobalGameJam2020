@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3ff217d5462154a96115b292a2d516, type: 3}
   m_Name: MapData
   m_EditorClassIdentifier: 
-  moveDuration: 1
+  moveDuration: 0.5
   caseObject: {fileID: 3938646487395902612, guid: d32182db0345d4340953058624e2f235,
     type: 3}
