@@ -70,7 +70,7 @@ public class Card : MonoBehaviour
 			return;
 		}
 
-		actor.actionLeft -= data.Cost;
+		actor.UseActionPoint(data.Cost);
 
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
