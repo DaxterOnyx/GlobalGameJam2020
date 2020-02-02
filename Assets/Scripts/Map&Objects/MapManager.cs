@@ -65,7 +65,11 @@ public class MapManager : MonoBehaviour
 
     public int CalculateCost(Vector2Int posA, Vector2Int posB)
     {
-        return  Mathf.CeilToInt((Mathf.Abs((float) posA.x - posB.x) + Mathf.Abs((float) posA.y - posB.y))/2) ;
+        if(posA == posB)
+        {
+            return 0;
+        }
+        return  Mathf.CeilToInt(Pathfinding.Instance.findPath(posA,posB).Count/2) ;
     }
     public bool containByPos(List<GameObject> listObj, Vector2 pos)
     {
