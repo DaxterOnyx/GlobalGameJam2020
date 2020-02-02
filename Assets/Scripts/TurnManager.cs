@@ -30,7 +30,7 @@ public class TurnManager : MonoBehaviour
 
 
 		if (PlayerTurn) {
-			TurnDisplay.color = Color.white;
+			TurnDisplay.color = Color.black;
 			TurnButton.interactable = true;
 			EndMonsterTurn();
 			StartPlayerTurn();
