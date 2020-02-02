@@ -24,6 +24,9 @@ public class Card : MonoBehaviour
 	Action/*)>*/ actions;
 	float actionTimer;
 
+	[FMODUnity.EventRef]
+	public string touchSound;
+
 	private bool interactable;
 
 	public bool Interactable
@@ -67,153 +70,156 @@ public class Card : MonoBehaviour
 				actions = null;
 			}
 		}
-	//}
-	//}
-}
-
-internal void ActionCard(Player actor, Character target)
-{
-	if (data.Cost > actor.actionLeft) {
-		Debug.LogError("Not enough action point");
-		return;
+		//}
+		//}
 	}
 
-	actor.UseActionPoint(data.Cost);
+	internal void ActionCard(Player actor, Character target)
+	{
+		if (data.Cost > actor.actionLeft) {
+			Debug.LogError("Not enough action point");
+			return;
+		}
 
-	switch (data.Action) {
-		case CardData.CardAction.CaC:
-			actor.Kick();
-			target.TakeDamage(actor.data.Strengh);
-			break;
-		case CardData.CardAction.Armor:
-		//TODO ADD ARMOR EFFECT
-		//TODO ADD VISUAL EFFECT
-		case CardData.CardAction.Heal:
+		actor.UseActionPoint(data.Cost);
+
+		switch (data.Action) {
+			case CardData.CardAction.CaC:
+				actor.Kick();
+				target.TakeDamage(actor.data.Strengh);
+				break;
+			case CardData.CardAction.Armor:
+			//TODO ADD ARMOR EFFECT
 			//TODO ADD VISUAL EFFECT
-			//TODO REMOVE HARC VALUE
-			target.TakeDamage(-2);
-			break;
-		case CardData.CardAction.Attack:
-			actor.Shoot();
-			target.TakeDamage(actor.data.FireGunDamage);
-			break;
-		case CardData.CardAction.Repair:
-			//TODO REMOVE Hard Value
-			(target as Object).Repair(25);
-			break;
-		default:
-			Debug.LogError("Not Defined Action : " + data.Action.ToString());
-			break;
-	}
-
-	CardManager.Instance.DiscardCard(this);
-}
-
-public bool IsValableTarget(Player actor, Character target)
-{
-	bool isValable = false;
-	//Check distance
-	if (!MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
-	 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
-		return false;
-
-	if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
-		return false;
-
-	//Check target match
-	for (int i = 0; i < data.targetTypes.Length && !isValable; i++) {
-		switch (data.targetTypes[i]) {
-			case CardData.TargetType.Player:
-				if (target is Player)
-					isValable = true;
+			case CardData.CardAction.Heal:
+				//TODO ADD VISUAL EFFECT
+				//TODO REMOVE HARC VALUE
+				target.TakeDamage(-2);
 				break;
-			case CardData.TargetType.Himself:
-				if (target == actor)
-					isValable = true;
+			case CardData.CardAction.Attack:
+				actor.Shoot();
+				target.TakeDamage(actor.data.FireGunDamage);
 				break;
-			case CardData.TargetType.Monster:
-				if (target is Monster)
-					isValable = true;
-				break;
-			case CardData.TargetType.Object:
-				if (target is Object)
-					isValable = true;
+			case CardData.CardAction.Repair:
+				//TODO REMOVE Hard Value
+				(target as Object).Repair(25);
 				break;
 			default:
-				Debug.LogError("Not Defined Type : " + data.targetTypes[i].ToString());
-
+				Debug.LogError("Not Defined Action : " + data.Action.ToString());
 				break;
 		}
+
+		CardManager.Instance.DiscardCard(this);
 	}
 
-	return isValable;
-}
+	public bool IsValableTarget(Player actor, Character target)
+	{
+		bool isValable = false;
+		//Check distance
+		if (!MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
+		 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
+			return false;
 
-internal void Unselect()
-{
-	if (GameManager.Instance.CardSelected == this)
-		GameManager.Instance.CardSelected = null;
-	animator.SetBool("Selected", false);
-}
+		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
+			return false;
 
-internal void Select()
-{
-	animator.SetBool("Selected", true);
-}
+		//Check target match
+		for (int i = 0; i < data.targetTypes.Length && !isValable; i++) {
+			switch (data.targetTypes[i]) {
+				case CardData.TargetType.Player:
+					if (target is Player)
+						isValable = true;
+					break;
+				case CardData.TargetType.Himself:
+					if (target == actor)
+						isValable = true;
+					break;
+				case CardData.TargetType.Monster:
+					if (target is Monster)
+						isValable = true;
+					break;
+				case CardData.TargetType.Object:
+					if (target is Object)
+						isValable = true;
+					break;
+				default:
+					Debug.LogError("Not Defined Type : " + data.targetTypes[i].ToString());
 
-internal void Discard(float time)
-{
-	actions = ReelDiscard;
-	actionTimer = time;
-	Disapear(time);
-}
+					break;
+			}
+		}
 
-public void Disapear(float time)
-{
-	actions = Disapear;
-	actionTimer = time;
-}
+		return isValable;
+	}
 
-private void Disapear()
-{
-	gameObject.SetActive(false);
-}
+	internal void Unselect()
+	{
+		if (GameManager.Instance.CardSelected == this)
+			GameManager.Instance.CardSelected = null;
+		animator.SetBool("Selected", false);
+	}
 
-public void Show()
-{
-	gameObject.SetActive(true);
+	internal void Select()
+	{
+		animator.SetBool("Selected", true);
+	}
 
-}
+	internal void Discard(float time)
+	{
+		actions = ReelDiscard;
+		actionTimer = time;
+		Disapear(time);
+	}
 
-void ReelDiscard()
-{
-	Return(false);
-}
+	public void Disapear(float time)
+	{
+		actions = Disapear;
+		actionTimer = time;
+	}
 
-public void Return(bool faced)
-{
-	Face.SetActive(faced);
-	Back.SetActive(!faced);
-}
+	private void Disapear()
+	{
+		gameObject.SetActive(false);
+	}
 
-public void OnPointerClick(PointerEventData eventData)
-{
-	animator.SetTrigger("Click");
-	RecTransform.SetAsLastSibling();
-	if (Interactable)
-		GameManager.Instance.SelectCard(this);
-}
+	public void Show()
+	{
+		gameObject.SetActive(true);
 
-public void OnPointerEnter(PointerEventData eventData)
-{
-	CardManager.Instance.MouseOver = true;
-	RecTransform.SetAsLastSibling();
-	animator.SetBool("Over", true);
-}
+	}
 
-public void OnPointerExit(PointerEventData eventData)
-{
-	CardManager.Instance.MouseOver = false;
-	animator.SetBool("Over", false);
+	void ReelDiscard()
+	{
+		Return(false);
+	}
+
+	public void Return(bool faced)
+	{
+		Face.SetActive(faced);
+		Back.SetActive(!faced);
+	}
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		FMODUnity.RuntimeManager.PlayOneShot(touchSound);
+		animator.SetTrigger("Click");
+		RecTransform.SetAsLastSibling();
+		if (Interactable)
+			GameManager.Instance.SelectCard(this);
+	}
+
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		FMODUnity.RuntimeManager.PlayOneShot(touchSound);
+		CardManager.Instance.MouseOver = true;
+		RecTransform.SetAsLastSibling();
+		animator.SetBool("Over", true);
+	}
+
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		CardManager.Instance.MouseOver = false;
+		animator.SetBool("Over", false);
+	}
 }
 }
