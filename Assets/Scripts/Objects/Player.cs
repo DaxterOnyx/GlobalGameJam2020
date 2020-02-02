@@ -18,7 +18,10 @@ public class Player : Character
 	public Image lifeBar;
 	public List<GameObject> listActionPoints;
 
-	protected override void Start()
+    [FMODUnity.EventRef]
+    public string stepSound;
+
+    protected override void Start()
 	{
 		LifePoint = data.nbMaxLP;
 		ResetActionPoint();
@@ -88,12 +91,13 @@ public class Player : Character
 
 	public void StartWalk()
 	{
-		animator.SetBool("Walk", true);
+        FMODUnity.RuntimeManager.PlayOneShot(stepSound);
+        animator.SetBool("Walk", true);
 	}
 
 	public void ResetActionPoint()
 	{
-		actionLeft = data.nbActionPoint;
+        actionLeft = data.nbActionPoint;
 		RefreshActionPointDisplay();
 	}
 
