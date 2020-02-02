@@ -256,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 9000150085139168938, guid: 27e3e7a8dd9c1c7488c839d6205baa3b,
         type: 3}
       propertyPath: m_Name
-      value: Monstre Variant
+      value: Tronk
       objectReference: {fileID: 0}
     - target: {fileID: 9000150085139168940, guid: 27e3e7a8dd9c1c7488c839d6205baa3b,
         type: 3}
@@ -313,6 +313,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9197967139813070883, guid: 27e3e7a8dd9c1c7488c839d6205baa3b,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d6fd66db2c9dd4458f5e5c5ba57733e,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27e3e7a8dd9c1c7488c839d6205baa3b, type: 3}
 --- !u!4 &8450691070664943677 stripped
