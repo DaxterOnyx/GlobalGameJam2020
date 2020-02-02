@@ -15,6 +15,6 @@ MonoBehaviour:
   StartDist: 100
   characterPositionList:
   - obj: {fileID: 430869390369772873, guid: 3cb499add1b65ba42ae21c038bb98a69, type: 3}
-    vector: {x: 5, y: 3}
+    vector: {x: 4, y: -6}
   - obj: {fileID: 430869390369772873, guid: 3cb499add1b65ba42ae21c038bb98a69, type: 3}
-    vector: {x: 0, y: 0}
+    vector: {x: 5, y: -5}
