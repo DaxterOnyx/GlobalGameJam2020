@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CaseObject : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class CaseObject : MonoBehaviour
 
     private void OnMouseDown()
     {
+		if(!CardManager.Instance.MouseOver)
         player.GetComponent<Player>().SetDestination(
             MapManager.Instance.V3toV2I(transform.position),moveCost);
     }

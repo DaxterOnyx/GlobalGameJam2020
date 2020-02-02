@@ -1,8 +1,11 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Card : MonoBehaviour
+	 , IPointerClickHandler, IPointerEnterHandler
+	 , IPointerExitHandler
 {
 	public CardData data;
 	public RectTransform RecTransform;
@@ -11,7 +14,7 @@ public class Card : MonoBehaviour
 	public TextMeshProUGUI Cost;
 	public TextMeshProUGUI Description;
 	public TextMeshProUGUI Range;
-	public Button button;
+	public Animator animator;
 
 	public GameObject Face;
 	public GameObject Back;
@@ -21,6 +24,7 @@ public class Card : MonoBehaviour
 	float actionTimer;
 
 	private bool interactable;
+
 	public bool Interactable
 	{
 		get { return interactable; }
@@ -50,9 +54,9 @@ public class Card : MonoBehaviour
 
 	private void Update()
 	{
-		if(action != null) {
+		if (action != null) {
 			actionTimer -= Time.deltaTime;
-			if(actionTimer <=0) {
+			if (actionTimer <= 0) {
 				action();
 				action = null;
 			}
@@ -93,7 +97,7 @@ public class Card : MonoBehaviour
 				Debug.LogError("Not Defined Action : " + data.Action.ToString());
 				break;
 		}
-		
+
 		CardManager.Instance.DiscardCard(this);
 	}
 
@@ -141,20 +145,12 @@ public class Card : MonoBehaviour
 	{
 		if (GameManager.Instance.CardSelected == this)
 			GameManager.Instance.CardSelected = null;
-		//TODO SHOW TO PLAYER
-
+		animator.SetBool("Selected", false);
 	}
 
 	internal void Select()
 	{
-		//TODO SHOW TO PLAYER
-	}
-
-	public void OnClick()
-	{
-		//TODO SHOW TO PLAYER
-		if (Interactable)
-			GameManager.Instance.SelectCard(this);
+		animator.SetBool("Selected", true);
 	}
 
 	public void SetLastSibling()
@@ -195,5 +191,24 @@ public class Card : MonoBehaviour
 	{
 		Face.SetActive(faced);
 		Back.SetActive(!faced);
+	}
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		animator.SetTrigger("Click");
+		if (Interactable)
+			GameManager.Instance.SelectCard(this);
+	}
+
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		CardManager.Instance.MouseOver = true;
+		animator.SetBool("Over", true);
+	}
+
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		CardManager.Instance.MouseOver = false;
+		animator.SetBool("Over", false);
 	}
 }
