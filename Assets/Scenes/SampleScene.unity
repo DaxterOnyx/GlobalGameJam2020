@@ -573,7 +573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abac40befcd165442801bd564096b5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawsound: event:/Draw
 --- !u!1 &518409257
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,8 +613,8 @@ MonoBehaviour:
   DiscardCount: {fileID: 1811544302}
   HandCount: {fileID: 259086643}
   DrawCount: {fileID: 1204545119}
-  drawSound: event:/Draw
-  shuffleSound: event:/Shuffle
+  drawSound: 
+  shuffleSound: 
   isDrawing: 0
 --- !u!114 &518409259
 MonoBehaviour:
@@ -770,7 +769,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
