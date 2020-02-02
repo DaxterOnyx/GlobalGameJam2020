@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : Character
 {
@@ -32,11 +31,6 @@ public class Player : Character
 	{
 		//TODO SHOW PLAYER
 		Selector.SetActive(true);
-	}
-
-	internal void OnMouseDown()
-	{
-		GameManager.Instance.SelectPlayer(this);
 	}
 
 	public void Kick()
