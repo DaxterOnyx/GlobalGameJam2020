@@ -155,8 +155,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 097f3752f384a3444941e4ce6d9f019d, type: 2}
+  m_sharedMaterial: {fileID: 5404233199288968251, guid: 097f3752f384a3444941e4ce6d9f019d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1384,7 +1385,6 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: df79f58fe5309a04a93022fe05013708, type: 2}
   animator: {fileID: 4130121563592415699}
   Selector: {fileID: 5760396027861077981}
-  actionLeft: 0
   ActionDisplay: {fileID: 8517959656700493021}
   lifeBar: {fileID: 7987185690728362736}
   listActionPoints:
