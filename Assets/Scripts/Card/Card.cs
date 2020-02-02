@@ -61,6 +61,13 @@ public class Card : MonoBehaviour
 
 	internal void ActionCard(Player actor, Character target)
 	{
+		if (data.Cost > actor.actionLeft) {
+			Debug.LogError("Not enough action point");
+			return;
+		}
+
+		actor.actionLeft -= data.Cost;
+
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
 				actor.Kick();
@@ -86,6 +93,7 @@ public class Card : MonoBehaviour
 				Debug.LogError("Not Defined Action : " + data.Action.ToString());
 				break;
 		}
+		
 		CardManager.Instance.DiscardCard(this);
 	}
 
