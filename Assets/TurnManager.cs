@@ -57,7 +57,7 @@ public class TurnManager : MonoBehaviour
 	private void StartPlayerTurn()
 	{
 		//TODO Start Player Turn
-		//PlayersManager.Instance.StartPlayerTurn();
+		PlayersManager.Instance.StartPlayerTurn();
 		GameManager.Instance.StartPlayerTurn();
 		CardManager.Instance.StartPlayerTurn();
 	}
