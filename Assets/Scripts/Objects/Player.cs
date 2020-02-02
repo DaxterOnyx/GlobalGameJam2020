@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class Player : Character
 {
@@ -6,6 +7,7 @@ public class Player : Character
 
 	public Animator animator;
 	public GameObject Selector;
+	public TextMeshProUGUI ActionDisplay;
 
 	protected override void Start()
 	{
