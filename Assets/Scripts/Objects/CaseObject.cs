@@ -5,6 +5,7 @@ using UnityEngine;
 public class CaseObject : MonoBehaviour
 {
     public int moveCost;
+    private GameObject player;
     private SpriteRenderer sprt;
     private void Awake()
     {
@@ -17,6 +18,11 @@ public class CaseObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
+        player.GetComponent<Player>().SetDestination(
+            MapManager.Instance.V3toV2I(transform.position),moveCost);
+    }
+    public void SetPlayer(GameObject obj)
+    {
+        player = obj;
     }
 }

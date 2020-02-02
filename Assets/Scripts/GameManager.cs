@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,9 +23,9 @@ public class GameManager : MonoBehaviour
 		if (SelectingTarget &&
 			//check if is a target of the card and in area of card
 			CardSelected.IsValableTarget(PlayerSelected, target)) {
-				TargetSelected = target;
-				CardSelected.Action(PlayerSelected, TargetSelected);
-				EndSelectionTarget();
+			TargetSelected = target;
+			CardSelected.ActionCard(PlayerSelected, TargetSelected);
+			EndSelectionTarget();
 		} else {
 			if (target is Player)
 				SelectPlayer(target as Player);
@@ -56,10 +55,24 @@ public class GameManager : MonoBehaviour
 			BeginSelectionTarget();
 	}
 
+	internal void EndPlayerTurn()
+	{
+		if (CardSelected != null) {
+			CardSelected.Unselect();
+			CardSelected = null;
+		}
+	}
+
+	internal void StartPlayerTurn()
+	{
+
+	}
+
 	private void BeginSelectionTarget()
 	{
-		//TODO SHOW POSSIBLE Targets
-		SelectingTarget = true;
+		if (CardSelected.data.Cost <= PlayerSelected.actionLeft)
+			//TODO SHOW POSSIBLE Targets
+			SelectingTarget = true;
 	}
 
 	private void EndSelectionTarget()

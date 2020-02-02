@@ -12,7 +12,7 @@ public class TurnManager : MonoBehaviour
 	public bool PlayerTurn = false;
 
 	public TextMeshProUGUI TurnDisplay;
-	public Button TurnButton; 
+	public Button TurnButton;
 
 	private void Start()
 	{
@@ -42,11 +42,10 @@ public class TurnManager : MonoBehaviour
 		}
 	}
 
-	private void EndPlayerTurn()
+	private void StartMonsterTurn()
 	{
-		//TODO End player Turn
-		CardManager.Instance.EndPlayerTurn();
-
+		//TODO Start monster Turn
+		MonstersManager.Instance.MonsterTurn();
 	}
 
 	private void EndMonsterTurn()
@@ -54,16 +53,21 @@ public class TurnManager : MonoBehaviour
 		//TODO End monster Turn
 	}
 
-	private void StartMonsterTurn()
-	{
-		//TODO Start monster Turn
-		MonstersManager.Instance.MonsterTurn();
-	}
 
 	private void StartPlayerTurn()
 	{
 		//TODO Start Player Turn
-		//PlayersManager.Instance.StartPlayerTurn();
+		PlayersManager.Instance.StartPlayerTurn();
+		GameManager.Instance.StartPlayerTurn();
 		CardManager.Instance.StartPlayerTurn();
 	}
+
+	private void EndPlayerTurn()
+	{
+		//TODO End player Turn
+		CardManager.Instance.EndPlayerTurn();
+		GameManager.Instance.EndPlayerTurn();
+
+	}
+
 }

@@ -27,34 +27,50 @@ public class MapManager : MonoBehaviour
         
     }
 
-    public bool GenerateCaseMap(Vector2Int position,int maxCost)
+    public bool GenerateCaseMap(GameObject player, int maxCost)
     {
-        recCreationCase(position, position, maxCost);
+        RecCreationCase(V3toV2I(player.transform.position), V3toV2I(player.transform.position), maxCost, player);
         return true;
     }
-    public void recCreationCase(Vector2Int pos, Vector2Int initialPos, int maxCost)
+
+    public void DestroyCaseMap()
+    {
+        foreach (var item in caseList)
+        {
+            GameObject.Destroy(item);
+        }
+        caseList.Clear();
+    }
+    public void RecCreationCase(Vector2Int pos, Vector2Int initialPos, int maxCost,GameObject player)
     {
         GameObject curCase;
-        curCase = CreateCase(pos, initialPos, maxCost);
+        curCase = CreateCase(pos, initialPos, maxCost,player);
         if (curCase != null)
         {
-            recCreationCase(pos + new Vector2Int(0, 1), initialPos, maxCost);
-            recCreationCase(pos + new Vector2Int(1, 0), initialPos, maxCost);
-            recCreationCase(pos + new Vector2Int(0, -1), initialPos, maxCost);
-            recCreationCase(pos + new Vector2Int(-1, 0), initialPos, maxCost);
+            RecCreationCase(pos + new Vector2Int(0, 1), initialPos, maxCost,player);
+            RecCreationCase(pos + new Vector2Int(1, 0), initialPos, maxCost,player);
+            RecCreationCase(pos + new Vector2Int(0, -1), initialPos, maxCost,player);
+            RecCreationCase(pos + new Vector2Int(-1, 0), initialPos, maxCost,player);
         }
     }
 
-    public GameObject CreateCase(Vector2Int pos,Vector2Int initialPos,int maxCost)
+    public GameObject CreateCase(Vector2Int pos,Vector2Int initialPos,int maxCost, GameObject player)
     {
         GameObject curCase = null;
-        if (!containByPos(caseList, pos) && (!CaseTaken(pos)||pos==initialPos) && CalculateCost(pos, initialPos)<=maxCost)
+        if (!containByPos(caseList, pos) && (!CaseTaken(pos)||pos==initialPos))
         {
-            curCase = Instantiate(data.caseObject);
-            curCase.transform.position = V2ItoV3(pos);
-            caseList.Add(curCase);
-            curCase.GetComponent<CaseObject>().moveCost = CalculateCost(pos,initialPos);
-            curCase.GetComponent<CaseObject>().UpdateMaterial();
+            if(CalculateCost(pos, initialPos) <= maxCost)
+            {
+                curCase = Instantiate(data.caseObject);
+			    Vector3 vector3 = V2ItoV3(pos);
+			    vector3.z = 10;
+			    curCase.transform.position = vector3;
+
+			    caseList.Add(curCase);
+                curCase.GetComponent<CaseObject>().moveCost = CalculateCost(pos,initialPos);
+                curCase.GetComponent<CaseObject>().SetPlayer(player);
+                curCase.GetComponent<CaseObject>().UpdateMaterial();
+            }
 
         }
         return curCase;
@@ -62,7 +78,11 @@ public class MapManager : MonoBehaviour
 
     public int CalculateCost(Vector2Int posA, Vector2Int posB)
     {
-        return  Mathf.CeilToInt((Mathf.Abs((float) posA.x - posB.x) + Mathf.Abs((float) posA.y - posB.y))/2) ;
+        if(posA == posB)
+        {
+            return 0;
+        }
+        return  Mathf.CeilToInt(Pathfinding.Instance.findPath(posA,posB).Count/2) ;
     }
     public bool containByPos(List<GameObject> listObj, Vector2 pos)
     {
@@ -91,15 +111,15 @@ public class MapManager : MonoBehaviour
         {
             if (dico.ContainsValue(position))
             {
-                Debug.LogError("Error: Current Position Already Taken!");
+                Debug.LogWarning("Error: Current Position Already Taken!");
             }
             else
             {
-                dico.Remove(item);
-                dico.Add(item, position + V3toV2I(item.transform.position));
-                sequence.Append(item.transform.DOMove(V2ItoV3(position) + item.transform.position, data.moveDuration));
+                sequence.Append(item.transform.DOMove(V2ItoV3(position), data.moveDuration));
             }
         }
+        dico.Remove(item);
+        dico.Add(item, path[path.Count-1]);
         return sequence;
         
     }

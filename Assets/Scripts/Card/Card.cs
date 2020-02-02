@@ -12,12 +12,20 @@ public class Card : MonoBehaviour
 	public TextMeshProUGUI Description;
 	public TextMeshProUGUI Range;
 	public Button button;
+
+	public GameObject Face;
+	public GameObject Back;
+
+	delegate void Action();
+	Action action;
+	float actionTimer;
+
 	private bool interactable;
 	public bool Interactable
 	{
 		get { return interactable; }
 		set {
-			if (interactable)
+			if (!value)
 				Unselect();
 			interactable = value;
 		}
@@ -28,6 +36,7 @@ public class Card : MonoBehaviour
 		if (data != null)
 			Init(data);
 	}
+
 	public void Init(CardData data)
 	{
 		this.data = data;
@@ -39,8 +48,26 @@ public class Card : MonoBehaviour
 		Range.text = data.Range.ToString();
 	}
 
-	internal void Action(Player actor, Character target)
+	private void Update()
 	{
+		if(action != null) {
+			actionTimer -= Time.deltaTime;
+			if(actionTimer <=0) {
+				action();
+				action = null;
+			}
+		}
+	}
+
+	internal void ActionCard(Player actor, Character target)
+	{
+		if (data.Cost > actor.actionLeft) {
+			Debug.LogError("Not enough action point");
+			return;
+		}
+
+		actor.actionLeft -= data.Cost;
+
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
 				actor.Kick();
@@ -66,6 +93,7 @@ public class Card : MonoBehaviour
 				Debug.LogError("Not Defined Action : " + data.Action.ToString());
 				break;
 		}
+		
 		CardManager.Instance.DiscardCard(this);
 	}
 
@@ -136,11 +164,36 @@ public class Card : MonoBehaviour
 
 	internal void Discard(float time)
 	{
-		Invoke("ReelDiscard", time);
+		action = ReelDiscard;
+		actionTimer = time;
+		Disapear(time);
+	}
+
+	public void Disapear(float time)
+	{
+		action = Disapear;
+		actionTimer = time;
+	}
+
+	private void Disapear()
+	{
+		gameObject.SetActive(false);
+	}
+
+	public void Show()
+	{
+		gameObject.SetActive(true);
+
 	}
 
 	void ReelDiscard()
 	{
-		gameObject.SetActive(false);
+		Return(false);
+	}
+
+	public void Return(bool faced)
+	{
+		Face.SetActive(faced);
+		Back.SetActive(!faced);
 	}
 }
