@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class CardManager : MonoBehaviour
 	public RectTransform DiscardStack;
 	public RectTransform HandStack;
 	public RectTransform DrawStack;
+
+	public Button buttonHand;
 
 	public TextMeshProUGUI DiscardCount;
 	public TextMeshProUGUI HandCount;
@@ -52,6 +55,7 @@ public class CardManager : MonoBehaviour
 	private bool isDrawing = false;
 	private int nbCardToDraw = 0;
 	private float lastDrawCard = 0;
+	internal bool MouseOver;
 	#endregion
 
 	#region Initialise
