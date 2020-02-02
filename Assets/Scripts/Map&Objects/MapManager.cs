@@ -26,17 +26,20 @@ public class MapManager : MonoBehaviour
 
     public bool GenerateCaseMap(Vector2Int position,int maxDist)
     {
-
+        recCreationCase(position, null, maxDist);
         return true;
     }
     public void recCreationCase(Vector2Int pos, GameObject parent, int maxDist)
     {
         GameObject curCase;
         curCase = CreateCase(pos, parent, maxDist);
-        recCreationCase(pos + new Vector2Int(0, 1), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(1, 0), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(0, -1), curCase, maxDist);
-        recCreationCase(pos + new Vector2Int(-1, 0), curCase, maxDist);
+        if (curCase != null)
+        {
+            recCreationCase(pos + new Vector2Int(0, 1), curCase, maxDist);
+            recCreationCase(pos + new Vector2Int(1, 0), curCase, maxDist);
+            recCreationCase(pos + new Vector2Int(0, -1), curCase, maxDist);
+            recCreationCase(pos + new Vector2Int(-1, 0), curCase, maxDist);
+        }
     }
 
     public GameObject CreateCase(Vector2Int pos,GameObject parent,int maxDist)
