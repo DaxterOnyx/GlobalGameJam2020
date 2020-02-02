@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: event:/Repair
   guid: c15575f93b6e2340adc2d1367c758cd3
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
   Path: event:/Objective Hurt
   guid: 4069a4f811665849bbc9b63f2d8e7931
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
   Path: event:/Touch Card
   guid: d37b9eee41989e4896d8b478b1602360
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -181,7 +181,7 @@ MonoBehaviour:
   Path: event:/Start Turn
   guid: c1f42e8ae9800b448e694510c3cd6965
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -204,7 +204,7 @@ MonoBehaviour:
   Path: event:/Gunshot
   guid: aa38f4072a8c0a46908d4170a2effb09
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -227,7 +227,7 @@ MonoBehaviour:
   Path: event:/Tree attack
   guid: 1fd9675e54323040bc0d376560367d55
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -286,7 +286,7 @@ MonoBehaviour:
   Path: event:/Hit
   guid: f27394d6e30dbc48870c934d9cbca92f
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 3870210668270115470}
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   EditorEvents:
   - {fileID: 4085858189130748649}
   - {fileID: -3173647677419358044}
@@ -410,10 +410,10 @@ MonoBehaviour:
   - {fileID: -2438132714478853953}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   StringsBanks:
   - {fileID: 3870210668270115470}
-  stringsBankWriteTime: 637162635675937631
+  stringsBankWriteTime: 637162633835594295
   cacheVersion: 3
 --- !u!114 &92006504280163803
 MonoBehaviour:
@@ -466,7 +466,7 @@ MonoBehaviour:
   Path: event:/Shuffle
   guid: 7073a1d8d68d22418e7f9a9fa7fc5f7d
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -474,6 +474,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 10000
+--- !u!114 &1757012389625427926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637162676233392159
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &2346361094143143537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,7 +543,7 @@ MonoBehaviour:
   Path: event:/Draw
   guid: 93186db1df9b1849a58400ed00a43af3
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -583,7 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FMOD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637162635675937631
+  lastModified: 637162633835594295
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -604,7 +622,7 @@ MonoBehaviour:
   Path: event:/Fly
   guid: ca19e0e818b7d046ac113740cfc2f81b
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -627,7 +645,7 @@ MonoBehaviour:
   Path: event:/Turn end
   guid: 06814168853ca04087209aca82a7229d
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -686,7 +704,7 @@ MonoBehaviour:
   Path: event:/Coquelivore
   guid: 9ef42633a01f0f42824d3a010c504997
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -709,7 +727,7 @@ MonoBehaviour:
   Path: event:/Destruct Building
   guid: 2e15ea2b8273bc42913f81787e49d464
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -773,7 +791,7 @@ MonoBehaviour:
   Path: event:/Music 1
   guid: 6637252a88c93a45b19743ecccfdeeb7
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -814,7 +832,7 @@ MonoBehaviour:
   Path: event:/Tree reaction
   guid: 9aeb7714e96c5b478648551253e9d7aa
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -901,7 +919,7 @@ MonoBehaviour:
   Path: event:/Step
   guid: 9b8ca5f461922a4285fc8f3939e5ad4f
   Banks:
-  - {fileID: -2535926247807999517}
+  - {fileID: 1757012389625427926}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
