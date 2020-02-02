@@ -116,5 +116,6 @@ public class Player : Character
 		isWalking = true;
 		actionLeft -= moveCost;
 		Unselect();
+		RefreshActionPointDisplay();
 	}
 }
