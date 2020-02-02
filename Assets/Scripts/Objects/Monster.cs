@@ -9,4 +9,8 @@ public class Monster : Character
     {
         LifePoint = data.nbMaxLP;
     }
+    protected override void Die()
+    {
+        MonstersManager.Instance.Kill(gameObject);
+    }
 }
