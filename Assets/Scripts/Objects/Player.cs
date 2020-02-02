@@ -15,6 +15,12 @@ public class Player : Character
 	{
 		PlayersManager.Instance.Kill(gameObject);
 	}
+	internal override void TakeDamage(int damage)
+	{
+		Hurt();
+		base.TakeDamage(damage);
+	}
+
 	internal void Unselect()
 	{
 		//TODO SHOW PLAYER

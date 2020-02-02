@@ -32,15 +32,19 @@ public class Card : MonoBehaviour
 	{
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
+				actor.Kick();
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:
 				//TODO ADD ARMOR EFFECT
+				//TODO ADD VISUAL EFFECT
 			case CardData.CardAction.Heal:
+				//TODO ADD VISUAL EFFECT
 				//TODO REMOVE HARC VALUE
 				target.TakeDamage(-2);
 				break;
 			case CardData.CardAction.Attack:
+				actor.Shoot();
 				target.TakeDamage(actor.data.FireGunDamage);
 				break;
 			case CardData.CardAction.Repair:
