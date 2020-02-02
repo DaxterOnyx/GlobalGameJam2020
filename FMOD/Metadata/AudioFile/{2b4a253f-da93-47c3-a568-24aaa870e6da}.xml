@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{2b4a253f-da93-47c3-a568-24aaa870e6da}">
+		<property name="assetPath">
+			<value>Destruction Bâtiment.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0814791666666668</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{24d67b58-cf56-4a58-a663-ce8fae69acd4}</destination>
+		</relationship>
+	</object>
+</objects>
