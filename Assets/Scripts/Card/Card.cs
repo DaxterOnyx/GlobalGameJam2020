@@ -153,11 +153,6 @@ public class Card : MonoBehaviour
 		animator.SetBool("Selected", true);
 	}
 
-	public void SetLastSibling()
-	{
-		RecTransform.SetAsLastSibling();
-	}
-
 	internal void Discard(float time)
 	{
 		action = ReelDiscard;
@@ -196,6 +191,7 @@ public class Card : MonoBehaviour
 	public void OnPointerClick(PointerEventData eventData)
 	{
 		animator.SetTrigger("Click");
+		RecTransform.SetAsLastSibling();
 		if (Interactable)
 			GameManager.Instance.SelectCard(this);
 	}
@@ -203,6 +199,7 @@ public class Card : MonoBehaviour
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		CardManager.Instance.MouseOver = true;
+		RecTransform.SetAsLastSibling();
 		animator.SetBool("Over", true);
 	}
 

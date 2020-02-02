@@ -135,6 +135,7 @@ public class CardManager : MonoBehaviour
 		nbCardToDraw--;
 		var card = deck[0];
 		card.transform.SetAsLastSibling();
+		card.Interactable = true;
 		card.Return(true);
 		card.gameObject.SetActive(true);
 		UpdateShowCount();
