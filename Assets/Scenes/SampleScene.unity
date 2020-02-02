@@ -1826,8 +1826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 8c4d8146a9602044586e2d3520f1f1b6, type: 2}
-  timeAdvretising: 0
-  advert: {fileID: 0}
+  timeAdvretising: 1
+  advert: {fileID: 1588372330}
 --- !u!114 &1525137742
 MonoBehaviour:
   m_ObjectHideFlags: 0
