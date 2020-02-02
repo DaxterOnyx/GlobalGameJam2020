@@ -23,7 +23,10 @@ public class Card : MonoBehaviour
 	Action action;
 	float actionTimer;
 
-	private bool interactable;
+    [FMODUnity.EventRef]
+    public string touchSound;
+
+    private bool interactable;
 
 	public bool Interactable
 	{
@@ -190,7 +193,8 @@ public class Card : MonoBehaviour
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		animator.SetTrigger("Click");
+        FMODUnity.RuntimeManager.PlayOneShot(touchSound);
+        animator.SetTrigger("Click");
 		RecTransform.SetAsLastSibling();
 		if (Interactable)
 			GameManager.Instance.SelectCard(this);
@@ -198,7 +202,8 @@ public class Card : MonoBehaviour
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		CardManager.Instance.MouseOver = true;
+        FMODUnity.RuntimeManager.PlayOneShot(touchSound);
+        CardManager.Instance.MouseOver = true;
 		RecTransform.SetAsLastSibling();
 		animator.SetBool("Over", true);
 	}
