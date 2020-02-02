@@ -1,8 +1,12 @@
 ﻿using System;
+using UnityEngine;
 
 public class Player : Character
 {
 	public PlayerData data;
+
+	public Animator animator;
+
 	protected override void Start()
 	{
 		LifePoint = data.nbMaxLP;
@@ -26,4 +30,27 @@ public class Player : Character
 	{
 		GameManager.Instance.SelectPlayer(this);
 	}
+
+	public void Kick()
+	{
+		animator.SetTrigger("Kick");
+	}
+	public void Hurt()
+	{
+		animator.SetTrigger("Hurt");
+	}
+	public void Shoot()
+	{
+		animator.SetTrigger("Shoot");
+	}
+	public void StopWalk()
+	{
+		animator.SetBool("Walk", false);
+	}
+
+	public void StartWalk()
+	{
+		animator.SetBool("Walk", true);
+	}
+
 }
