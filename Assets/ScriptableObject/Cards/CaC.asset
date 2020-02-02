@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb120990307ccd749989379053e05d55, type: 3}
   m_Name: CaC
   m_EditorClassIdentifier: 
-  Name: Card
+  Name: Punch
   Image: {fileID: 21300000, guid: 77f51f7d2d78c564fbcd737cb789b589, type: 3}
   Description: Not yet description
   Cost: 1
   Action: 2
-  Range: 0
+  Range: 1
   targetTypes: 02000000
