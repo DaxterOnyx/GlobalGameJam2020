@@ -31,4 +31,9 @@ public class Character : MonoBehaviour
 	{
 		GameManager.Instance.SelectTarget(this);
 	}
+
+	public int GetCurrentLp()
+	{
+		return LifePoint;
+	}
 }
