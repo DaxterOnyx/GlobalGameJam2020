@@ -20,8 +20,12 @@ public class Card : MonoBehaviour
 	public GameObject Back;
 
 	delegate void Action();
-	Action action;
+	/*List<(float,*/
+	Action/*)>*/ actions;
 	float actionTimer;
+
+	[FMODUnity.EventRef]
+	public string touchSound;
 
 	private bool interactable;
 
@@ -37,6 +41,7 @@ public class Card : MonoBehaviour
 
 	private void Start()
 	{
+		//actions = new List<(float, Action)>();
 		if (data != null)
 			Init(data);
 	}
@@ -54,13 +59,19 @@ public class Card : MonoBehaviour
 
 	private void Update()
 	{
-		if (action != null) {
+		//if (actions.Count > 0) {
+		//for (int i = 0; i < actions.Count; i++) {
+		//actions[i].Item1 = Time.deltaTime;
+		if (actions != null) {
+
 			actionTimer -= Time.deltaTime;
 			if (actionTimer <= 0) {
-				action();
-				action = null;
+				actions();
+				actions = null;
 			}
 		}
+		//}
+		//}
 	}
 
 	internal void ActionCard(Player actor, Character target)
@@ -155,14 +166,14 @@ public class Card : MonoBehaviour
 
 	internal void Discard(float time)
 	{
-		action = ReelDiscard;
+		actions = ReelDiscard;
 		actionTimer = time;
 		Disapear(time);
 	}
 
 	public void Disapear(float time)
 	{
-		action = Disapear;
+		actions = Disapear;
 		actionTimer = time;
 	}
 
@@ -190,6 +201,7 @@ public class Card : MonoBehaviour
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
+		FMODUnity.RuntimeManager.PlayOneShot(touchSound);
 		animator.SetTrigger("Click");
 		RecTransform.SetAsLastSibling();
 		if (Interactable)
@@ -198,6 +210,7 @@ public class Card : MonoBehaviour
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
+		FMODUnity.RuntimeManager.PlayOneShot(touchSound);
 		CardManager.Instance.MouseOver = true;
 		RecTransform.SetAsLastSibling();
 		animator.SetBool("Over", true);
@@ -208,4 +221,5 @@ public class Card : MonoBehaviour
 		CardManager.Instance.MouseOver = false;
 		animator.SetBool("Over", false);
 	}
+}
 }
