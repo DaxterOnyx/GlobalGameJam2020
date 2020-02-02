@@ -11,6 +11,17 @@ public class Card : MonoBehaviour
 	public TextMeshProUGUI Cost;
 	public TextMeshProUGUI Description;
 	public TextMeshProUGUI Range;
+	public Button button;
+	private bool interactable;
+	public bool Interactable
+	{
+		get { return interactable; }
+		set {
+			if (interactable)
+				Unselect();
+			interactable = value;
+		}
+	}
 
 	private void Start()
 	{
@@ -36,8 +47,8 @@ public class Card : MonoBehaviour
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:
-				//TODO ADD ARMOR EFFECT
-				//TODO ADD VISUAL EFFECT
+			//TODO ADD ARMOR EFFECT
+			//TODO ADD VISUAL EFFECT
 			case CardData.CardAction.Heal:
 				//TODO ADD VISUAL EFFECT
 				//TODO REMOVE HARC VALUE
@@ -62,9 +73,9 @@ public class Card : MonoBehaviour
 	{
 		bool isValable = false;
 		//Check distance
-		if(!MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
+		if (!MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
 		 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
-				return false;
+			return false;
 
 		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
 			return false;
@@ -100,7 +111,10 @@ public class Card : MonoBehaviour
 
 	internal void Unselect()
 	{
+		if (GameManager.Instance.CardSelected == this)
+			GameManager.Instance.CardSelected = null;
 		//TODO SHOW TO PLAYER
+
 	}
 
 	internal void Select()
@@ -111,7 +125,8 @@ public class Card : MonoBehaviour
 	public void OnClick()
 	{
 		//TODO SHOW TO PLAYER
-		GameManager.Instance.SelectCard(this);
+		if (Interactable)
+			GameManager.Instance.SelectCard(this);
 	}
 
 	public void SetLastSibling()

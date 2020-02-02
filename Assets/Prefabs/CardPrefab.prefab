@@ -573,6 +573,7 @@ MonoBehaviour:
   Cost: {fileID: 3458532732450833704}
   Description: {fileID: 6795417948892926449}
   Range: {fileID: 6917033137961718126}
+  button: {fileID: 1964029584172253216}
 --- !u!114 &1964029584172253216
 MonoBehaviour:
   m_ObjectHideFlags: 0

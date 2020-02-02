@@ -182,11 +182,17 @@ public class CardManager : MonoBehaviour
 
 	public void EndPlayerTurn()
 	{
+		foreach (var item in hand) {
+			item.Interactable = false;
+		}
 	}
 
 	public void StartPlayerTurn()
 	{
 		Draw(DrawCardAtStartTurn);
+		foreach (var item in hand) {
+			item.Interactable = true;
+		}
 	}
 	public void OrganizeHand()
 	{
