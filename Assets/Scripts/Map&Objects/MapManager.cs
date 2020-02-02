@@ -24,11 +24,6 @@ public class MapManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown("m"))
-        {
-            Debug.Log("Create Map");
-            GenerateCaseMap(new Vector2Int(0, 0), 4);
-        }
         
     }
 

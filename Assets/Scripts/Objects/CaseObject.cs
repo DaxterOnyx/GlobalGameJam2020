@@ -14,4 +14,9 @@ public class CaseObject : MonoBehaviour
     {
         sprt.material.SetFloat("_ActionCost", moveCost);
     }
+
+    private void OnMouseDown()
+    {
+        
+    }
 }

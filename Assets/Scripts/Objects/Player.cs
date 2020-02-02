@@ -6,6 +6,7 @@ public class Player : Character
 
 	public Animator animator;
 	public GameObject Selector;
+	public int actionLeft;
 
 	protected override void Start()
 	{
@@ -33,6 +34,12 @@ public class Player : Character
 		Selector.SetActive(true);
 	}
 
+	protected override void OnMouseDown()
+	{
+		base.OnMouseDown();
+		MapManager.Instance.GenerateCaseMap(MapManager.Instance.V3toV2I(transform.position), actionLeft);
+	}
+
 	public void Kick()
 	{
 		animator.SetTrigger("Kick");
@@ -55,4 +62,8 @@ public class Player : Character
 		animator.SetBool("Walk", true);
 	}
 
+	public void ResetActionPoint()
+	{
+		actionLeft = data.nbActionPoint;
+	}
 }

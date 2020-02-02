@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
 
 	}
 
-	private void OnMouseDown()
+	protected virtual void OnMouseDown()
 	{
 		GameManager.Instance.SelectTarget(this);
 	}
