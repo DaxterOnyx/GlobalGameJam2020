@@ -62,8 +62,8 @@ public class Card : MonoBehaviour
 	{
 		bool isValable = false;
 		//Check distance
-		if(MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
-		 || MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
+		if(!MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
+		 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
 				return false;
 
 		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)

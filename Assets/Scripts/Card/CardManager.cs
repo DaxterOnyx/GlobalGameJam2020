@@ -201,9 +201,12 @@ public class CardManager : MonoBehaviour
 	#region Discard Gestion
 	public void DiscardCard(Card card)
 	{
+		deck.Remove(card);
+		hand.Remove(card);
 		discard.Add(card);
 		card.RecTransform.DOAnchorPos(DiscardStack.anchoredPosition, data.DrawOneCardTime * 2);
 		card.Discard(data.DrawOneCardTime * 2);
+		OrganizeHand();
 		UpdateShowCount();
 	}
 	#endregion
