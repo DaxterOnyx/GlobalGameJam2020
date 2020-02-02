@@ -17,5 +17,5 @@ MonoBehaviour:
   Description: "R\xE9pare la cible de 25 points."
   Cost: 1
   Action: 1
-  Range: 0
+  Range: 1
   targetTypes: 03000000

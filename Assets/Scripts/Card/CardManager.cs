@@ -199,7 +199,7 @@ public class CardManager : MonoBehaviour
 	#endregion
 
 	#region Discard Gestion
-	private void DiscardCard(Card card)
+	public void DiscardCard(Card card)
 	{
 		discard.Add(card);
 		card.RecTransform.DOAnchorPos(DiscardStack.anchoredPosition, data.DrawOneCardTime * 2);

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb120990307ccd749989379053e05d55, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
-  Name: Card
+  Name: Heal
   Image: {fileID: 21300000, guid: 9b4544473631ea24489f9a76637eec49, type: 3}
   Description: Not yet description
   Cost: 1

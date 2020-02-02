@@ -55,16 +55,18 @@ public class Card : MonoBehaviour
 				Debug.LogError("Not Defined Action : " + data.Action.ToString());
 				break;
 		}
+		CardManager.Instance.DiscardCard(this);
 	}
 
 	public bool IsValableTarget(Player actor, Character target)
 	{
 		bool isValable = false;
 		//Check distance
-		MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos);
-		MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos);
+		if(MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
+		 || MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
+				return false;
 
-		if (Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
+		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
 			return false;
 
 		//Check target match

@@ -26,4 +26,9 @@ public class Character : MonoBehaviour
 	{ 
 
 	}
+
+	private void OnMouseDown()
+	{
+		GameManager.Instance.SelectTarget(this);
+	}
 }
