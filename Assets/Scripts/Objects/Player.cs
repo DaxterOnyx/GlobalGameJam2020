@@ -116,6 +116,11 @@ public class Player : Character
 		{
 			listActionPoints[i].SetActive(false);
 		}
+		if (MapManager.Instance.caseList.Count > 0)
+		{
+			MapManager.Instance.DestroyCaseMap();
+			MapManager.Instance.GenerateCaseMap(gameObject, actionLeft);
+		}
 	}
 
 	public void SetDestination(Vector2Int position,int moveCost)
