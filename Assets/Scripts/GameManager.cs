@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
 	internal Player PlayerSelected;
 	internal Character TargetSelected;
 	private bool SelectingTarget;
-
+	public GameObject winText;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -63,9 +64,25 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	internal void StartPlayerTurn()
+	public bool IsGameWin()
 	{
-
+		if (ObjectsManager.Instance.HowManyObjectivesLeft() == 0)
+		{
+			Debug.Log("Tu as Gagné!");
+			winText.SetActive(true);
+			return true;
+		}
+		return false;
+	}
+	
+	public bool IsGameLost()
+	{
+		if (PlayersManager.Instance.PlayersLeft() == 0)
+		{
+			SceneManager.LoadScene("GameOver");
+			return true;
+		}
+		return false;
 	}
 
 	private void BeginSelectionTarget()

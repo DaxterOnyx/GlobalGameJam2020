@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Heal
   Image: {fileID: 21300000, guid: 9b4544473631ea24489f9a76637eec49, type: 3}
-  Description: Not yet description
+  Description: Gives back 2 Health Point to a player
   Cost: 1
   Action: 4
   Range: 0

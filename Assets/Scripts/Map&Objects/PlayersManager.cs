@@ -20,8 +20,14 @@
 
 	internal void StartPlayerTurn()
 	{
+		GameManager.Instance.IsGameLost();
 		foreach (var item in objectList) {
 			item.GetComponent<Player>().ResetActionPoint();
 		}
+	}
+
+	public int PlayersLeft()
+	{
+		return objectList.Count;
 	}
 }

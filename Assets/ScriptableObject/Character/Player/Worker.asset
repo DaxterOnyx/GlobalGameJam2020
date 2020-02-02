@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edbbf0431d0d314689dd502f3844c63, type: 3}
   m_Name: Worker
   m_EditorClassIdentifier: 
-  nbMaxLP: 5
+  nbMaxLP: 9
   nbActionPoint: 5
+  Strengh: 2
+  FireGunDamage: 2

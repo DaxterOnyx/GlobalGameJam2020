@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbMaxLP: 50
   nbActionPoint: 0
-  repairCount: 10
+  repairCount: 100
   isObjective: 1

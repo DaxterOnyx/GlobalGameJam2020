@@ -24,8 +24,12 @@ public class Card : MonoBehaviour
 	Action/*)>*/ actions;
 	float actionTimer;
 
-	[FMODUnity.EventRef]
-	public string touchSound;
+    [FMODUnity.EventRef]
+    public string touchSound;
+    [FMODUnity.EventRef]
+    public string gunSound;
+    [FMODUnity.EventRef]
+    public string punchSound;
 
 	private bool interactable;
 
@@ -85,7 +89,8 @@ public class Card : MonoBehaviour
 
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
-				actor.Kick();
+                FMODUnity.RuntimeManager.PlayOneShot(punchSound);
+                actor.Kick();
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:
@@ -97,7 +102,8 @@ public class Card : MonoBehaviour
 				target.TakeDamage(-2);
 				break;
 			case CardData.CardAction.Attack:
-				actor.Shoot();
+                FMODUnity.RuntimeManager.PlayOneShot(gunSound);
+                actor.Shoot();
 				target.TakeDamage(actor.data.FireGunDamage);
 				break;
 			case CardData.CardAction.Repair:
@@ -120,7 +126,7 @@ public class Card : MonoBehaviour
 		 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
 			return false;
 
-		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
+		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count-1 > data.Range)
 			return false;
 
 		//Check target match

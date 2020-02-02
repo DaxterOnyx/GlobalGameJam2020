@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0a9386b96ea074ba6f5bf8a8658cc6, type: 3}
   m_Name: Cochelivore
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
-  nbMaxLP: 15
-  nbActionPoint: 20
-  Strengh: 2
+  nbMaxLP: 12
+  nbActionPoint: 8
+  Strengh: 1
   target: 0

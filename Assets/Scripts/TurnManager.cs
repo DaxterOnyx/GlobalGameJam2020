@@ -23,7 +23,7 @@ public class TurnManager : MonoBehaviour
 	{
 		if (!PlayerTurn) {
 			Turn++;
-			TurnDisplay.text = "Tour " + Turn;
+			TurnDisplay.text = "Turn " + Turn;
 		}
 
 		PlayerTurn = !PlayerTurn;
@@ -58,7 +58,6 @@ public class TurnManager : MonoBehaviour
 	{
 		//TODO Start Player Turn
 		PlayersManager.Instance.StartPlayerTurn();
-		GameManager.Instance.StartPlayerTurn();
 		CardManager.Instance.StartPlayerTurn();
 	}
 
