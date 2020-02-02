@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Armor
   Image: {fileID: 21300000, guid: af0f6cd8b85817141a20196781cab095, type: 3}
-  Description: "Met un bouclier qui absorbe 1 pt de d\xE9g\xE2t sur un perso lorsqu\u2019il
-    prend un coup. Il se dissipe \xE0 la fin du prochain tour."
+  Description: Put a shield that absorb 1 degat point
   Cost: 1
   Action: 3
   Range: 0

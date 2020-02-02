@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Finir le tour
+  m_text: Next Tour
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 097f3752f384a3444941e4ce6d9f019d, type: 2}
   m_sharedMaterial: {fileID: 5404233199288968251, guid: 097f3752f384a3444941e4ce6d9f019d,
@@ -246,10 +246,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 52918653}
-    characterCount: 13
+    characterCount: 9
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -674,7 +674,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &518409262
 RectTransform:
@@ -975,7 +975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tour 0
+  m_text: Turn 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 097f3752f384a3444941e4ce6d9f019d, type: 2}
   m_sharedMaterial: {fileID: 5404233199288968251, guid: 097f3752f384a3444941e4ce6d9f019d,

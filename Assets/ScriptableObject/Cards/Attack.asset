@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Attack
   Image: {fileID: 21300000, guid: d9368068cb38ceb49bdb6904ece347bc, type: 3}
-  Description: "Le personnage frappe au corps \xE0 corps."
+  Description: The player shoots at an ennemy
   Cost: 1
   Action: 0
   Range: 10

@@ -23,7 +23,7 @@ public class TurnManager : MonoBehaviour
 	{
 		if (!PlayerTurn) {
 			Turn++;
-			TurnDisplay.text = "Tour " + Turn;
+			TurnDisplay.text = "Turn " + Turn;
 		}
 
 		PlayerTurn = !PlayerTurn;
