@@ -573,7 +573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abac40befcd165442801bd564096b5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawsound: event:/Draw
 --- !u!1 &518409257
 GameObject:
   m_ObjectHideFlags: 0

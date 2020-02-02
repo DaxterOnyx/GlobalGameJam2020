@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbMaxLP: 10
   nbActionPoint: 4
+  Strengh: 3
+  FireGunDamage: 4
