@@ -170,43 +170,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 3966060467261824273}
   offset: {x: 0, y: 1}
---- !u!95 &4130121563592415699
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966060467261824279}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 184a17592d4b9ce47a4df487b8e811d9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &9030585451566711382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966060467261824279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6321bf2a0c030644cac6147775127eef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialData: {fileID: 0}
-  data: {fileID: 11400000, guid: df79f58fe5309a04a93022fe05013708, type: 2}
-  animator: {fileID: 4130121563592415699}
-  Selector: {fileID: 5760396027861077981}
-  actionLeft: 0
-  ActionDisplay: {fileID: 8517959656700493021}
 --- !u!1 &4451411245425761096
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +629,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4130121563592415699
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966060467261824279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 184a17592d4b9ce47a4df487b8e811d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9030585451566711382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966060467261824279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6321bf2a0c030644cac6147775127eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialData: {fileID: 0}
+  data: {fileID: 11400000, guid: df79f58fe5309a04a93022fe05013708, type: 2}
+  animator: {fileID: 4130121563592415699}
+  Selector: {fileID: 5760396027861077981}
+  actionLeft: 0
+  ActionDisplay: {fileID: 8517959656700493021}
 --- !u!1001 &8683272189467754179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -742,6 +742,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Soldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530718869051792540, guid: b6fe4cfc94e46fc43843c20534adaae7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530718869051792540, guid: b6fe4cfc94e46fc43843c20534adaae7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5731790363939349461, guid: b6fe4cfc94e46fc43843c20534adaae7, type: 3}
