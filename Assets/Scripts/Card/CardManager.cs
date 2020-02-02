@@ -99,7 +99,7 @@ public class CardManager : MonoBehaviour
 		}
 	}
 
-	
+
 
 	#region Draw Gestion
 	private void Draw(int nbCard)
@@ -116,7 +116,6 @@ public class CardManager : MonoBehaviour
 	private void DrawCoroutine()
 	{
 		DrawOneCard();
-		nbCardToDraw--;
 		if (nbCardToDraw <= 0)
 			isDrawing = false;
 	}
@@ -129,6 +128,7 @@ public class CardManager : MonoBehaviour
 		}
 
 		//Draw Card
+		nbCardToDraw--;
 		var card = deck[0];
 		card.transform.SetAsLastSibling();
 		card.Return(true);
@@ -151,10 +151,7 @@ public class CardManager : MonoBehaviour
 
 	private void ShuffleCoroutine()
 	{
-		if (discard.Count == 0) { 
-			EndShuffle();
-			return;
-		}
+		if (discard.Count == 0) return;
 
 		var card = discard[0];
 		discard.RemoveAt(0);
@@ -165,6 +162,9 @@ public class CardManager : MonoBehaviour
 		card.Disapear(data.DrawOneCardTime * 3);
 		deck.Add(card);
 		UpdateShowCount();
+		if (discard.Count == 0) {
+			Invoke("EndShuffle", data.DrawOneCardTime * 3);
+		}
 	}
 
 	private void EndShuffle()
