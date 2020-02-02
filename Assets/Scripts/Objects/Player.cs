@@ -1,7 +1,9 @@
 ﻿using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Character
 {
@@ -9,10 +11,12 @@ public class Player : Character
 
 	public Animator animator;
 	public GameObject Selector;
-	public int actionLeft;
+	public int actionLeft { get; private set; }
 	public TextMeshProUGUI ActionDisplay;
 	private Sequence sequence;
 	private bool isWalking;
+	public Image lifeBar;
+	public List<GameObject> listActionPoints;
 
 	protected override void Start()
 	{
@@ -42,6 +46,7 @@ public class Player : Character
 	{
 		Hurt();
 		base.TakeDamage(damage);
+		lifeBar.fillAmount =(float) LifePoint / data.nbMaxLP;
 	}
 
 	internal void Unselect()
@@ -103,7 +108,14 @@ public class Player : Character
 
 	private void RefreshActionPointDisplay()
 	{
-		ActionDisplay.text = actionLeft.ToString();
+		for (int i = 0; i < actionLeft; i++)
+		{
+			listActionPoints[i].SetActive(true);
+		}
+		for (int i = actionLeft; i < listActionPoints.Count; i++)
+		{
+			listActionPoints[i].SetActive(false);
+		}
 	}
 
 	public void SetDestination(Vector2Int position,int moveCost)
@@ -116,5 +128,6 @@ public class Player : Character
 		isWalking = true;
 		actionLeft -= moveCost;
 		Unselect();
+		RefreshActionPointDisplay();
 	}
 }
