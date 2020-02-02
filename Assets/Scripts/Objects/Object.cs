@@ -8,9 +8,14 @@ public class Object : Character
 
 	int repairPoint;
 
-	private void Start()
+	protected override void Start()
 	{
+		LifePoint = data.nbMaxLP;
 		repairPoint = data.repairCount;
+	}
+	protected override void Die()
+	{
+		ObjectsManager.Instance.Kill(gameObject);
 	}
 
 	public void Repair(int value)

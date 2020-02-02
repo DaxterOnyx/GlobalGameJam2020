@@ -7,6 +7,10 @@ public class Player : Character
 	{
 		LifePoint = data.nbMaxLP;
 	}
+	protected override void Die()
+	{
+		PlayersManager.Instance.Kill(gameObject);
+	}
 	internal void Unselect()
 	{
 		//TODO SHOW PLAYER
