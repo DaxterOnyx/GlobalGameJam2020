@@ -115,11 +115,11 @@ public class MapManager : MonoBehaviour
             }
             else
             {
-                dico.Remove(item);
-                dico.Add(item, position + V3toV2I(item.transform.position));
                 sequence.Append(item.transform.DOMove(V2ItoV3(position), data.moveDuration));
             }
         }
+        dico.Remove(item);
+        dico.Add(item, path[path.Count-1]);
         return sequence;
         
     }
