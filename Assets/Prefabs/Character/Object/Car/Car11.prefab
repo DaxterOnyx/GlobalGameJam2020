@@ -7,10 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5806338903756139153, guid: d68bee4ff23d77342abbcf8751667cf5,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: ef0228a77ee8a494da7b40d0306b45de,
+        type: 2}
     - target: {fileID: 6371791978114439536, guid: d68bee4ff23d77342abbcf8751667cf5,
         type: 3}
       propertyPath: m_Name
-      value: Object
+      value: Car11
       objectReference: {fileID: 0}
     - target: {fileID: 6371791978114439542, guid: d68bee4ff23d77342abbcf8751667cf5,
         type: 3}
