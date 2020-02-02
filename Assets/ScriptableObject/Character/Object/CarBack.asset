@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c259678bf0ca34094486b5b29dbf8e, type: 3}
   m_Name: CarBack
   m_EditorClassIdentifier: 
-  nbMaxLP: 0
+  nbMaxLP: 50
   nbActionPoint: 0
   repairCount: 0
   isObjective: 0
