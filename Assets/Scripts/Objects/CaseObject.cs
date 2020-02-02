@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class CaseObject : MonoBehaviour
 {
-    public Case curCase;
+    public int moveCost;
+    private SpriteRenderer sprt;
     private void Awake()
     {
-        curCase = new Case();
+        sprt = GetComponent<SpriteRenderer>();
+    }
+    public void UpdateMaterial()
+    {
+        sprt.material.SetFloat("Cost", moveCost);
     }
 }

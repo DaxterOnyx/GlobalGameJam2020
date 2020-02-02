@@ -67,7 +67,7 @@ public class MonstersManager : Location
     public void ActionGesture(GameObject gameObject,Vector2Int destination)
     {
         int moveCount = gameObject.GetComponent<Monster>().data.nbActionPoint;
-        List<Vector2Int> pathComplete = Pathfinding.Instance.findPath(V3toV2I(gameObject.transform.position), destination);
+        List<Vector2Int> pathComplete = Pathfinding.Instance.findPath(MapManager.Instance.V3toV2I(gameObject.transform.position), destination);
         List<Vector2Int> finalpath = new List<Vector2Int>();
         for(int i =0; i <= Mathf.Min(moveCount, pathComplete.Count - 1); i++)
         {
@@ -84,16 +84,5 @@ public class MonstersManager : Location
             hitList.Add(hit);
             moveCount--;
         }
-    }
-
-
-    private Vector3 V2ItoV3(Vector2Int vector)
-    {
-        return new Vector3(vector.x, vector.y, 0);
-    }
-
-    private Vector2Int V3toV2I(Vector3 vector)
-    {
-        return new Vector2Int((int)vector.x, (int)vector.y);
     }
 }
