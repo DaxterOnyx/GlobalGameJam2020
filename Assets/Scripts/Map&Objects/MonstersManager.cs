@@ -64,7 +64,7 @@ public class MonstersManager : Location
                 TurnManager.Instance.NextTurn();
             }
         }
-        //Hit the player only when in contact & end this monster action
+        //Hit the player only when in contact
         if (atkCount > 0 && hitList.Count > 0)
         {
             if (MapManager.Instance.TryGetObjectByPos(hitList[0].vector) != null)
@@ -102,7 +102,7 @@ public class MonstersManager : Location
             finalpath.Add(pathComplete[i]);
         }
         Sequence sequence = MapManager.Instance.Move(gameObject, finalpath);
-        moveCount -= pathComplete.Count;
+        moveCount -= pathComplete.Count -2;
         while (moveCount > 0 && lifePointTarget > 0)
         {
 
