@@ -12,15 +12,15 @@ public class GridRenderer : MonoBehaviour
 	{
 		for (float x = -(nbColumn+1) / 2f; x < (nbColumn) / 2f; x += CellSize.x) {
 			var obj = Instantiate(LineRenderer, transform).GetComponent<LineRenderer>();
-			obj.SetPosition(0, new Vector3(-50, x, 0));
-			obj.SetPosition(1, new Vector3(50, x, 0));
+			obj.SetPosition(0, new Vector3(-50, x, transform.position.z));
+			obj.SetPosition(1, new Vector3(50, x, transform.position.z));
 
 		}
 
 		for (float y = -(nbLine) / 2f; y <= (nbLine) / 2f; y += CellSize.y) {
 			var obj = Instantiate(LineRenderer, transform).GetComponent<LineRenderer>();
-			obj.SetPosition(0, new Vector3(y, -50, 0));
-			obj.SetPosition(1, new Vector3(y, 50, 0));
+			obj.SetPosition(0, new Vector3(y, -50, transform.position.z));
+			obj.SetPosition(1, new Vector3(y, 50, transform.position.z));
 		}
 	}
 
