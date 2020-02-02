@@ -16,3 +16,5 @@ MonoBehaviour:
   characterPositionList:
   - obj: {fileID: 7992789197064036994, guid: 5f6c82ee6d87a4d4ea92e3b7c68f4982, type: 3}
     vector: {x: 2, y: 8}
+  - obj: {fileID: 7992789197064036994, guid: 5f6c82ee6d87a4d4ea92e3b7c68f4982, type: 3}
+    vector: {x: -4, y: 2}
