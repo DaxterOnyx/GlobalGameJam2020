@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class Player : Character
 	private Sequence sequence;
 	private bool isWalking;
 	public Image lifeBar;
+	public List<GameObject> listActionPoints;
 
 	protected override void Start()
 	{
@@ -106,7 +108,14 @@ public class Player : Character
 
 	private void RefreshActionPointDisplay()
 	{
-		ActionDisplay.text = actionLeft.ToString();
+		for (int i = 0; i < actionLeft; i++)
+		{
+			listActionPoints[i].SetActive(true);
+		}
+		for (int i = actionLeft; i < listActionPoints.Count; i++)
+		{
+			listActionPoints[i].SetActive(false);
+		}
 	}
 
 	public void SetDestination(Vector2Int position,int moveCost)
