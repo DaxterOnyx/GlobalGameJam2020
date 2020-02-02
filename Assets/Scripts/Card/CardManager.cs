@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class CardManager : MonoBehaviour
 {
@@ -83,7 +82,7 @@ public class CardManager : MonoBehaviour
 			Debug.Break();
 
 		//DRAW ALL CARD WITH ANIMATION
-		if (isDrawing &&  !isShuffling) {
+		if (isDrawing && !isShuffling) {
 			lastDrawCard += Time.deltaTime;
 			if (lastDrawCard >= data.DrawOneCardTime) {
 				lastDrawCard = 0;
@@ -91,7 +90,16 @@ public class CardManager : MonoBehaviour
 			}
 		}
 
+		if (isShuffling) {
+			lastDrawCard += Time.deltaTime;
+			if (lastDrawCard >= data.DrawOneCardTime / 2f) {
+				lastDrawCard = 0;
+				ShuffleCoroutine();
+			}
+		}
 	}
+
+	
 
 	#region Draw Gestion
 	private void Draw(int nbCard)
@@ -116,36 +124,53 @@ public class CardManager : MonoBehaviour
 	private void DrawOneCard()
 	{
 		if (deck.Count <= 0) {
-			DiscardAtDeck();
+			ShuffleDiscardStackInDeckStack();
+			return;
 		}
 
 		//Draw Card
 		var card = deck[0];
 		card.transform.SetAsLastSibling();
+		card.Return(true);
 		card.gameObject.SetActive(true);
-		deck.RemoveAt(0);
 		UpdateShowCount();
 		card.RecTransform.anchoredPosition = DrawStack.anchoredPosition;
 		if (hand.Count >= data.MaxCardInHand) {
 			DiscardCard(card);
 		} else {
+			deck.RemoveAt(0);
 			hand.Add(card);
 			OrganizeHand();
 		}
 	}
 
-	private void DiscardAtDeck()
+	private void ShuffleDiscardStackInDeckStack()
 	{
 		isShuffling = true;
-		Invoke("EndShuffle", data.DrawOneCardTime*3);
+	}
+
+	private void ShuffleCoroutine()
+	{
+		if (discard.Count == 0) { 
+			EndShuffle();
+			return;
+		}
+
+		var card = discard[0];
+		discard.RemoveAt(0);
+		card.transform.SetAsLastSibling();
+		card.Return(false);
+		card.Show();
+		card.RecTransform.DOAnchorPos(DrawStack.anchoredPosition, data.DrawOneCardTime * 3);
+		card.Disapear(data.DrawOneCardTime * 3);
+		deck.Add(card);
+		UpdateShowCount();
 	}
 
 	private void EndShuffle()
 	{
 		isShuffling = false;
-		deck.AddRange(discard);
 		UpdateShowCount();
-		discard.Clear();
 		ShuffleDeck();
 	}
 

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 			//check if is a target of the card and in area of card
 			CardSelected.IsValableTarget(PlayerSelected, target)) {
 				TargetSelected = target;
-				CardSelected.Action(PlayerSelected, TargetSelected);
+				CardSelected.ActionCard(PlayerSelected, TargetSelected);
 				EndSelectionTarget();
 		} else {
 			if (target is Player)
@@ -54,6 +54,19 @@ public class GameManager : MonoBehaviour
 
 		if (PlayerSelected != null)
 			BeginSelectionTarget();
+	}
+
+	internal void EndPlayerTurn()
+	{
+		if(CardSelected != null) {
+			CardSelected.Unselect();
+			CardSelected = null;
+		}
+	}
+
+	internal void StartPlayerTurn()
+	{
+
 	}
 
 	private void BeginSelectionTarget()
