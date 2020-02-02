@@ -662,6 +662,7 @@ MonoBehaviour:
   animator: {fileID: 7161724733475435165}
   Face: {fileID: 2222281032328211971}
   Back: {fileID: 166703458413530682}
+  touchSound: event:/Touch Card
 --- !u!95 &7161724733475435165
 Animator:
   serializedVersion: 3

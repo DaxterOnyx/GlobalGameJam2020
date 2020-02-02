@@ -23,7 +23,12 @@ public class CardManager : MonoBehaviour
 	public TextMeshProUGUI HandCount;
 	public TextMeshProUGUI DrawCount;
 
-	private Card[] InitialCards
+    [FMODUnity.EventRef]
+    public string drawSound;
+    [FMODUnity.EventRef]
+    public string shuffleSound;
+
+    private Card[] InitialCards
 	{
 		get {
 			//TODO ADD CARDS OF PLAYERS 
@@ -52,7 +57,7 @@ public class CardManager : MonoBehaviour
 	private List<Card> hand;
 	private List<Card> discard;
 
-	private bool isDrawing = false;
+	public bool isDrawing = false;
 	private int nbCardToDraw = 0;
 	private float lastDrawCard = 0;
 	internal bool MouseOver;
@@ -131,15 +136,16 @@ public class CardManager : MonoBehaviour
 			return;
 		}
 
-		//Draw Card
-		nbCardToDraw--;
+        //Draw Card
+        FMODUnity.RuntimeManager.PlayOneShot(drawSound);
+        nbCardToDraw--;
 		var card = deck[0];
 		card.transform.SetAsLastSibling();
 		card.Interactable = true;
 		card.Return(true);
 		card.gameObject.SetActive(true);
 		UpdateShowCount();
-		card.RecTransform.anchoredPosition = DrawStack.anchoredPosition;
+        card.RecTransform.anchoredPosition = DrawStack.anchoredPosition;
 		if (hand.Count >= data.MaxCardInHand) {
 			DiscardCard(card);
 		} else {
@@ -181,7 +187,8 @@ public class CardManager : MonoBehaviour
 
 	private void ShuffleDeck()
 	{
-		var newDeck = new List<Card>();
+        FMODUnity.RuntimeManager.PlayOneShot(shuffleSound);
+        var newDeck = new List<Card>();
 		while (deck.Count > 0) {
 			int index = Random.Range(0, deck.Count);
 			newDeck.Add(deck[index]);
