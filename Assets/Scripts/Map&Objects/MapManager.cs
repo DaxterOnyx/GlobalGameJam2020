@@ -51,8 +51,11 @@ public class MapManager : MonoBehaviour
         if (!containByPos(caseList, pos) && (!CaseTaken(pos)||pos==initialPos) && CalculateCost(pos, initialPos)<=maxCost)
         {
             curCase = Instantiate(data.caseObject);
-            curCase.transform.position = V2ItoV3(pos);
-            caseList.Add(curCase);
+			Vector3 vector3 = V2ItoV3(pos);
+			vector3.z = 10;
+			curCase.transform.position = vector3;
+
+			caseList.Add(curCase);
             curCase.GetComponent<CaseObject>().moveCost = CalculateCost(pos,initialPos);
             curCase.GetComponent<CaseObject>().UpdateMaterial();
 

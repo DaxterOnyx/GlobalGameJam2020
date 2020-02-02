@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class Player : Character
@@ -13,6 +14,8 @@ public class Player : Character
 	protected override void Start()
 	{
 		LifePoint = data.nbMaxLP;
+		ResetActionPoint();
+		RefreshActionPointDisplay();
 	}
 	protected override void Die()
 	{
@@ -67,5 +70,20 @@ public class Player : Character
 	public void ResetActionPoint()
 	{
 		actionLeft = data.nbActionPoint;
+		RefreshActionPointDisplay();
+	}
+
+	public void UseActionPoint(int nb)
+	{
+		if (actionLeft < nb)
+			Debug.LogError("Not enough action point.");
+
+		actionLeft -= nb;
+		RefreshActionPointDisplay();
+	}
+
+	private void RefreshActionPointDisplay()
+	{
+		ActionDisplay.text = actionLeft.ToString();
 	}
 }
