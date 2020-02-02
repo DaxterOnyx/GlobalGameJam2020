@@ -126,7 +126,7 @@ public class Card : MonoBehaviour
 		 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
 			return false;
 
-		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count > data.Range)
+		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count-1 > data.Range)
 			return false;
 
 		//Check target match
