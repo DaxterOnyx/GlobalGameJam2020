@@ -94,7 +94,7 @@ public class MapManager : MonoBehaviour
         {
             if (dico.ContainsValue(position))
             {
-                Debug.LogError("Error: Current Position Already Taken!");
+                Debug.LogWarning("Error: Current Position Already Taken!");
             }
             else
             {
