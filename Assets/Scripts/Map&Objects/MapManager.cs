@@ -22,38 +22,53 @@ public class MapManager : MonoBehaviour
     {
         _instance = this;
     }
-
-    public bool GenerateCaseMap(Vector2Int position,int maxDist)
+    private void Update()
     {
-        recCreationCase(position, null, maxDist);
+        if (Input.GetKeyDown("m"))
+        {
+            Debug.Log("Create Map");
+            GenerateCaseMap(new Vector2Int(0, 0), 4);
+        }
+        
+    }
+
+    public bool GenerateCaseMap(Vector2Int position,int maxCost)
+    {
+        recCreationCase(position, position, maxCost);
         return true;
     }
-    public void recCreationCase(Vector2Int pos, GameObject parent, int maxDist)
+    public void recCreationCase(Vector2Int pos, Vector2Int initialPos, int maxCost)
     {
         GameObject curCase;
-        curCase = CreateCase(pos, parent, maxDist);
+        curCase = CreateCase(pos, initialPos, maxCost);
         if (curCase != null)
         {
-            recCreationCase(pos + new Vector2Int(0, 1), curCase, maxDist);
-            recCreationCase(pos + new Vector2Int(1, 0), curCase, maxDist);
-            recCreationCase(pos + new Vector2Int(0, -1), curCase, maxDist);
-            recCreationCase(pos + new Vector2Int(-1, 0), curCase, maxDist);
+            recCreationCase(pos + new Vector2Int(0, 1), initialPos, maxCost);
+            recCreationCase(pos + new Vector2Int(1, 0), initialPos, maxCost);
+            recCreationCase(pos + new Vector2Int(0, -1), initialPos, maxCost);
+            recCreationCase(pos + new Vector2Int(-1, 0), initialPos, maxCost);
         }
     }
 
-    public GameObject CreateCase(Vector2Int pos,GameObject parent,int maxDist)
+    public GameObject CreateCase(Vector2Int pos,Vector2Int initialPos,int maxCost)
     {
         GameObject curCase = null;
-        if (!containByPos(caseList, pos) && parent.GetComponent<CaseObject>().curCase.g+1<=maxDist)
+        if (!containByPos(caseList, pos) && (!CaseTaken(pos)||pos==initialPos) && CalculateCost(pos, initialPos)<=maxCost)
         {
             curCase = Instantiate(data.caseObject);
             curCase.transform.position = V2ItoV3(pos);
             caseList.Add(curCase);
-            curCase.GetComponent<CaseObject>().curCase = Pathfinding.Instance.CreateCase(pos,pos,parent.GetComponent<CaseObject>().curCase);
+            curCase.GetComponent<CaseObject>().moveCost = CalculateCost(pos,initialPos);
+            curCase.GetComponent<CaseObject>().UpdateMaterial();
+
         }
         return curCase;
     }
 
+    public int CalculateCost(Vector2Int posA, Vector2Int posB)
+    {
+        return  Mathf.CeilToInt((Mathf.Abs((float) posA.x - posB.x) + Mathf.Abs((float) posA.y - posB.y))/2) ;
+    }
     public bool containByPos(List<GameObject> listObj, Vector2 pos)
     {
         foreach (var item in listObj)
