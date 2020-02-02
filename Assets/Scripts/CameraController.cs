@@ -12,8 +12,8 @@ public class CameraController : MonoBehaviour
 
 		//TODO remove hard value
 		transform.position = new Vector3(
-			Mathf.Clamp(transform.position.x + x * Speed, -3.5f, 3.5f),
-			Mathf.Clamp(transform.position.y + y * Speed, -5.5f, 4.5f),
+			Mathf.Clamp(transform.position.x + x * Speed, -5f, 5f),
+			Mathf.Clamp(transform.position.y + y * Speed, -8f, 6f),
 			transform.position.z
 			);
 	}
