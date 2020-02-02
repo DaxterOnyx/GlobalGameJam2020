@@ -27,8 +27,12 @@ public class Object : Character
 		repairPoint += value;
 		UpdateRepair();
 		if (repairPoint >= data.repairCount && data.isObjective)
+		{
 			//TODO Check if another objectif is necesarry
 			Debug.Log("One Objectif Repaired");
+			ObjectsManager.Instance.RemoveObjective(gameObject);
+			GameManager.Instance.IsGameWin();
+		}
 	}
 
 	public void UpdateRepair()

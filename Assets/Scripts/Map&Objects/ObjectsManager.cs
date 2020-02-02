@@ -53,4 +53,14 @@ public class ObjectsManager : Location
         }
         return smallestDist_Obj.Item2;
     }
+
+    public void RemoveObjective(GameObject game)
+    {
+        objectivesList.Remove(game);
+    }
+
+    public int HowManyObjectivesLeft()
+    {
+        return objectivesList.Count;
+    }
 }
