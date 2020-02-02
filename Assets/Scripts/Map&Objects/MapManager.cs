@@ -30,6 +30,9 @@ public class MapManager : MonoBehaviour
     public bool GenerateCaseMap(GameObject player, int maxCost)
     {
         RecCreationCase(V3toV2I(player.transform.position), V3toV2I(player.transform.position), maxCost, player);
+        GameObject initCase = caseList[0];
+        caseList.Remove(initCase);
+        GameObject.Destroy(initCase);
         return true;
     }
 
