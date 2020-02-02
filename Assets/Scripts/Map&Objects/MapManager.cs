@@ -27,7 +27,7 @@ public class MapManager : MonoBehaviour
         if (Input.GetKeyDown("m"))
         {
             Debug.Log("Create Map");
-            GenerateCaseMap(new Vector2Int(0, 0), 2);
+            GenerateCaseMap(new Vector2Int(0, 0), 4);
         }
         
     }

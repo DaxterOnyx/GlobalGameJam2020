@@ -12,6 +12,6 @@ public class CaseObject : MonoBehaviour
     }
     public void UpdateMaterial()
     {
-        sprt.material.SetFloat("Cost", moveCost);
+        sprt.material.SetFloat("_ActionCost", moveCost);
     }
 }
