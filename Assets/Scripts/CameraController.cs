@@ -10,6 +10,11 @@ public class CameraController : MonoBehaviour
 		var x = Input.GetAxis("Horizontal");
 		var y = Input.GetAxis("Vertical");
 
-		transform.Translate(x * Speed, y * Speed, 0);
+		//TODO remove hard value
+		transform.position = new Vector3(
+			Mathf.Clamp(transform.position.x + x * Speed, -3.5f, 3.5f),
+			Mathf.Clamp(transform.position.y + y * Speed, -5.5f, 4.5f),
+			transform.position.z
+			);
 	}
 }
