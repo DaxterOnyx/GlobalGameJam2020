@@ -17,7 +17,8 @@ public class Player : Character
 	private bool isWalking;
 	public Image lifeBar;
 	public List<GameObject> listActionPoints;
-
+	public Color transparentLifeBar;
+	private Color normalLifeBar = Color.white;
     [FMODUnity.EventRef]
     public string stepSound;
 
@@ -26,6 +27,10 @@ public class Player : Character
 		LifePoint = data.nbMaxLP;
 		ResetActionPoint();
 		RefreshActionPointDisplay();
+		foreach (var item in GetComponentsInChildren<Image>())
+		{
+			item.color = transparentLifeBar;
+		}
 	}
 
 	private void Update()
@@ -138,5 +143,21 @@ public class Player : Character
 		actionLeft -= moveCost;
 		Unselect();
 		RefreshActionPointDisplay();
+	}
+
+	private void OnMouseOver()
+	{
+		foreach (var item in GetComponentsInChildren<Image>())
+		{
+			item.color = normalLifeBar;
+		}
+	}
+
+	private void OnMouseExit()
+	{
+		foreach (var item in GetComponentsInChildren<Image>())
+		{
+			item.color = transparentLifeBar;
+		}
 	}
 }

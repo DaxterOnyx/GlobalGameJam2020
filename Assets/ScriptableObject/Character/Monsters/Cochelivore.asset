@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cochelivore
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   nbMaxLP: 12
-  nbActionPoint: 8
+  nbActionPoint: 4
   Strengh: 1
   target: 0

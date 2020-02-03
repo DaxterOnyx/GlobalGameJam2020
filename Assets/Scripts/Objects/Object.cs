@@ -12,10 +12,13 @@ public class Object : Character
 
 	protected override void Start()
 	{
-		canvas.SetActive(data.isObjective);
 		LifePoint = data.nbMaxLP;
 		repairPoint = 0;
-		if(data.isObjective) UpdateRepair();
+		if (data.isObjective)
+		{
+			UpdateRepair();
+		}
+		canvas.SetActive(false);
 	}
 	protected override void Die()
 	{
@@ -38,5 +41,17 @@ public class Object : Character
 	public void UpdateRepair()
 	{
 		repairBar.fillAmount = (float)repairPoint / data.repairCount;
+	}
+
+	private void OnMouseOver()
+	{
+		canvas.SetActive(data.isObjective);
+	}
+	private void OnMouseExit()
+	{
+		if (data.isObjective)
+		{
+			canvas.SetActive(false);
+		}
 	}
 }
