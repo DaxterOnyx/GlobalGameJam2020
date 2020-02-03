@@ -122,7 +122,7 @@ public class MapManager : MonoBehaviour
             }
         }
         dico.Remove(item);
-        dico.Add(item, path[path.Count-1]);
+        dico.Add(item, path[path.Count-2]);// -1 because of segFault and -1 because last case is the player one
         return sequence;
         
     }

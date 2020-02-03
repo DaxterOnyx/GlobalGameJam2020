@@ -84,12 +84,13 @@ public class CardManager : MonoBehaviour
 	private void Update()
 	{
 		//TODO REMOVE DEBUG 
-		/*if (Input.GetKeyDown(KeyCode.Space)) {
+#if UNITY_EDITOR
+		if (Input.GetKeyDown(KeyCode.Space)) {
 			Draw(DrawCardAtStartTurn);
 		}
 		if (Input.GetKeyDown(KeyCode.Escape))
 			Debug.Break();
-		*/
+#endif       
 		//DRAW ALL CARD WITH ANIMATION
 		if (isDrawing && !isShuffling) {
 			lastDrawCard += Time.deltaTime;
