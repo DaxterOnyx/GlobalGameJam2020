@@ -123,16 +123,20 @@ public class MonstersManager : Location
         List<Vector2Int> pathComplete = Pathfinding.Instance.findPath(MapManager.Instance.V3toV2I(gameObject.transform.position), destination);
         List<Vector2Int> finalpath = new List<Vector2Int>();
         int lifePointTarget = MapManager.Instance.TryGetObjectByPos(destination).GetComponent<Character>().GetCurrentLp();
-        for(int i =0; i <= Mathf.Min(moveCount, pathComplete.Count - 1); i++)
+        for(int i =0; i <= Mathf.Min(moveCount*2, pathComplete.Count - 1); i++)
         {
-            finalpath.Add(pathComplete[i]);
+            if(i != pathComplete.Count - 1) //Remove last case when get to player
+            {
+                finalpath.Add(pathComplete[i]);
+            }
+            
         }
         Sequence sequence = MapManager.Instance.Move(gameObject, finalpath);
-        moveCount -= pathComplete.Count -2;
+        moveCount -= Mathf.FloorToInt((pathComplete.Count - 2 )/ 2) ; // - 2 : fisrt and last case (initial case and player case)
         while (moveCount > 0 && lifePointTarget > 0)
         {
 
-            sequence.Append(DOTween.To(() => atkCount, x => atkCount = x, 1, 0.01f));
+            sequence.Append(DOTween.To(() => atkCount, x => atkCount = x, 1, 0));
             GameObj_Vect2 hit;
             hit.obj = gameObject;
             hit.vector = destination;

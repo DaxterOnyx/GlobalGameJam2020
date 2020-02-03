@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class LocationData : ScriptableObject
 {
-    public float StartDist;
+    public int StartDist;
     [SerializeField]
     public GameObj_Vect2[] characterPositionList;
 }

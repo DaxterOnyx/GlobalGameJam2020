@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f742f6bc89e2246abbae1771dccf14, type: 3}
   m_Name: ObjectsManagerData
   m_EditorClassIdentifier: 
-  StartDist: 0
+  StartDist: 100
   characterPositionList:
   - obj: {fileID: 4296487876580767480, guid: 8d4f12db27352954498698586df0f301, type: 3}
     vector: {x: 1, y: -2}

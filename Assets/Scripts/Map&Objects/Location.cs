@@ -6,7 +6,7 @@ public abstract class Location : MonoBehaviour
 {
 
     protected List<GameObject> objectList = new List<GameObject>();
-    protected float startDist;
+    protected int startDist;
     // Start is called before the first frame update
 
     /// <summary>
@@ -44,13 +44,15 @@ public abstract class Location : MonoBehaviour
         Vector2Int position;
         MapManager.Instance.WhereIsObject(gameObject, out position);
         Vector2Int playerPos;
-        (float, GameObject) smallestDist_Obj = (startDist,null);
+        int c;
+        (int, GameObject) smallestDist_Obj = (startDist,null);
         foreach (var item in objectList)
         {
             MapManager.Instance.WhereIsObject(item,out playerPos);
-            if (smallestDist_Obj.Item1 > Vector2Int.Distance(position, playerPos))
+            c = Pathfinding.Instance.findPath(position, playerPos).Count;
+            if (smallestDist_Obj.Item1 > c)
             {
-                smallestDist_Obj = (Vector2Int.Distance(position, playerPos), item);
+                smallestDist_Obj = (c,item);
             }
         }
         return smallestDist_Obj.Item2;
