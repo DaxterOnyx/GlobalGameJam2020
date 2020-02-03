@@ -91,7 +91,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: GameObject/Soldat_1_0
+    path: Body/Soldat_1_0
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -134,7 +134,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: GameObject/Soldat_1_1
+    path: Body/Soldat_1_1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -177,7 +177,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: GameObject/Soldat_1_2
+    path: Body/Soldat_1_2
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -392,7 +392,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: GameObject/Soldat_1_0
+    path: Body/Soldat_1_0
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -438,7 +438,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: GameObject/Soldat_1_0
+    path: Body/Soldat_1_0
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -484,7 +484,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: GameObject/Soldat_1_0
+    path: Body/Soldat_1_0
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -530,7 +530,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: GameObject/Soldat_1_1
+    path: Body/Soldat_1_1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -576,7 +576,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: GameObject/Soldat_1_1
+    path: Body/Soldat_1_1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -622,7 +622,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: GameObject/Soldat_1_1
+    path: Body/Soldat_1_1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -668,7 +668,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: GameObject/Soldat_1_2
+    path: Body/Soldat_1_2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -714,7 +714,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: GameObject/Soldat_1_2
+    path: Body/Soldat_1_2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -760,7 +760,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: GameObject/Soldat_1_2
+    path: Body/Soldat_1_2
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
