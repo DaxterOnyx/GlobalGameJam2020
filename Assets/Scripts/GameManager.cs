@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
 		if (ObjectsManager.Instance.HowManyObjectivesLeft() == 0) {
 			Debug.Log("Tu as Gagné!");
 			winText.SetActive(true);
+			//TODO load winscreen
 			return true;
 		}
 		return false;
