@@ -97,7 +97,9 @@ public class Pathfinding : MonoBehaviour
     public void calculatingCase(Vector2Int pos, Case parent, Vector2Int finalPos)
     {
         Case curCase = new Case();
-        if (!((MapManager.Instance.CaseTaken(pos) && finalPos!=pos) || ListContainsNodeAt(closedList, pos)))
+        if (!((MapManager.Instance.CaseTaken(pos) && finalPos!=pos) || ListContainsNodeAt(closedList, pos))&&
+            (pos.x <= MapManager.Instance.maxX && pos.x >= MapManager.Instance.minX && 
+            pos.y >= MapManager.Instance.minY && pos.y <= MapManager.Instance.maxY))
         {
             if (!ListContainsNodeAt(openList, pos, ref curCase))
             {
