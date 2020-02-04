@@ -25,12 +25,12 @@ public class Card : MonoBehaviour
 	Action/*)>*/ actions;
 	float actionTimer;
 
-    [FMODUnity.EventRef]
-    public string touchSound;
-    [FMODUnity.EventRef]
-    public string gunSound;
-    [FMODUnity.EventRef]
-    public string punchSound;
+	[FMODUnity.EventRef]
+	public string touchSound;
+	[FMODUnity.EventRef]
+	public string gunSound;
+	[FMODUnity.EventRef]
+	public string punchSound;
 
 	private bool interactable;
 
@@ -90,7 +90,7 @@ public class Card : MonoBehaviour
 
 		//TODO MOVE IN CHARACTER
 		#region look at the target
-		var dif = target.transform.position - actor.animator.transform.position;
+		var dif = target.transform.position - actor.transform.position;
 		//inverse x because z is inverse and inverse x and y bcause it's work
 		var angle = Mathf.Atan2(-dif.x, dif.y) * Mathf.Rad2Deg;
 		var actualAngle = actor.animator.transform.rotation.eulerAngles.z;
@@ -101,8 +101,8 @@ public class Card : MonoBehaviour
 
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
-                FMODUnity.RuntimeManager.PlayOneShot(punchSound);
-                actor.Kick();
+				FMODUnity.RuntimeManager.PlayOneShot(punchSound);
+				actor.Kick();
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:
@@ -114,8 +114,8 @@ public class Card : MonoBehaviour
 				target.TakeDamage(-2);
 				break;
 			case CardData.CardAction.Attack:
-                FMODUnity.RuntimeManager.PlayOneShot(gunSound);
-                actor.Shoot();
+				FMODUnity.RuntimeManager.PlayOneShot(gunSound);
+				actor.Shoot();
 				target.TakeDamage(actor.data.FireGunDamage);
 				break;
 			case CardData.CardAction.Repair:
@@ -138,7 +138,7 @@ public class Card : MonoBehaviour
 		 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
 			return false;
 
-		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count-1 > data.Range)
+		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count - 1 > data.Range)
 			return false;
 
 		//Check target match
@@ -174,20 +174,41 @@ public class Card : MonoBehaviour
 		return isValable;
 	}
 
+
+	/// <summary>
+	/// Use on selected card to unselect it.
+	/// Generate DeplacementCase if one player is selected.
+	/// </summary>
 	internal void Unselect()
 	{
-		if (GameManager.Instance.CardSelected == this)
+		if (GameManager.Instance.CardSelected == this) {
+			//Selected
 			GameManager.Instance.CardSelected = null;
+			if (GameManager.Instance.PlayerSelected == null) {
+				//No player Selected
+
+			} else {
+				//One player is selected
+				//Authorize player to move
+				MapManager.Instance.GenerateCaseMap(GameManager.Instance.PlayerSelected.gameObject, GameManager.Instance.PlayerSelected.actionLeft);
+			}
+		} else {
+			//NOT Selected
+			Debug.LogWarning("Unselect not selected card.");
+		}
+
 		animator.SetBool("Selected", false);
 	}
 
 	internal void Select()
 	{
+		
 		animator.SetBool("Selected", true);
 	}
 
 	internal void Discard(float time)
 	{
+		Unselect();
 		actions = ReelDiscard;
 		actionTimer = time;
 		Disapear(time);

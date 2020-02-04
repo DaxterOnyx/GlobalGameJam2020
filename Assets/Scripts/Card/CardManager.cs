@@ -249,19 +249,20 @@ public class CardManager : MonoBehaviour
 		discard.Add(card);
 		card.RecTransform.DOAnchorPos(DiscardStack.anchoredPosition, data.DrawOneCardTime * 2);
 		card.Discard(data.DrawOneCardTime * 2);
+
 		OrganizeHand();
 		UpdateShowCount();
 
 		///Show player movement again
 
-		if(GameManager.Instance.CardSelected != null)
-		{
-			GameManager.Instance.CardSelected = null;
-		}
-		if(GameManager.Instance.PlayerSelected != null)
-		{
-			MapManager.Instance.GenerateCaseMap(GameManager.Instance.PlayerSelected.gameObject, GameManager.Instance.PlayerSelected.actionLeft);
-		}
+		//if(GameManager.Instance.CardSelected != null)
+		//{
+		//	GameManager.Instance.CardSelected = null;
+		//}
+		//if(GameManager.Instance.PlayerSelected != null)
+		//{
+		//	MapManager.Instance.GenerateCaseMap(GameManager.Instance.PlayerSelected.gameObject, GameManager.Instance.PlayerSelected.actionLeft);
+		//}
 	}
 	#endregion
 

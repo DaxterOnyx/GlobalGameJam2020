@@ -712,6 +712,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 3966060467261824273}
   offset: {x: 0.48, y: 0.9}
+--- !u!1 &5721634143302111648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 533455026112450950}
+  - component: {fileID: 6276383062800511721}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &533455026112450950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721634143302111648}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3966060467261824273}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6276383062800511721
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721634143302111648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5895143155217774852
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +801,7 @@ RectTransform:
   - {fileID: 5239122413603588399}
   - {fileID: 3740223351832950059}
   m_Father: {fileID: 3966060467261824273}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -844,10 +894,10 @@ Transform:
   m_GameObject: {fileID: 6808583850125953995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 7.2, y: 7.2, z: 1}
   m_Children: []
   m_Father: {fileID: 3966060467261824273}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &190447379444444973
 SpriteRenderer:
@@ -888,7 +938,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 5639398598479428411, guid: ecde9caac84508940a4af74785926f3c,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -928,7 +979,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3966060467261824273}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9206513741462839299
 SpriteRenderer:
@@ -997,18 +1048,20 @@ MonoBehaviour:
   highlighter: {fileID: 4551336547092811753}
   data: {fileID: 0}
   playerHighlighter: {fileID: 7500350862870020498}
-  animator: {fileID: 0}
-  Selector: {fileID: 6808583850125953995}
+  animator: {fileID: 6276383062800511721}
   lifeBar: {fileID: 7603675485591705033}
   listActionPoints:
-  - {fileID: 1608083041951409247}
-  - {fileID: 4918139376744783843}
-  - {fileID: 4165572450204724616}
-  - {fileID: 1316519220983462797}
-  - {fileID: 5600703979701539480}
-  - {fileID: 3056194398027728868}
+  - {fileID: 6155327793470926640}
+  - {fileID: 2324604439916193078}
+  - {fileID: 5593006392784818726}
+  - {fileID: 1831660769799206226}
+  - {fileID: 1114026234505353285}
+  - {fileID: 791247484538771964}
   transparentLifeBar: {r: 1, g: 1, b: 1, a: 0.5019608}
   stepSound: 
+  Selector: {fileID: 6808583850125953995}
+  LifeBarBack: {fileID: 7621425258238774884}
+  LifeBarFont: {fileID: 7603675485591705033}
 --- !u!1001 &8683272189467754179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1019,7 +1072,7 @@ PrefabInstance:
     - target: {fileID: 4036985087154219336, guid: b6fe4cfc94e46fc43843c20534adaae7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5731790363939349458, guid: b6fe4cfc94e46fc43843c20534adaae7,
         type: 3}
