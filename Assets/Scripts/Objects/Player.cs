@@ -167,8 +167,8 @@ public class Player : Character
 	}
 	public override void Highlight(bool isTarget = true)
 	{
-		if (!isTarget)
-			base.Highlight(isTarget);
+		if (isTarget)
+			base.Highlight();
 		else
 			playerHighlighter.SetActive(true);
 	}

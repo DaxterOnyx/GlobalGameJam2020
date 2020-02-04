@@ -348,6 +348,21 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 76633215352007324}
+    - target: {fileID: 949957920773415470, guid: 192126a521b722545b852dc5a4947e63,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 949957920773415470, guid: 192126a521b722545b852dc5a4947e63,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 949957920773415470, guid: 192126a521b722545b852dc5a4947e63,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3966060467261824273, guid: 192126a521b722545b852dc5a4947e63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -407,6 +422,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Soldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649806639105349515, guid: 192126a521b722545b852dc5a4947e63,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649806639105349515, guid: 192126a521b722545b852dc5a4947e63,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 192126a521b722545b852dc5a4947e63, type: 3}
