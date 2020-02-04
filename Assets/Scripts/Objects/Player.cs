@@ -10,9 +10,7 @@ public class Player : Character
 	public PlayerData data;
 
 	public Animator animator;
-	public GameObject Selector;
 	public int actionLeft { get; private set; }
-	public TextMeshProUGUI ActionDisplay;
 	private Sequence sequence;
 	private bool isWalking;
 	public Image lifeBar;
@@ -60,14 +58,12 @@ public class Player : Character
 	internal void Unselect()
 	{
 		//TODO SHOW PLAYER
-		Selector.SetActive(false);
 		MapManager.Instance.DestroyCaseMap();
 	}
 
 	internal void Select()
 	{
 		//TODO SHOW PLAYER
-		Selector.SetActive(true);
 		MapManager.Instance.GenerateCaseMap(gameObject, actionLeft);
 	}
 

@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
 	public void SelectPlayer(Player selected)
 	{
-		if (PlayerSelected != null && selected == PlayerSelected)
+		if (PlayerSelected != null && selected != PlayerSelected)
 			PlayerSelected.Unselect();
 		PlayerSelected = selected;
 		PlayerSelected.Select();
