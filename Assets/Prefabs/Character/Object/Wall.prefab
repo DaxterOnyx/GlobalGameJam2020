@@ -63,6 +63,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: de190d7d140f9fd42998c583f1502c45,
         type: 2}
+    - target: {fileID: 3449774290504586220, guid: d68bee4ff23d77342abbcf8751667cf5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449774290504586220, guid: d68bee4ff23d77342abbcf8751667cf5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5568570960822969912, guid: d68bee4ff23d77342abbcf8751667cf5,
         type: 3}
       propertyPath: m_SpriteTilingProperty.border.x

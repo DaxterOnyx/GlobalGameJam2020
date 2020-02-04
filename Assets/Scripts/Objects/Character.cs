@@ -6,13 +6,14 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public CharacterData initialData;
-	public GameManager highlighter;
+	public GameObject highlighter;
 
 	protected int LifePoint;
 
 	protected virtual void Start()
 	{
 		LifePoint = initialData.nbMaxLP;
+		highlighter.SetActive(false);
 	}
 
 	internal virtual void TakeDamage(int damage)
@@ -36,5 +37,19 @@ public class Character : MonoBehaviour
 	public int GetCurrentLp()
 	{
 		return LifePoint;
+	}
+
+	/// <summary>
+	/// Highlight The Character
+	/// </summary>
+	/// <param name="isTarget">Only need to be set as false when selection player, leave void else</param>
+	public virtual void Highlight(bool isTarget = true)
+	{
+		highlighter.SetActive(true);
+	}
+
+	public virtual void Delight()
+	{
+		highlighter.SetActive(false);
 	}
 }

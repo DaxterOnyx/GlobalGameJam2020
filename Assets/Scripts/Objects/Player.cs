@@ -8,11 +8,10 @@ using UnityEngine.UI;
 public class Player : Character
 {
 	public PlayerData data;
-
+	public GameObject playerHighlighter;
 	public Animator animator;
 	public GameObject Selector;
 	public int actionLeft { get; private set; }
-	public TextMeshProUGUI ActionDisplay;
 	private Sequence sequence;
 	private bool isWalking;
 	public Image lifeBar;
@@ -21,6 +20,7 @@ public class Player : Character
 	private Color normalLifeBar = Color.white;
     [FMODUnity.EventRef]
     public string stepSound;
+	
 
     protected override void Start()
 	{
@@ -31,6 +31,8 @@ public class Player : Character
 		{
 			item.color = transparentLifeBar;
 		}
+		highlighter.SetActive(false);
+		playerHighlighter.SetActive(false);
 	}
 
 	private void Update()
@@ -162,5 +164,17 @@ public class Player : Character
 		{
 			item.color = transparentLifeBar;
 		}
+	}
+	public override void Highlight(bool isTarget = true)
+	{
+		if (!isTarget)
+			base.Highlight(isTarget);
+		else
+			playerHighlighter.SetActive(true);
+	}
+	public override void Delight()
+	{
+		base.Delight();
+		playerHighlighter.SetActive(false);
 	}
 }

@@ -18,6 +18,7 @@ public class Object : Character
 		{
 			UpdateRepair();
 		}
+		highlighter.SetActive(false);
 		canvas.SetActive(false);
 	}
 	protected override void Die()
