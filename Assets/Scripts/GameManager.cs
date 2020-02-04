@@ -46,15 +46,21 @@ public class GameManager : MonoBehaviour
 
 	public void SelectCard(Card selected)
 	{
-		if (CardSelected != null && selected != CardSelected)
-			CardSelected.Unselect();
+		if (CardSelected != null) {
+			if (CardSelected == selected) {
+				CardSelected.Unselect();
+				PlayerSelected.Select();
+				return;
+			}
+			else
+				CardSelected.Unselect();
+		}
 		CardSelected = selected;
 		CardSelected.Select();
 		Debug.Log("Card Selected " + CardSelected.name);
 
 		if (PlayerSelected != null)
 		{
-			MapManager.Instance.DestroyCaseMap();
 			BeginSelectionTarget();
 		}
 			
@@ -91,9 +97,14 @@ public class GameManager : MonoBehaviour
 
 	private void BeginSelectionTarget()
 	{
-		if (CardSelected.data.Cost <= PlayerSelected.actionLeft)
+		if (CardSelected.data.Cost <= PlayerSelected.actionLeft) {
 			//TODO SHOW POSSIBLE Targets
+
+			//Hide deplacement Case
+			MapManager.Instance.DestroyCaseMap();
+
 			SelectingTarget = true;
+		}
 	}
 
 	private void EndSelectionTarget()

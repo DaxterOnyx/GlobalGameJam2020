@@ -14,11 +14,14 @@ public class Player : Character
 	private Sequence sequence;
 	private bool isWalking;
 	public Image lifeBar;
-	public List<GameObject> listActionPoints;
+	public List<Image> listActionPoints;
 	public Color transparentLifeBar;
 	private Color normalLifeBar = Color.white;
     [FMODUnity.EventRef]
     public string stepSound;
+	public GameObject Selector;
+	public Image LifeBarBack;
+	public Image LifeBarFont;
 
     protected override void Start()
 	{
@@ -57,14 +60,15 @@ public class Player : Character
 
 	internal void Unselect()
 	{
-		//TODO SHOW PLAYER
+		Selector.SetActive(false);
 		MapManager.Instance.DestroyCaseMap();
 	}
 
 	internal void Select()
 	{
-		//TODO SHOW PLAYER
-		if(GameManager.Instance.CardSelected == null)
+		Selector.SetActive(false);
+
+		if (GameManager.Instance.CardSelected == null)
 		{
 			MapManager.Instance.GenerateCaseMap(gameObject, actionLeft);
 		}
@@ -118,11 +122,11 @@ public class Player : Character
 	{
 		for (int i = 0; i < actionLeft; i++)
 		{
-			listActionPoints[i].SetActive(true);
+			listActionPoints[i].gameObject.SetActive(true);
 		}
 		for (int i = actionLeft; i < listActionPoints.Count; i++)
 		{
-			listActionPoints[i].SetActive(false);
+			listActionPoints[i].gameObject.SetActive(false);
 		}
 		if (MapManager.Instance.caseList.Count > 0)
 		{
@@ -146,17 +150,20 @@ public class Player : Character
 
 	private void OnMouseOver()
 	{
-		foreach (var item in GetComponentsInChildren<Image>())
+		foreach (var image in listActionPoints)
 		{
-			item.color = normalLifeBar;
-		}
+			image.color = normalLifeBar;
+  }
+		LifeBarBack.color = normalLifeBar;
+		LifeBarFont.color = normalLifeBar;
 	}
 
 	private void OnMouseExit()
 	{
-		foreach (var item in GetComponentsInChildren<Image>())
-		{
-			item.color = transparentLifeBar;
+		foreach (var image in listActionPoints) {
+			image.color = transparentLifeBar;
 		}
+		LifeBarBack.color = transparentLifeBar;
+		LifeBarFont.color = transparentLifeBar;
 	}
 }
