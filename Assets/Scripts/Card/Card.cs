@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -86,6 +87,17 @@ public class Card : MonoBehaviour
 		}
 
 		actor.UseActionPoint(data.Cost);
+
+		//TODO MOVE IN CHARACTER
+		#region look at the target
+		var dif = target.transform.position - actor.animator.transform.position;
+		//inverse x because z is inverse and inverse x and y bcause it's work
+		var angle = Mathf.Atan2(-dif.x, dif.y) * Mathf.Rad2Deg;
+		var actualAngle = actor.animator.transform.rotation.eulerAngles.z;
+		//actor.animator.transform.rotation = Quaternion.Euler(0, 0, angle);
+		//TODO Remove hard value
+		actor.animator.transform.DORotate(new Vector3(0, 0, angle), 0.1f);
+		#endregion
 
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
