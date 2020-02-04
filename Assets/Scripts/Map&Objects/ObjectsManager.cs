@@ -63,4 +63,15 @@ public class ObjectsManager : Location
     {
         return objectivesList.Count;
     }
+
+    public void HighlightObjectives(GameObject player, int dist)
+    {
+        foreach (var item in objectivesList)
+        {
+            if (Pathfinding.Instance.PathLenght(
+                MapManager.Instance.V3toV2I(player.transform.position),
+                MapManager.Instance.V3toV2I(item.transform.position)) < dist)
+                item.GetComponent<Character>().Highlight();
+        }
+    }
 }

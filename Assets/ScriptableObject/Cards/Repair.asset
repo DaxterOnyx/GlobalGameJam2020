@@ -18,4 +18,4 @@ MonoBehaviour:
   Cost: 1
   Action: 1
   Range: 1
-  targetTypes: 03000000
+  targetTypes: 04000000

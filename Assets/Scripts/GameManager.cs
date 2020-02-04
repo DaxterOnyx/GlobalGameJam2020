@@ -92,13 +92,38 @@ public class GameManager : MonoBehaviour
 	private void BeginSelectionTarget()
 	{
 		if (CardSelected.data.Cost <= PlayerSelected.actionLeft)
-			//TODO SHOW POSSIBLE Targets
+		{
 			SelectingTarget = true;
+			foreach (var item in CardSelected.data.targetTypes)
+			{
+				switch (item)
+				{
+					case CardData.TargetType.Player:
+						PlayersManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+						break;
+					case CardData.TargetType.Monster:
+						MonstersManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+						break;
+					case CardData.TargetType.Object:
+						ObjectsManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+						break;
+					case CardData.TargetType.Objective:
+						ObjectsManager.Instance.HighlightObjectives(PlayerSelected.gameObject, CardSelected.data.Range);
+						break;
+					default:
+						break;
+				}
+			}
+		}
+
 	}
 
 	private void EndSelectionTarget()
 	{
 		//TODO HIDE POSSIBLE Targets
 		SelectingTarget = false;
+		PlayersManager.Instance.DelightTargets();
+		MonstersManager.Instance.DelightTargets();
+		ObjectsManager.Instance.DelightTargets();
 	}
 }

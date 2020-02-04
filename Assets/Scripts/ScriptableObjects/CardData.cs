@@ -25,6 +25,7 @@ public class CardData : ScriptableObject
 		Player,
 		Himself,
 		Monster,
-		Object
+		Object,
+		Objective
 	}
 }

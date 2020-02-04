@@ -26,6 +26,18 @@ public class Pathfinding : MonoBehaviour
         path = new List<Vector2Int>();
     }
 
+
+    /// <summary>
+    /// return the number of case between the two positions (excluding the positions's cases)
+    /// </summary>
+    /// <param name="initialPos"></param>
+    /// <param name="finalPos"></param>
+    /// <returns></returns>
+    public int PathLenght(Vector2Int initialPos, Vector2Int finalPos)
+    {
+        return findPath(initialPos, finalPos).Count - 2;
+    }
+
     public List<Vector2Int> findPath(Vector2Int initialPos, Vector2Int finalPos)
     {
         openList.Clear();

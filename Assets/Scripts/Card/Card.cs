@@ -160,6 +160,10 @@ public class Card : MonoBehaviour
 					if (target is Object)
 						isValable = true;
 					break;
+				case CardData.TargetType.Objective:
+					if (target is Object && (target as Object).data.isObjective)
+						isValable = true;
+					break;
 				default:
 					Debug.LogError("Not Defined Type : " + data.targetTypes[i].ToString());
 
