@@ -102,7 +102,7 @@ public class Card : MonoBehaviour
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
 				FMODUnity.RuntimeManager.PlayOneShot(punchSound);
-				actor.Kick();
+				actor.Punch();
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:

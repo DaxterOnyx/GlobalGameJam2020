@@ -81,9 +81,11 @@ public class Player : Character
 		base.OnMouseDown();
 	}
 
-	public void Kick()
+	//TODO MOVE TO CHARACTER
+	#region Animator Control
+	public void Punch()
 	{
-		animator.SetTrigger("Kick");
+		animator.SetTrigger("Punch");
 	}
 	public void Hurt()
 	{
@@ -93,17 +95,19 @@ public class Player : Character
 	{
 		animator.SetTrigger("Shoot");
 	}
-	public void StopWalk()
-	{
-		Debug.Log("Stop walking");
-		animator.SetBool("Walk", false);
-	}
 
 	public void StartWalk()
 	{
         FMODUnity.RuntimeManager.PlayOneShot(stepSound);
         animator.SetBool("Walk", true);
 	}
+
+	public void StopWalk()
+	{
+		Debug.Log("Stop walking");
+		animator.SetBool("Walk", false);
+	}
+	#endregion
 
 	public void ResetActionPoint()
 	{

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Coquelivore
+  m_Controller: {fileID: 9100000, guid: 9070cd4bc72087e4fbf035d07f860ae8, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 6301b9bc6a80e2144af65aa6fb4a3950, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bc5f838c263d3e34db063d8670188107, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 66fbf5dd3a0ea244e8673b78729ba45a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c790610b48d8c87459d3b4d61e6f1a2f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 62ea1172290fbea4293736e541a8149e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c790610b48d8c87459d3b4d61e6f1a2f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e8788d4bbbe27fa4d93c47a562d06a1f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3cf00fb99480b014f97d6663de4ae7ee, type: 2}
