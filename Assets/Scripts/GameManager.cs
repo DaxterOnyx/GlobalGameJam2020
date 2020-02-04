@@ -53,7 +53,11 @@ public class GameManager : MonoBehaviour
 		Debug.Log("Card Selected " + CardSelected.name);
 
 		if (PlayerSelected != null)
+		{
+			MapManager.Instance.DestroyCaseMap();
 			BeginSelectionTarget();
+		}
+			
 	}
 
 	internal void EndPlayerTurn()

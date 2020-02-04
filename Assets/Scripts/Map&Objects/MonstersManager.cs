@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonstersManager : Location
 {
+
+    #region Fields
     private static MonstersManager _instance;
     public static MonstersManager Instance
     {
@@ -31,6 +33,9 @@ public class MonstersManager : Location
         Initialize(data);
         monsterTurn = false;
     }
+    #endregion
+
+    #region Monster Turn Management
 
     private void Update()
     {
@@ -55,14 +60,14 @@ public class MonstersManager : Location
                     //Target is Destroy Object
                     Vector2Int pos;
                     MapManager.Instance.WhereIsObject(ObjectsManager.Instance.NearestObjective(curMonster), out pos);
-                    sequence = ActionGesture(curMonster, pos);
+                    sequence = DefineActions(curMonster, pos);
                 }
                 else
                 {
                     //Target is players
                     Vector2Int pos;
                     MapManager.Instance.WhereIsObject(PlayersManager.Instance.Nearest(curMonster), out pos);
-                    sequence = ActionGesture(curMonster, pos);
+                    sequence = DefineActions(curMonster, pos);
                 }
             }
             else if (sequence.Elapsed()>= sequence.Duration())
@@ -91,7 +96,7 @@ public class MonstersManager : Location
 
     }
 
-    public void MonsterTurn()
+    public void StartMonsterTurn()
     {
         foreach (var item in data.retardedSpawns)
         {
@@ -111,18 +116,23 @@ public class MonstersManager : Location
         }
     }
 
-    public void SpawnMonster(GameObj_Vect2 item)
-    {
-        Transform obj = MapManager.Instance.CreateObject(item.obj, item.vector);
-        objectList.Add(obj.gameObject);
-    }
-
-    public Sequence ActionGesture(GameObject gameObject,Vector2Int destination)
+    /// <summary>
+    /// Will create the DOTween sequence 
+    /// of the monster
+    /// </summary>
+    /// <param name="gameObject">the monster</param>
+    /// <param name="destination">The monster's target (player or objective)</param>
+    /// <returns></returns>
+    public Sequence DefineActions(GameObject gameObject,Vector2Int destination)
     {
         int moveCount = gameObject.GetComponent<Monster>().data.nbActionPoint;
         List<Vector2Int> pathComplete = Pathfinding.Instance.findPath(MapManager.Instance.V3toV2I(gameObject.transform.position), destination);
         List<Vector2Int> finalpath = new List<Vector2Int>();
         int lifePointTarget = MapManager.Instance.TryGetObjectByPos(destination).GetComponent<Character>().GetCurrentLp();
+        
+        ///Movement calculation
+        
+
         for(int i =0; i <= Mathf.Min(moveCount*2, pathComplete.Count - 1); i++)
         {
             if(i != pathComplete.Count - 1) //Remove last case when get to player
@@ -132,6 +142,9 @@ public class MonstersManager : Location
             
         }
         Sequence sequence = MapManager.Instance.Move(gameObject, finalpath);
+
+        ///Attack claculation
+
         moveCount -= Mathf.FloorToInt((pathComplete.Count - 2 )/ 2) ; // - 2 : fisrt and last case (initial case and player case)
         while (moveCount > 0 && lifePointTarget > 0)
         {
@@ -146,6 +159,15 @@ public class MonstersManager : Location
         }
         return sequence;
     }
+
+    #endregion
+
+    public void SpawnMonster(GameObj_Vect2 item)
+    {
+        Transform obj = MapManager.Instance.CreateObject(item.obj, item.vector);
+        objectList.Add(obj.gameObject);
+    }
+
 }
 
 [System.Serializable]

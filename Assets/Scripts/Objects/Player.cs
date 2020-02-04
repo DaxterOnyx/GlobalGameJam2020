@@ -68,7 +68,10 @@ public class Player : Character
 	{
 		//TODO SHOW PLAYER
 		Selector.SetActive(true);
-		MapManager.Instance.GenerateCaseMap(gameObject, actionLeft);
+		if(GameManager.Instance.CardSelected == null)
+		{
+			MapManager.Instance.GenerateCaseMap(gameObject, actionLeft);
+		}
 	}
 
 	protected override void OnMouseDown()
