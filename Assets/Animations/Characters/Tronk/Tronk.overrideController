@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tronk
+  m_Controller: {fileID: 9100000, guid: 9070cd4bc72087e4fbf035d07f860ae8, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 6301b9bc6a80e2144af65aa6fb4a3950, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 83d099b56b7435e439c4ee71ce8a0816, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 66fbf5dd3a0ea244e8673b78729ba45a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cadaacf2e8554bb4eba2cd7bc86b8911, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e8788d4bbbe27fa4d93c47a562d06a1f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e3b2e7aa94cfb8d4b9a2291a8d86802c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 62ea1172290fbea4293736e541a8149e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a13e2c5cea6d1b04c951986509ccc1da, type: 2}
