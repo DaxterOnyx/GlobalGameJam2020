@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+    #region Fields
     private static MapManager _instance;
     public static MapManager Instance
     {
@@ -18,6 +19,9 @@ public class MapManager : MonoBehaviour
     public MapData data;
     public List<GameObject> caseList = new List<GameObject>();
     private Dictionary<GameObject, Vector2Int> dico = new Dictionary<GameObject, Vector2Int>();
+    public int minX,minY,maxX,maxY;
+
+    #endregion
     private void Awake()
     {
         _instance = this;
@@ -60,7 +64,8 @@ public class MapManager : MonoBehaviour
     public GameObject CreateCase(Vector2Int pos,Vector2Int initialPos,int maxCost, GameObject player)
     {
         GameObject curCase = null;
-        if (!containByPos(caseList, pos) && (!CaseTaken(pos)||pos==initialPos))
+        if (!containByPos(caseList, pos) && (!CaseTaken(pos)||pos==initialPos)&&
+            (pos.x<=maxX && pos.x>=minX && pos.y>=minY && pos.y <=maxY))//In the grid
         {
             if(CalculateCost(pos, initialPos) <= maxCost)
             {
