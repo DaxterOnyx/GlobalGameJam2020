@@ -45,7 +45,7 @@ public class TurnManager : MonoBehaviour
 	private void StartMonsterTurn()
 	{
 		//TODO Start monster Turn
-		MonstersManager.Instance.MonsterTurn();
+		MonstersManager.Instance.StartMonsterTurn();
 	}
 
 	private void EndMonsterTurn()

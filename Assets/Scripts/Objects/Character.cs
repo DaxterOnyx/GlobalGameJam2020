@@ -6,6 +6,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public CharacterData initialData;
+	public GameManager highlighter;
 
 	protected int LifePoint;
 

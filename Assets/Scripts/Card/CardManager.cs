@@ -83,7 +83,6 @@ public class CardManager : MonoBehaviour
 
 	private void Update()
 	{
-		//TODO REMOVE DEBUG 
 #if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Draw(DrawCardAtStartTurn);
@@ -252,6 +251,17 @@ public class CardManager : MonoBehaviour
 		card.Discard(data.DrawOneCardTime * 2);
 		OrganizeHand();
 		UpdateShowCount();
+
+		///Show player movement again
+
+		if(GameManager.Instance.CardSelected != null)
+		{
+			GameManager.Instance.CardSelected = null;
+		}
+		if(GameManager.Instance.PlayerSelected != null)
+		{
+			MapManager.Instance.GenerateCaseMap(GameManager.Instance.PlayerSelected.gameObject, GameManager.Instance.PlayerSelected.actionLeft);
+		}
 	}
 	#endregion
 

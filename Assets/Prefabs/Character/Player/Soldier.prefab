@@ -1242,6 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialData: {fileID: 0}
+  highlighter: {fileID: 0}
   data: {fileID: 11400000, guid: df79f58fe5309a04a93022fe05013708, type: 2}
   animator: {fileID: 5073878162177355192}
   ActionDisplay: {fileID: 0}
