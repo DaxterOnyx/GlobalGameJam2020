@@ -90,7 +90,7 @@ public class Card : MonoBehaviour
 
 		//TODO MOVE IN CHARACTER
 		#region look at the target
-		var dif = target.transform.position - actor.animator.transform.position;
+		var dif = target.transform.position - actor.transform.position;
 		//inverse x because z is inverse and inverse x and y bcause it's work
 		var angle = Mathf.Atan2(-dif.x, dif.y) * Mathf.Rad2Deg;
 		var actualAngle = actor.animator.transform.rotation.eulerAngles.z;
@@ -158,6 +158,10 @@ public class Card : MonoBehaviour
 					break;
 				case CardData.TargetType.Object:
 					if (target is Object)
+						isValable = true;
+					break;
+				case CardData.TargetType.Objective:
+					if (target is Object && (target as Object).data.isObjective)
 						isValable = true;
 					break;
 				default:

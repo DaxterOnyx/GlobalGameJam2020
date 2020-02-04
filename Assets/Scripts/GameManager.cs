@@ -35,35 +35,65 @@ public class GameManager : MonoBehaviour
 
 	public void SelectPlayer(Player selected)
 	{
-		if (PlayerSelected != null && selected != PlayerSelected)
+		if (PlayerSelected != null && selected == PlayerSelected) {
 			PlayerSelected.Unselect();
-		PlayerSelected = selected;
-		PlayerSelected.Select();
-		Debug.Log("Player Selected " + PlayerSelected.name);
-		if (CardSelected != null)
-			BeginSelectionTarget();
+			PlayersManager.Instance.DelightTargets();
+			PlayerSelected = null;
+			if (CardSelected != null) {
+				EndSelectionTarget();
+				PlayersManager.Instance.HighlightPlayers(CardSelected.data.Cost);
+			}
+
+		} else {
+			if (PlayerSelected != null) {
+				PlayerSelected.Unselect();
+			}
+			PlayersManager.Instance.DelightTargets();
+			PlayerSelected = selected;
+			PlayerSelected.Select();
+			Debug.Log("Player Selected " + PlayerSelected.name);
+			if (CardSelected != null)
+				BeginSelectionTarget();
+		}
+
 	}
 
 	public void SelectCard(Card selected)
 	{
 		if (CardSelected != null) {
-			if (CardSelected == selected) {
-				CardSelected.Unselect();
-				PlayerSelected.Select();
-				return;
+			//have previous card
+			if (PlayerSelected != null) {
+				//hide previous target of previous card
+				PlayersManager.Instance.DelightTargets();
 			}
-			else
+			if (selected == CardSelected) {
+				//unselect Actual Card
 				CardSelected.Unselect();
+				CardSelected = null;
+				if (PlayerSelected != null) {
+					//player can move
+					MapManager.Instance.GenerateCaseMap(PlayerSelected.gameObject, PlayerSelected.actionLeft);
+				}
+				// cant select target without card selected			
+				EndSelectionTarget();
+				return;
+			} else {
+				//Select another card
+				CardSelected.Unselect();
+			}
 		}
+
+		//Select the card
 		CardSelected = selected;
 		CardSelected.Select();
 		Debug.Log("Card Selected " + CardSelected.name);
 
-		if (PlayerSelected != null)
-		{
+		if (PlayerSelected == null) {
+			PlayersManager.Instance.HighlightPlayers(CardSelected.data.Cost);
+		} else {
+			MapManager.Instance.DestroyCaseMap();
 			BeginSelectionTarget();
 		}
-			
 	}
 
 	internal void EndPlayerTurn()
@@ -72,23 +102,23 @@ public class GameManager : MonoBehaviour
 			CardSelected.Unselect();
 			CardSelected = null;
 		}
+		PlayerSelected = null;
+		TargetSelected = null;
 	}
 
 	public bool IsGameWin()
 	{
-		if (ObjectsManager.Instance.HowManyObjectivesLeft() == 0)
-		{
+		if (ObjectsManager.Instance.HowManyObjectivesLeft() == 0) {
 			Debug.Log("Tu as Gagné!");
 			winText.SetActive(true);
 			return true;
 		}
 		return false;
 	}
-	
+
 	public bool IsGameLost()
 	{
-		if (PlayersManager.Instance.PlayersLeft() == 0)
-		{
+		if (PlayersManager.Instance.PlayersLeft() == 0) {
 			SceneManager.LoadScene("GameOver");
 			return true;
 		}
@@ -98,12 +128,36 @@ public class GameManager : MonoBehaviour
 	private void BeginSelectionTarget()
 	{
 		if (CardSelected.data.Cost <= PlayerSelected.actionLeft) {
-			//TODO SHOW POSSIBLE Targets
+			if (CardSelected.data.Cost <= PlayerSelected.actionLeft) {
+				//TODO SHOW POSSIBLE Targets
 
-			//Hide deplacement Case
-			MapManager.Instance.DestroyCaseMap();
+				//Hide deplacement Case
+				MapManager.Instance.DestroyCaseMap();
 
-			SelectingTarget = true;
+				SelectingTarget = true;
+				//
+				foreach (var item in CardSelected.data.targetTypes) {
+					switch (item) {
+						case CardData.TargetType.Player:
+							PlayersManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+							break;
+						case CardData.TargetType.Monster:
+							MonstersManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+							break;
+						case CardData.TargetType.Object:
+							ObjectsManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+							break;
+						case CardData.TargetType.Objective:
+							ObjectsManager.Instance.HighlightObjectives(PlayerSelected.gameObject, CardSelected.data.Range);
+							break;
+						//TODO Case hymslef must automaticly activate the card's effect
+						default:
+							Debug.LogError("target type not defined");
+							break;
+					}
+				}
+			}
+
 		}
 	}
 
@@ -111,5 +165,8 @@ public class GameManager : MonoBehaviour
 	{
 		//TODO HIDE POSSIBLE Targets
 		SelectingTarget = false;
+		PlayersManager.Instance.DelightTargets();
+		MonstersManager.Instance.DelightTargets();
+		ObjectsManager.Instance.DelightTargets();
 	}
 }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Player : Character
 {
 	public PlayerData data;
-
+	public GameObject playerHighlighter;
 	public Animator animator;
 	public int actionLeft { get; private set; }
 	private Sequence sequence;
@@ -32,6 +32,8 @@ public class Player : Character
 		{
 			item.color = transparentLifeBar;
 		}
+		highlighter.SetActive(false);
+		playerHighlighter.SetActive(false);
 	}
 
 	private void Update()
@@ -66,7 +68,7 @@ public class Player : Character
 
 	internal void Select()
 	{
-		Selector.SetActive(false);
+		Selector.SetActive(true);
 
 		if (GameManager.Instance.CardSelected == null)
 		{
@@ -165,5 +167,17 @@ public class Player : Character
 		}
 		LifeBarBack.color = transparentLifeBar;
 		LifeBarFont.color = transparentLifeBar;
+	}
+	public override void Highlight(bool isTarget = true)
+	{
+		if (isTarget)
+			base.Highlight();
+		else
+			playerHighlighter.SetActive(true);
+	}
+	public override void Delight()
+	{
+		base.Delight();
+		playerHighlighter.SetActive(false);
 	}
 }

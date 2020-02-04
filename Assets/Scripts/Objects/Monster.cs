@@ -11,6 +11,7 @@ public class Monster : Character
     protected override void Start()
     {
         LifePoint = data.nbMaxLP;
+        highlighter.SetActive(false);
         canvas.SetActive(false);
     }
     protected override void Die()

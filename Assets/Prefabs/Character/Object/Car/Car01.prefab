@@ -64,6 +64,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f2b27ea4ccfd9be40920b08bd3701aa6,
         type: 2}
+    - target: {fileID: 3449774290504586220, guid: d68bee4ff23d77342abbcf8751667cf5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449774290504586220, guid: d68bee4ff23d77342abbcf8751667cf5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5568570960822969912, guid: d68bee4ff23d77342abbcf8751667cf5,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x

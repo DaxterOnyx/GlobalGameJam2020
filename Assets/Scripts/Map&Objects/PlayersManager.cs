@@ -30,4 +30,15 @@
 	{
 		return objectList.Count;
 	}
+
+	public void HighlightPlayers(int cost)
+	{
+		foreach (var item in objectList)
+		{
+			if (item.GetComponent<Player>().actionLeft >= cost)
+			{
+				item.GetComponent<Player>().Highlight(false);
+			}
+		}
+	}
 }
