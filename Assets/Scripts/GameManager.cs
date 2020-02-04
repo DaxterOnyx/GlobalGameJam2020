@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 			CardSelected.ActionCard(PlayerSelected, TargetSelected);
 			EndSelectionTarget();
 		} else {
+			// Select target is called when you click on a Character
 			if (target is Player)
 				SelectPlayer(target as Player);
 		}
@@ -150,7 +151,10 @@ public class GameManager : MonoBehaviour
 						case CardData.TargetType.Objective:
 							ObjectsManager.Instance.HighlightObjectives(PlayerSelected.gameObject, CardSelected.data.Range);
 							break;
-						//TODO Case hymslef must automaticly activate the card's effect
+						case CardData.TargetType.Himself:
+							EndSelectionTarget();
+							CardSelected.ActionCard(PlayerSelected, PlayerSelected);
+							break;
 						default:
 							Debug.LogError("target type not defined");
 							break;
