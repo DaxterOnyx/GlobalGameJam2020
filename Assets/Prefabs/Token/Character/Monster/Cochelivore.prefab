@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3148330667422441156}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.63, y: 0.2875, z: 1}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2862603747211313487}
   m_RootOrder: 1
@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 3862820268477507914}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2862603747211313487}
   m_RootOrder: 2
@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 4153538856473706064}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.63, y: 0.2875, z: 1}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2862603747211313487}
   m_RootOrder: 0
@@ -309,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 5320085038138412827, guid: f86a43f1a0c5f624ab060d95649c34df,
         type: 3}
       propertyPath: m_Name
-      value: Cochelivore 1
+      value: Cochelivore
       objectReference: {fileID: 0}
     - target: {fileID: 8029367715971644538, guid: f86a43f1a0c5f624ab060d95649c34df,
         type: 3}
@@ -323,6 +323,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 17b1354c490b84c49911d30fc4e2567a,
         type: 2}
+    - target: {fileID: 9197524442401540362, guid: f86a43f1a0c5f624ab060d95649c34df,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197524442401540362, guid: f86a43f1a0c5f624ab060d95649c34df,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f86a43f1a0c5f624ab060d95649c34df, type: 3}
 --- !u!4 &2862603747211313487 stripped
