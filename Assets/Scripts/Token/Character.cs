@@ -13,6 +13,7 @@ public abstract class Character : Token
 	protected Image LifeBarFont;
 
 	public Animator animator;
+
 	[FMODUnity.EventRef]
 	public string stepSound;
 	protected override void Start()

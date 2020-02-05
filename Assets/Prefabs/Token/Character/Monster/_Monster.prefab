@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighter: {fileID: 5754897364576984143}
-  transparentLifeBar: {r: 1, g: 1, b: 1, a: 0.53333336}
+  transparentLifeBar: {r: 1, g: 1, b: 1, a: 0}
   normalLifeBar: {r: 1, g: 1, b: 1, a: 1}
   LifeBarBack: {fileID: 6494434230825511532}
   LifeBarFont: {fileID: 2711339447235814900}
