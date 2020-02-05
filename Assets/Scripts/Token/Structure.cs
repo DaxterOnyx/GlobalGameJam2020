@@ -57,9 +57,4 @@ public class Structure : Token
 		}
 	}
 
-	internal override void Highlight(bool isTarget = true)
-	{
-		//TODO highlight
-		throw new System.NotImplementedException();
-	}
 }

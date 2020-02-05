@@ -12,7 +12,6 @@ public class Player : Character
 	public int actionLeft { get; private set; }
 	private Sequence sequence;
 	private bool isWalking;
-	public Image lifeBar;
 	public List<Image> listActionPoints;
 	public GameObject Selector;
 
@@ -53,7 +52,7 @@ public class Player : Character
 	{
 		Hurt();
 		base.TakeDamage(damage);
-		lifeBar.fillAmount =(float) LifePoint / data.nbMaxLP;
+		LifeBarFont.fillAmount =(float) LifePoint / data.nbMaxLP;
 	}
 
 	internal void Unselect()
@@ -119,6 +118,7 @@ public class Player : Character
 		isWalking = true;
 		actionLeft -= moveCost;
 		Unselect();
+		GameManager.Instance.PlayerSelected = null;
 		RefreshActionPointDisplay();
 	}
 

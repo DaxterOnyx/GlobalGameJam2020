@@ -23,10 +23,6 @@ public abstract class Character : Token
 
 	internal abstract override void Die();
 
-	protected virtual void OnMouseDown()
-	{
-		GameManager.Instance.SelectTarget(this);
-	}
 
 	public int GetCurrentLp()
 	{

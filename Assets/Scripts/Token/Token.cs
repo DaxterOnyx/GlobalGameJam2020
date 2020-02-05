@@ -27,4 +27,9 @@ public abstract class Token : MonoBehaviour
 	{
 		highlighter.SetActive(false);
 	}
+
+	protected virtual void OnMouseDown()
+	{
+		GameManager.Instance.SelectTarget(this);
+	}
 }

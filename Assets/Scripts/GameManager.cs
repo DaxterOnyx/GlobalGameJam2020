@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
 	internal Card CardSelected;
 	internal Player PlayerSelected;
-	internal Character TargetSelected;
+	internal Token TargetSelected;
 	private bool SelectingTarget;
 	public GameObject winText;
 	// Start is called before the first frame update
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	public void SelectTarget(Character target)
+	public void SelectTarget(Token target)
 	{
 		if (SelectingTarget &&
 			//check if is a target of the card and in area of card
