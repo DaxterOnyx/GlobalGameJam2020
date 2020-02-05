@@ -326,7 +326,13 @@ MonoBehaviour:
   data: {fileID: 0}
   playerHighlighter: {fileID: 7650702492325471037}
   lifeBar: {fileID: 2071762090969010637}
-  listActionPoints: []
+  listActionPoints:
+  - {fileID: 5259196824511231946}
+  - {fileID: 1791870838052595103}
+  - {fileID: 1502110546924187395}
+  - {fileID: 271486639326671625}
+  - {fileID: 1597342295872437218}
+  - {fileID: 2800299366834923331}
   Selector: {fileID: 1129179612137586968}
 --- !u!1 &5867629870554742087
 GameObject:

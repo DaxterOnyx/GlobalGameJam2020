@@ -25,10 +25,6 @@ public abstract class Character : Token
 	}
 
 
-	protected virtual void OnMouseDown()
-	{
-		GameManager.Instance.SelectTarget(this);
-	}
 
 	public int GetCurrentLp()
 	{
