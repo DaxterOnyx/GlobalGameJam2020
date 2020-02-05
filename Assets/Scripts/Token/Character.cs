@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class Character : Token
@@ -11,6 +12,8 @@ public abstract class Character : Token
 	protected Image LifeBarBack;
 	[SerializeField]
 	protected Image LifeBarFont;
+	[SerializeField]
+	protected Image ArmorBar;
 
 	public Animator animator;
 
@@ -21,7 +24,6 @@ public abstract class Character : Token
 		highlighter.SetActive(false);
 	}
 
-	internal abstract override void Die();
 
 	protected virtual void OnMouseDown()
 	{
@@ -32,7 +34,25 @@ public abstract class Character : Token
 	{
 		return LifePoint;
 	}
-	
+
+	public void LookAt(Token target)
+	{
+		var dif = target.transform.position - transform.position;
+		//inverse x because z is inverse and inverse x and y bcause it's work
+		var angle = Mathf.Atan2(-dif.x, dif.y) * Mathf.Rad2Deg;
+		var actualAngle = animator.transform.rotation.eulerAngles.z;
+		//actor.animator.transform.rotation = Quaternion.Euler(0, 0, angle);
+		//TODO Remove hard value
+		animator.transform.DORotate(new Vector3(0, 0, angle), 0.1f);
+	}
+
+	protected abstract void UpdateArmorDisplay();
+
+	internal void AddArmor(int amount)
+	{
+		armorAmount += amount;
+		UpdateArmorDisplay();
+	}
 
 	#region Animator Control
 	public void Punch()
@@ -63,8 +83,20 @@ public abstract class Character : Token
 
 	internal override void TakeDamage(int damage)
 	{
-		base.TakeDamage(damage);
+		//TODO HEAL WILL UPGRADE THE ARMOR MAKE SPECIAL FUNCTION 
+		int trueDamage = damage;
+
+		if (armorAmount > 0) {
+			trueDamage -= armorAmount;
+			armorAmount -= damage;
+			if (armorAmount < 0)
+				armorAmount = 0;
+			UpdateArmorDisplay();
+		}
+
 		Hurt();
+
+		base.TakeDamage(trueDamage);
 	}
 	#endregion
 }

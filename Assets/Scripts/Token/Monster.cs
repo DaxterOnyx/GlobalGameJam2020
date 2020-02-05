@@ -36,4 +36,9 @@ public class Monster : Character
         canvas.SetActive(false);
         
     }
+
+	protected override void UpdateArmorDisplay()
+	{
+		ArmorBar.fillAmount = (float)armorAmount / data.nbMaxLP;
+	}
 }

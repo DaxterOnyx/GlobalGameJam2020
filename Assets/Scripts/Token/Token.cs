@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class Token : MonoBehaviour
 {
 	public GameObject highlighter;
 
 	protected int LifePoint;
+	protected int armorAmount;
 
 	protected abstract void Start();
 
@@ -12,6 +14,8 @@ public abstract class Token : MonoBehaviour
 
 	internal virtual void TakeDamage(int damage)
 	{
+		
+
 		LifePoint -= damage;
 		Debug.Log(damage + " Damages taken!");
 		if (LifePoint <= 0)

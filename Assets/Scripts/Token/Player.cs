@@ -152,4 +152,10 @@ public class Player : Character
 		base.Delight();
 		playerHighlighter.SetActive(false);
 	}
+
+	protected override void UpdateArmorDisplay()
+	{
+		ArmorBar.fillAmount = (float)armorAmount / data.nbMaxLP;
+			
+	}
 }

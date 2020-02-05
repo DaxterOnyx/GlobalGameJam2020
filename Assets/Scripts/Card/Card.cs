@@ -88,16 +88,7 @@ public class Card : MonoBehaviour
 
 		actor.UseActionPoint(data.Cost);
 
-		//TODO MOVE IN CHARACTER
-		#region look at the target
-		var dif = target.transform.position - actor.transform.position;
-		//inverse x because z is inverse and inverse x and y bcause it's work
-		var angle = Mathf.Atan2(-dif.x, dif.y) * Mathf.Rad2Deg;
-		var actualAngle = actor.animator.transform.rotation.eulerAngles.z;
-		//actor.animator.transform.rotation = Quaternion.Euler(0, 0, angle);
-		//TODO Remove hard value
-		actor.animator.transform.DORotate(new Vector3(0, 0, angle), 0.1f);
-		#endregion
+		actor.LookAt(target);
 
 		switch (data.Action) {
 			case CardData.CardAction.CaC:
@@ -106,8 +97,9 @@ public class Card : MonoBehaviour
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:
-			//TODO ADD ARMOR EFFECT
-			//TODO ADD VISUAL EFFECT
+				//TODO REMOVE HARD VALUE
+				actor.AddArmor(1);
+				break;
 			case CardData.CardAction.Heal:
 				//TODO ADD VISUAL EFFECT
 				//TODO REMOVE HARC VALUE
