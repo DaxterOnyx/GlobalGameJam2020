@@ -14,8 +14,6 @@ public abstract class Token : MonoBehaviour
 
 	internal virtual void TakeDamage(int damage)
 	{
-		
-
 		LifePoint -= damage;
 		Debug.Log(damage + " Damages taken!");
 		if (LifePoint <= 0)

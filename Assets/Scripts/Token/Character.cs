@@ -33,7 +33,12 @@ public abstract class Character : Token
 
 	public void LookAt(Token target)
 	{
-		var dif = target.transform.position - transform.position;
+		LookAt(target.transform.position);
+	}
+
+	public void LookAt(Vector3 targetPos)
+	{
+		var dif = targetPos - transform.position;
 		//inverse x because z is inverse and inverse x and y bcause it's work
 		var angle = Mathf.Atan2(-dif.x, dif.y) * Mathf.Rad2Deg;
 		var actualAngle = animator.transform.rotation.eulerAngles.z;
@@ -57,7 +62,7 @@ public abstract class Character : Token
 	}
 	public void Hurt()
 	{
-		animator.SetTrigger("Hurt");
+		animator.SetTrigger("Hurted");
 	}
 	public void Shoot()
 	{

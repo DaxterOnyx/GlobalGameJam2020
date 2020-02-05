@@ -130,6 +130,7 @@ public class Player : Character
   }
 		LifeBarBack.color = normalLifeBar;
 		LifeBarFont.color = normalLifeBar;
+		ArmorBar.color = normalLifeBar;
 	}
 
 	private void OnMouseExit()
@@ -139,6 +140,7 @@ public class Player : Character
 		}
 		LifeBarBack.color = transparentLifeBar;
 		LifeBarFont.color = transparentLifeBar;
+		ArmorBar.color = transparentLifeBar;
 	}
 	internal override void Highlight(bool isTarget = true)
 	{

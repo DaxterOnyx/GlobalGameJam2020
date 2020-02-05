@@ -199,7 +199,7 @@ public class MapManager : MonoBehaviour
 	public void DeleteObject(Token item)
 	{
 		dico.Remove(item);
-		Destroy(item);
+		Destroy(item.gameObject);
 	}
 
 	/// <summary>

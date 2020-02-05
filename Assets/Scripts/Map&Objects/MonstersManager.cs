@@ -84,9 +84,14 @@ public class MonstersManager : Location
         //Hit the player only when in contact
         if (atkCount > 0 && hitList.Count > 0)
         {
-            if (MapManager.Instance.TryGetTokenByPos(hitList[0].position) != null)
+			Token target = MapManager.Instance.TryGetTokenByPos(hitList[0].destination);
+			if (target != null)
             {
-                MapManager.Instance.TryGetTokenByPos(hitList[0].position).TakeDamage((hitList[0].token as Monster).data.Strengh);
+				Monster actor = (hitList[0].token as Monster);
+				actor.Punch();
+				actor.LookAt(target);
+
+				target.TakeDamage(actor.data.Strengh);
             }
             hitList.RemoveAt(0);
             atkCount = 0;

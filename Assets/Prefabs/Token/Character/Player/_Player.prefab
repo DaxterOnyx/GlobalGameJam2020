@@ -321,11 +321,11 @@ MonoBehaviour:
   normalLifeBar: {r: 1, g: 1, b: 1, a: 1}
   LifeBarBack: {fileID: 7151753590247743061}
   LifeBarFont: {fileID: 2071762090969010637}
+  ArmorBar: {fileID: 2872595830526716838}
   animator: {fileID: 6201165440791611459}
   stepSound: 
   data: {fileID: 0}
   playerHighlighter: {fileID: 7650702492325471037}
-  lifeBar: {fileID: 2071762090969010637}
   listActionPoints:
   - {fileID: 5259196824511231946}
   - {fileID: 1791870838052595103}
@@ -710,6 +710,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 2636411301632045441, guid: 07d9dc7cdf1a2894b9b0374d2f03832f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4236217095532161467, guid: 07d9dc7cdf1a2894b9b0374d2f03832f,
         type: 3}
       propertyPath: m_Color.r
@@ -732,6 +737,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d9dc7cdf1a2894b9b0374d2f03832f, type: 3}
+--- !u!114 &2872595830526716838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2176987324657191502, guid: 07d9dc7cdf1a2894b9b0374d2f03832f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4173628217143878120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &3259974812128987831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1501516245521083231, guid: 07d9dc7cdf1a2894b9b0374d2f03832f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4173628217143878120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2071762090969010637 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2678467933796855845, guid: 07d9dc7cdf1a2894b9b0374d2f03832f,
@@ -771,12 +794,6 @@ GameObject:
 --- !u!95 &6201165440791611459 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8062925323550353835, guid: 07d9dc7cdf1a2894b9b0374d2f03832f,
-    type: 3}
-  m_PrefabInstance: {fileID: 4173628217143878120}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3259974812128987831 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1501516245521083231, guid: 07d9dc7cdf1a2894b9b0374d2f03832f,
     type: 3}
   m_PrefabInstance: {fileID: 4173628217143878120}
   m_PrefabAsset: {fileID: 0}
