@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: MonsterManagerData
   m_EditorClassIdentifier: 
   StartDist: 100
-  characterPositionList:
-  - obj: {fileID: 430869390369772873, guid: 3cb499add1b65ba42ae21c038bb98a69, type: 3}
-    vector: {x: 4, y: -6}
-  - obj: {fileID: 430869390369772873, guid: 3cb499add1b65ba42ae21c038bb98a69, type: 3}
-    vector: {x: 5, y: -5}
+  prefabCharacterPositionList:
+  - prefab: {fileID: 430869390369772873, guid: 3cb499add1b65ba42ae21c038bb98a69, type: 3}
+    position: {x: 4, y: -6}
+  - prefab: {fileID: 430869390369772873, guid: 3cb499add1b65ba42ae21c038bb98a69, type: 3}
+    position: {x: 5, y: -5}
   retardedSpawns:
   - turn: 4
     newObject:
-      obj: {fileID: 8450691070664943675, guid: abcccc9e985c36d4883f056cc82cecc4, type: 3}
-      vector: {x: 2, y: 5}
+      prefab: {fileID: 8450691070664943675, guid: abcccc9e985c36d4883f056cc82cecc4,
+        type: 3}
+      position: {x: 5, y: 2}
