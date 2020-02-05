@@ -9,19 +9,13 @@ public class Player : Character
 {
 	public PlayerData data;
 	public GameObject playerHighlighter;
-	public Animator animator;
 	public int actionLeft { get; private set; }
 	private Sequence sequence;
 	private bool isWalking;
 	public Image lifeBar;
 	public List<Image> listActionPoints;
-	public Color transparentLifeBar;
-	private Color normalLifeBar = Color.white;
-    [FMODUnity.EventRef]
-    public string stepSound;
 	public GameObject Selector;
-	public Image LifeBarBack;
-	public Image LifeBarFont;
+
 
     protected override void Start()
 	{
@@ -34,6 +28,7 @@ public class Player : Character
 		}
 		highlighter.SetActive(false);
 		playerHighlighter.SetActive(false);
+		base.Start();
 	}
 
 	private void Update()
@@ -49,9 +44,9 @@ public class Player : Character
 		}
 	}
 
-	protected override void Die()
+	internal override void Die()
 	{
-		PlayersManager.Instance.Kill(gameObject);
+		PlayersManager.Instance.Kill(this);
 	}
 	internal override void TakeDamage(int damage)
 	{
@@ -80,34 +75,6 @@ public class Player : Character
 	{
 		base.OnMouseDown();
 	}
-
-	//TODO MOVE TO CHARACTER
-	#region Animator Control
-	public void Punch()
-	{
-		animator.SetTrigger("Punch");
-	}
-	public void Hurt()
-	{
-		animator.SetTrigger("Hurt");
-	}
-	public void Shoot()
-	{
-		animator.SetTrigger("Shoot");
-	}
-
-	public void StartWalk()
-	{
-        FMODUnity.RuntimeManager.PlayOneShot(stepSound);
-        animator.SetBool("Walk", true);
-	}
-
-	public void StopWalk()
-	{
-		Debug.Log("Stop walking");
-		animator.SetBool("Walk", false);
-	}
-	#endregion
 
 	public void ResetActionPoint()
 	{
@@ -146,7 +113,7 @@ public class Player : Character
 		StartWalk();
 		MapManager.Instance.DestroyCaseMap();
 		sequence = MapManager.Instance.Move(
-			gameObject, Pathfinding.Instance.findPath(
+			this, Pathfinding.Instance.findPath(
 				MapManager.Instance.V3toV2I(transform.position), position));
 		isWalking = true;
 		actionLeft -= moveCost;

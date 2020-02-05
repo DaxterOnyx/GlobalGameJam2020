@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Location : MonoBehaviour
 {
 
-    protected List<GameObject> objectList = new List<GameObject>();
+    protected List<Token> objectList = new List<Token>();
     protected int startDist;
     // Start is called before the first frame update
 
@@ -14,10 +14,10 @@ public abstract class Location : MonoBehaviour
     /// </summary>
     public void Initialize(LocationData data)
     {
-        foreach (var item in data.characterPositionList)
+        foreach (var item in data.prefabCharacterPositionList)
         {
-            Transform obj = MapManager.Instance.CreateObject(item.obj, item.vector);
-            objectList.Add(obj.gameObject);
+            Token obj = MapManager.Instance.CreateObject(item.prefab, item.position);
+            objectList.Add(obj);
         }
         startDist = data.StartDist;
     }
@@ -27,7 +27,7 @@ public abstract class Location : MonoBehaviour
     /// Delete the player from the game
     /// </summary>
     /// <param name="item"></param>
-    public void Kill(GameObject item)
+    public void Kill(Token item)
     {
         objectList.Remove(item);
         MapManager.Instance.DeleteObject(item);
@@ -39,16 +39,16 @@ public abstract class Location : MonoBehaviour
     /// </summary>
     /// <param name="position"></param>
     /// <returns></returns>
-    public GameObject Nearest(GameObject gameObject)
+    public Token Nearest(Token token)
     {
         Vector2Int position;
-        MapManager.Instance.WhereIsObject(gameObject, out position);
+        MapManager.Instance.WhereIsToken(token, out position);
         Vector2Int playerPos;
         int c;
-        (int, GameObject) smallestDist_Obj = (startDist,null);
+        (int, Token) smallestDist_Obj = (startDist,null);
         foreach (var item in objectList)
         {
-            MapManager.Instance.WhereIsObject(item,out playerPos);
+            MapManager.Instance.WhereIsToken(item,out playerPos);
             c = Pathfinding.Instance.findPath(position, playerPos).Count;
             if (smallestDist_Obj.Item1 > c)
             {

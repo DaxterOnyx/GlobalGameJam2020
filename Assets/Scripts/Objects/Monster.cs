@@ -7,22 +7,24 @@ public class Monster : Character
 {
     public MonsterData data;
     public GameObject canvas;
-    public Image lifeBar;
+
     protected override void Start()
     {
         LifePoint = data.nbMaxLP;
         highlighter.SetActive(false);
         canvas.SetActive(false);
-    }
-    protected override void Die()
-    {
-        MonstersManager.Instance.Kill(gameObject);
+		base.Start();
     }
 
-    internal override void TakeDamage(int damage)
+	internal override void Die()
+	{
+		MonstersManager.Instance.Kill(this);
+	}
+
+	internal override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        lifeBar.fillAmount = (float)LifePoint / data.nbMaxLP;
+        LifeBarFont.fillAmount = (float)LifePoint / data.nbMaxLP;
     }
 
     private void OnMouseOver()

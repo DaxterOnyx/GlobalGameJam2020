@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Object : Character
+public class Structure : Token
 {
-    public ObjectData data;
+    public StrutureData data;
 	public Image repairBar;
 	public GameObject canvas;
 	int repairPoint;
@@ -21,9 +21,10 @@ public class Object : Character
 		highlighter.SetActive(false);
 		canvas.SetActive(false);
 	}
-	protected override void Die()
+
+	internal override void Die()
 	{
-		ObjectsManager.Instance.Kill(gameObject);
+		StructuresManager.Instance.Kill(this);
 	}
 
 	public void Repair(int value)
@@ -34,7 +35,7 @@ public class Object : Character
 		{
 			//TODO Check if another objectif is necesarry
 			Debug.Log("One Objectif Repaired");
-			ObjectsManager.Instance.RemoveObjective(gameObject);
+			StructuresManager.Instance.RemoveObjective(this);
 			GameManager.Instance.IsGameWin();
 		}
 	}

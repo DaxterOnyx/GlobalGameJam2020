@@ -1,33 +1,26 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class Character : MonoBehaviour
+public abstract class Character : Token
 {
-    public CharacterData initialData;
-	public GameObject highlighter;
+	[SerializeField]
+	protected Color transparentLifeBar;
+	[SerializeField]
+	protected Color normalLifeBar = Color.white;
+	[SerializeField]
+	protected Image LifeBarBack;
+	[SerializeField]
+	protected Image LifeBarFont;
 
-	protected int LifePoint;
-
-	protected virtual void Start()
+	public Animator animator;
+	[FMODUnity.EventRef]
+	public string stepSound;
+	protected override void Start()
 	{
-		LifePoint = initialData.nbMaxLP;
 		highlighter.SetActive(false);
 	}
 
-	internal virtual void TakeDamage(int damage)
-	{
-		LifePoint -= damage;
-		Debug.Log(damage + " Damages taken!");
-		if (LifePoint <= 0)
-			Die();
-	}
-
-	protected virtual void Die()
-	{ 
-
-	}
+	internal abstract override void Die();
 
 	protected virtual void OnMouseDown()
 	{
@@ -52,4 +45,38 @@ public class Character : MonoBehaviour
 	{
 		highlighter.SetActive(false);
 	}
+
+	#region Animator Control
+	public void Punch()
+	{
+		animator.SetTrigger("Punch");
+	}
+	public void Hurt()
+	{
+		animator.SetTrigger("Hurt");
+	}
+	public void Shoot()
+	{
+		animator.SetTrigger("Shoot");
+	}
+
+	public void StartWalk()
+	{
+		//TODO MONSTE NOT MAKE SOUND ON WALK
+		FMODUnity.RuntimeManager.PlayOneShot(stepSound);
+		animator.SetBool("Walk", true);
+	}
+
+	public void StopWalk()
+	{
+		Debug.Log("Stop walking");
+		animator.SetBool("Walk", false);
+	}
+
+	internal override void TakeDamage(int damage)
+	{
+		base.TakeDamage(damage);
+		Hurt();
+	}
+	#endregion
 }

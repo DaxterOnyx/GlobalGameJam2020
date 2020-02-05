@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 
 	public bool IsGameWin()
 	{
-		if (ObjectsManager.Instance.HowManyObjectivesLeft() == 0) {
+		if (StructuresManager.Instance.HowManyObjectivesLeft() == 0) {
 			Debug.Log("Tu as Gagné!");
 			winText.SetActive(true);
 			return true;
@@ -145,10 +145,10 @@ public class GameManager : MonoBehaviour
 							MonstersManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
 							break;
 						case CardData.TargetType.Object:
-							ObjectsManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+							StructuresManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
 							break;
 						case CardData.TargetType.Objective:
-							ObjectsManager.Instance.HighlightObjectives(PlayerSelected.gameObject, CardSelected.data.Range);
+							StructuresManager.Instance.HighlightObjectives(PlayerSelected.gameObject, CardSelected.data.Range);
 							break;
 						//TODO Case hymslef must automaticly activate the card's effect
 						default:
@@ -167,6 +167,6 @@ public class GameManager : MonoBehaviour
 		SelectingTarget = false;
 		PlayersManager.Instance.DelightTargets();
 		MonstersManager.Instance.DelightTargets();
-		ObjectsManager.Instance.DelightTargets();
+		StructuresManager.Instance.DelightTargets();
 	}
 }

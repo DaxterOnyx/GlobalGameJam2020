@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectsManager : Location
+public class StructuresManager : Location
 {
 
-    private static ObjectsManager _instance;
-    private List<GameObject> objectivesList = new List<GameObject>();
-    public static ObjectsManager Instance
+    private static StructuresManager _instance;
+    private List<Token> objectivesList = new List<Token>();
+    public static StructuresManager Instance
     {
         get
         {
             if (_instance == null)
-                _instance = FindObjectOfType<ObjectsManager>();
+                _instance = FindObjectOfType<StructuresManager>();
             return _instance;
         }
     }
@@ -25,27 +25,27 @@ public class ObjectsManager : Location
 
     public new void Initialize(LocationData data)
     {
-        foreach (var item in data.characterPositionList)
+        foreach (var item in data.prefabCharacterPositionList)
         {
-            Transform obj = MapManager.Instance.CreateObject(item.obj, item.vector);
-            objectList.Add(obj.gameObject);
-            if(obj.GetComponent<Object>().data.isObjective)
+            Token token = MapManager.Instance.CreateObject(item.prefab, item.position);
+            objectList.Add(token);
+            if(token.GetComponent<Structure>().data.isObjective)
             {
-                objectivesList.Add(obj.gameObject);
+                objectivesList.Add(token);
             }
         }
         startDist = data.StartDist;
     }
 
-    public GameObject NearestObjective(GameObject gameObject)
+    public Token NearestObjective(Token gameObject)
     {
         Vector2Int position;
-        MapManager.Instance.WhereIsObject(gameObject, out position);
+        MapManager.Instance.WhereIsToken(gameObject, out position);
         Vector2Int playerPos;
-        (float, GameObject) smallestDist_Obj = (startDist, null);
+        (float, Token) smallestDist_Obj = (startDist, null);
         foreach (var item in objectivesList)
         {
-            MapManager.Instance.WhereIsObject(item, out playerPos);
+            MapManager.Instance.WhereIsToken(item, out playerPos);
             if (smallestDist_Obj.Item1 > Vector2Int.Distance(position, playerPos))
             {
                 smallestDist_Obj = (Vector2Int.Distance(position, playerPos), item);
@@ -54,9 +54,9 @@ public class ObjectsManager : Location
         return smallestDist_Obj.Item2;
     }
 
-    public void RemoveObjective(GameObject game)
+    public void RemoveObjective(Token token)
     {
-        objectivesList.Remove(game);
+        objectivesList.Remove(token);
     }
 
     public int HowManyObjectivesLeft()

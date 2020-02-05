@@ -79,7 +79,7 @@ public class Card : MonoBehaviour
 		//}
 	}
 
-	internal void ActionCard(Player actor, Character target)
+	internal void ActionCard(Player actor, Token target)
 	{
 		if (data.Cost > actor.actionLeft) {
 			Debug.LogError("Not enough action point");
@@ -120,7 +120,7 @@ public class Card : MonoBehaviour
 				break;
 			case CardData.CardAction.Repair:
 				//TODO REMOVE Hard Value
-				(target as Object).Repair(25);
+				(target as Structure).Repair(25);
 				break;
 			default:
 				Debug.LogError("Not Defined Action : " + data.Action.ToString());
@@ -130,12 +130,12 @@ public class Card : MonoBehaviour
 		CardManager.Instance.DiscardCard(this);
 	}
 
-	public bool IsValableTarget(Player actor, Character target)
+	public bool IsValableTarget(Player actor, Token target)
 	{
 		bool isValable = false;
 		//Check distance
-		if (!MapManager.Instance.WhereIsObject(target.gameObject, out var targetPos)
-		 || !MapManager.Instance.WhereIsObject(actor.gameObject, out var actorPos))
+		if (!MapManager.Instance.WhereIsToken(target, out var targetPos)
+		 || !MapManager.Instance.WhereIsToken(actor, out var actorPos))
 			return false;
 
 		if (actorPos != targetPos && Pathfinding.Instance.findPath(actorPos, targetPos).Count - 1 > data.Range)
@@ -157,11 +157,11 @@ public class Card : MonoBehaviour
 						isValable = true;
 					break;
 				case CardData.TargetType.Object:
-					if (target is Object)
+					if (target is Structure)
 						isValable = true;
 					break;
 				case CardData.TargetType.Objective:
-					if (target is Object && (target as Object).data.isObjective)
+					if (target is Structure && (target as Structure).data.isObjective)
 						isValable = true;
 					break;
 				default:

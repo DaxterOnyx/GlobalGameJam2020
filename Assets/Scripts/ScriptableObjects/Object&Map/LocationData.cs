@@ -7,12 +7,25 @@ public abstract class LocationData : ScriptableObject
 {
     public int StartDist;
     [SerializeField]
-    public GameObj_Vect2[] characterPositionList;
+    public Prefab_Pos[] prefabCharacterPositionList;
 }
 
 [System.Serializable]
-public struct GameObj_Vect2
+public struct Prefab_Pos
 {
-    public GameObject obj;
-    public Vector2Int vector;
+    public GameObject prefab;
+    public Vector2Int position;
+}
+
+public struct Token_Pos
+{
+	public Token token;
+	public Vector2Int position;
+	private Vector2Int destination;
+
+	public Token_Pos(Token token, Vector2Int destination) : this()
+	{
+		this.token = token;
+		this.destination = destination;
+	}
 }

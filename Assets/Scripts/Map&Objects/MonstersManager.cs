@@ -18,8 +18,8 @@ public class MonstersManager : Location
     }
     public MonsterManagerData data;
     private float atkCount;
-    private List<GameObj_Vect2> hitList;
-    private List<GameObject> attakingMonsters;
+    private List<Token_Pos> hitList;
+    private List<Token> attakingMonsters;
     private bool monsterTurn;
     private bool actionCompleted = true;
     private Sequence sequence;
@@ -28,7 +28,7 @@ public class MonstersManager : Location
     public GameObject advert;
     void Start()
     {
-        hitList = new List<GameObj_Vect2>();
+        hitList = new List<Token_Pos>();
         _instance = this;
         Initialize(data);
         monsterTurn = false;
@@ -53,20 +53,20 @@ public class MonstersManager : Location
             if (attakingMonsters.Count > 0 && actionCompleted)
             {
                 actionCompleted = false;
-                GameObject curMonster = attakingMonsters[0];
+                Token curMonster = attakingMonsters[0];
                 attakingMonsters.RemoveAt(0);
                 if (curMonster.GetComponent<Monster>().data.target == target.Objective)
                 {
                     //Target is Destroy Object
                     Vector2Int pos;
-                    MapManager.Instance.WhereIsObject(ObjectsManager.Instance.NearestObjective(curMonster), out pos);
+                    MapManager.Instance.WhereIsToken(StructuresManager.Instance.NearestObjective(curMonster), out pos);
                     sequence = DefineActions(curMonster, pos);
                 }
                 else
                 {
                     //Target is players
                     Vector2Int pos;
-                    MapManager.Instance.WhereIsObject(PlayersManager.Instance.Nearest(curMonster), out pos);
+                    MapManager.Instance.WhereIsToken(PlayersManager.Instance.Nearest(curMonster), out pos);
                     sequence = DefineActions(curMonster, pos);
                 }
             }
@@ -84,9 +84,9 @@ public class MonstersManager : Location
         //Hit the player only when in contact
         if (atkCount > 0 && hitList.Count > 0)
         {
-            if (MapManager.Instance.TryGetObjectByPos(hitList[0].vector) != null)
+            if (MapManager.Instance.TryGetTokenByPos(hitList[0].position) != null)
             {
-                MapManager.Instance.TryGetObjectByPos(hitList[0].vector).TakeDamage(hitList[0].obj.GetComponent<Monster>().data.Strengh);
+                MapManager.Instance.TryGetTokenByPos(hitList[0].position).TakeDamage((hitList[0].token as Monster).data.Strengh);
             }
             hitList.RemoveAt(0);
             atkCount = 0;
@@ -107,7 +107,7 @@ public class MonstersManager : Location
             }
         }
         monsterTurn = true;
-        attakingMonsters = new List<GameObject>();
+        attakingMonsters = new List<Token>();
 		//TODO SET TIME TO ADD ANIMATIOn OR SE THIS IN UPDATE
         foreach (var item in objectList)
         {
@@ -120,15 +120,15 @@ public class MonstersManager : Location
     /// Will create the DOTween sequence 
     /// of the monster
     /// </summary>
-    /// <param name="gameObject">the monster</param>
+    /// <param name="token">the monster</param>
     /// <param name="destination">The monster's target (player or objective)</param>
     /// <returns></returns>
-    public Sequence DefineActions(GameObject gameObject,Vector2Int destination)
+    public Sequence DefineActions(Token token,Vector2Int destination)
     {
-        int moveCount = gameObject.GetComponent<Monster>().data.nbActionPoint;
-        List<Vector2Int> pathComplete = Pathfinding.Instance.findPath(MapManager.Instance.V3toV2I(gameObject.transform.position), destination);
+        int moveCount = (token as Monster).data.nbActionPoint;
+        List<Vector2Int> pathComplete = Pathfinding.Instance.findPath(MapManager.Instance.V3toV2I(token.transform.position), destination);
         List<Vector2Int> finalpath = new List<Vector2Int>();
-        int lifePointTarget = MapManager.Instance.TryGetObjectByPos(destination).GetComponent<Character>().GetCurrentLp();
+        int lifePointTarget = MapManager.Instance.TryGetTokenByPos(destination).GetComponent<Character>().GetCurrentLp();
         
         ///Movement calculation
         
@@ -141,7 +141,7 @@ public class MonstersManager : Location
             }
             
         }
-        Sequence sequence = MapManager.Instance.Move(gameObject, finalpath);
+        Sequence sequence = MapManager.Instance.Move(token, finalpath);
 
         ///Attack claculation
 
@@ -150,22 +150,21 @@ public class MonstersManager : Location
         {
 
             sequence.Append(DOTween.To(() => atkCount, x => atkCount = x, 1, 0));
-            GameObj_Vect2 hit;
-            hit.obj = gameObject;
-            hit.vector = destination;
-            hitList.Add(hit);
+
+            hitList.Add(new Token_Pos(token,destination));
+
             moveCount--;
-            lifePointTarget -= gameObject.GetComponent<Monster>().data.Strengh;
+            lifePointTarget -= token.GetComponent<Monster>().data.Strengh;
         }
         return sequence;
     }
 
     #endregion
 
-    public void SpawnMonster(GameObj_Vect2 item)
+    public void SpawnMonster(Prefab_Pos item)
     {
-        Transform obj = MapManager.Instance.CreateObject(item.obj, item.vector);
-        objectList.Add(obj.gameObject);
+        Token token = MapManager.Instance.CreateObject(item.prefab, item.position);
+        objectList.Add(token);
     }
 
 }
@@ -174,5 +173,5 @@ public class MonstersManager : Location
 public struct retardedSpawn
 {
     public int turn;
-    public GameObj_Vect2 newObject;
+    public Prefab_Pos newObject;
 }
