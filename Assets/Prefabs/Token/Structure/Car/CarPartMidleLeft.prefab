@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9069616542840234709
+--- !u!1001 &8512848643390856353
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -66,48 +66,33 @@ PrefabInstance:
         type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: ac76cef93ea7e3b4d90ff6d328659acd,
+      objectReference: {fileID: 11400000, guid: 426f5622f3029484390dd8fda7bf7daf,
         type: 2}
     - target: {fileID: 5713386521826469077, guid: 4d361bb7c01fbec4db0509955de28a38,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 657502992305552880, guid: 2b26b02b56435094a813ae72a6f84997,
+      objectReference: {fileID: -4661351177940155085, guid: d878e49153598c0489128e0e4b63e77b,
         type: 3}
     - target: {fileID: 5713386521826469077, guid: 4d361bb7c01fbec4db0509955de28a38,
         type: 3}
       propertyPath: m_Size.x
-      value: 4.2110033
+      value: 1.0017362
       objectReference: {fileID: 0}
     - target: {fileID: 5713386521826469077, guid: 4d361bb7c01fbec4db0509955de28a38,
         type: 3}
       propertyPath: m_Size.y
-      value: 4.2
+      value: 1.0219908
       objectReference: {fileID: 0}
     - target: {fileID: 5713386521826469077, guid: 4d361bb7c01fbec4db0509955de28a38,
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6717625260920455683, guid: 4d361bb7c01fbec4db0509955de28a38,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6717625260920455683, guid: 4d361bb7c01fbec4db0509955de28a38,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6717625260920455683, guid: 4d361bb7c01fbec4db0509955de28a38,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 7730809247643436050, guid: 4d361bb7c01fbec4db0509955de28a38,
         type: 3}
       propertyPath: m_Name
-      value: Wall
+      value: CarPartMidleLeft
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d361bb7c01fbec4db0509955de28a38, type: 3}

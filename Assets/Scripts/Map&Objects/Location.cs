@@ -58,14 +58,14 @@ public abstract class Location : MonoBehaviour
         return smallestDist_Obj.Item2;
     }
 
-    public void HighlightTargets(GameObject player,int dist)
+    public void HighlightTargets(Player player,int dist)
     {
         foreach (var item in objectList)
         {
             if (Pathfinding.Instance.PathLenght(
                 MapManager.Instance.V3toV2I(player.transform.position),
                 MapManager.Instance.V3toV2I(item.transform.position)) < dist)
-                item.GetComponent<Character>().Highlight();
+                item.Highlight();
         }
     }
     public void DelightTargets()

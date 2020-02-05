@@ -1,12 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-public abstract class CharacterData : ScriptableObject
+﻿public abstract class CharacterData : TokenData
 {
-    public int nbMaxLP;
     public int nbActionPoint;
 }
 
-public enum target { Player, Objective };

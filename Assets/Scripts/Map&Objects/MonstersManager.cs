@@ -55,7 +55,7 @@ public class MonstersManager : Location
                 actionCompleted = false;
                 Token curMonster = attakingMonsters[0];
                 attakingMonsters.RemoveAt(0);
-                if (curMonster.GetComponent<Monster>().data.target == target.Objective)
+                if ((curMonster as Monster).data.target == MonsterData.Target.Objective)
                 {
                     //Target is Destroy Object
                     Vector2Int pos;
@@ -128,7 +128,7 @@ public class MonstersManager : Location
         int moveCount = (token as Monster).data.nbActionPoint;
         List<Vector2Int> pathComplete = Pathfinding.Instance.findPath(MapManager.Instance.V3toV2I(token.transform.position), destination);
         List<Vector2Int> finalpath = new List<Vector2Int>();
-        int lifePointTarget = MapManager.Instance.TryGetTokenByPos(destination).GetComponent<Character>().GetCurrentLp();
+        int lifePointTarget = (MapManager.Instance.TryGetTokenByPos(destination) as Character).GetCurrentLp();
         
         ///Movement calculation
         
@@ -154,7 +154,7 @@ public class MonstersManager : Location
             hitList.Add(new Token_Pos(token,destination));
 
             moveCount--;
-            lifePointTarget -= token.GetComponent<Monster>().data.Strengh;
+            lifePointTarget -= (token as Monster).data.Strengh;
         }
         return sequence;
     }

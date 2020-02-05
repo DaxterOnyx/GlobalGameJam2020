@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 				CardSelected = null;
 				if (PlayerSelected != null) {
 					//player can move
-					MapManager.Instance.GenerateCaseMap(PlayerSelected.gameObject, PlayerSelected.actionLeft);
+					MapManager.Instance.GenerateCaseMap(PlayerSelected, PlayerSelected.actionLeft);
 				}
 				// cant select target without card selected			
 				EndSelectionTarget();
@@ -141,16 +141,16 @@ public class GameManager : MonoBehaviour
 				foreach (var item in CardSelected.data.targetTypes) {
 					switch (item) {
 						case CardData.TargetType.Player:
-							PlayersManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+							PlayersManager.Instance.HighlightTargets(PlayerSelected, CardSelected.data.Range);
 							break;
 						case CardData.TargetType.Monster:
-							MonstersManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+							MonstersManager.Instance.HighlightTargets(PlayerSelected, CardSelected.data.Range);
 							break;
 						case CardData.TargetType.Object:
-							StructuresManager.Instance.HighlightTargets(PlayerSelected.gameObject, CardSelected.data.Range);
+							StructuresManager.Instance.HighlightTargets(PlayerSelected, CardSelected.data.Range);
 							break;
 						case CardData.TargetType.Objective:
-							StructuresManager.Instance.HighlightObjectives(PlayerSelected.gameObject, CardSelected.data.Range);
+							StructuresManager.Instance.HighlightObjectives(PlayerSelected, CardSelected.data.Range);
 							break;
 						case CardData.TargetType.Himself:
 							EndSelectionTarget();

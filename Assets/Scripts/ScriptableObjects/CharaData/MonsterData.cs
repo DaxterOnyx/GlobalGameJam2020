@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterData", menuName = "Data/MonsterData")]
+[CreateAssetMenu(fileName = "MonsterData", menuName = "Data/Token/MonsterData")]
 public class MonsterData : CharacterData
 {
     public int Strengh;
-    public target target;
+    public Target target;
+public enum Target { Player, Objective };
 }

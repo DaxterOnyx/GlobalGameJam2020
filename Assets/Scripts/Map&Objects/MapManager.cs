@@ -16,7 +16,7 @@ public class MapManager : MonoBehaviour
 	}
 
 	public MapData data;
-	public List<GameObject> caseList = new List<GameObject>();
+	public List<CaseObject> caseList = new List<CaseObject>();
 	private Dictionary<Token, Vector2Int> dico = new Dictionary<Token, Vector2Int>();
 	public int minX, minY, maxX, maxY;
 
@@ -30,25 +30,25 @@ public class MapManager : MonoBehaviour
 
 	}
 
-	public bool GenerateCaseMap(GameObject player, int maxCost)
+	public bool GenerateCaseMap(Token player, int maxCost)
 	{
 		RecCreationCase(V3toV2I(player.transform.position), V3toV2I(player.transform.position), maxCost, player);
-		GameObject initCase = caseList[0];
+		CaseObject initCase = caseList[0];
 		caseList.Remove(initCase);
-		GameObject.Destroy(initCase);
+		Destroy(initCase.gameObject);
 		return true;
 	}
 
 	public void DestroyCaseMap()
 	{
 		foreach (var item in caseList) {
-			GameObject.Destroy(item);
+			Destroy(item.gameObject);
 		}
 		caseList.Clear();
 	}
-	public void RecCreationCase(Vector2Int pos, Vector2Int initialPos, int maxCost, GameObject player)
+	public void RecCreationCase(Vector2Int pos, Vector2Int initialPos, int maxCost, Token player)
 	{
-		GameObject curCase;
+		CaseObject curCase;
 		curCase = CreateCase(pos, initialPos, maxCost, player);
 		if (curCase != null) {
 			RecCreationCase(pos + new Vector2Int(0, 1), initialPos, maxCost, player);
@@ -58,26 +58,27 @@ public class MapManager : MonoBehaviour
 		}
 	}
 
-	public GameObject CreateCase(Vector2Int pos, Vector2Int initialPos, int maxCost, GameObject player)
+	public CaseObject CreateCase(Vector2Int pos, Vector2Int initialPos, int maxCost, Token player)
 	{
-		GameObject curCase = null;
+		CaseObject caseObject = null;
 		if (!containByPos(caseList, pos) && (!CaseTaken(pos) || pos == initialPos) &&
 			(pos.x <= maxX && pos.x >= minX && pos.y >= minY && pos.y <= maxY))//In the grid
 		{
 			if (CalculateCost(pos, initialPos) <= maxCost) {
-				curCase = Instantiate(data.caseObject);
+				GameObject @case = Instantiate(data.caseObject);
 				Vector3 vector3 = V2ItoV3(pos);
 				vector3.z = 10;
-				curCase.transform.position = vector3;
+				@case.transform.position = vector3;
 
-				caseList.Add(curCase);
-				curCase.GetComponent<CaseObject>().moveCost = CalculateCost(pos, initialPos);
-				curCase.GetComponent<CaseObject>().SetPlayer(player);
-				curCase.GetComponent<CaseObject>().UpdateMaterial();
+				caseObject = @case.GetComponent<CaseObject>();
+				caseList.Add(caseObject);
+				caseObject.moveCost = CalculateCost(pos, initialPos);
+				caseObject.SetPlayer(player);
+				caseObject.UpdateMaterial();
 			}
 
 		}
-		return curCase;
+		return caseObject;
 	}
 
 	public int CalculateCost(Vector2Int posA, Vector2Int posB)
@@ -87,7 +88,7 @@ public class MapManager : MonoBehaviour
 		}
 		return Mathf.CeilToInt(Pathfinding.Instance.findPath(posA, posB).Count / 2);
 	}
-	public bool containByPos(List<GameObject> listObj, Vector2 pos)
+	public bool containByPos(List<CaseObject> listObj, Vector2 pos)
 	{
 		foreach (var item in listObj) {
 			if (V3toV2I(item.transform.position) == pos) {

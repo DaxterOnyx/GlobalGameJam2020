@@ -6,7 +6,7 @@ public class StructuresManager : Location
 {
 
     private static StructuresManager _instance;
-    private List<Token> objectivesList = new List<Token>();
+    private List<Structure> objectivesList = new List<Structure>();
     public static StructuresManager Instance
     {
         get
@@ -27,11 +27,11 @@ public class StructuresManager : Location
     {
         foreach (var item in data.prefabCharacterPositionList)
         {
-            Token token = MapManager.Instance.CreateObject(item.prefab, item.position);
-            objectList.Add(token);
-            if(token.GetComponent<Structure>().data.isObjective)
+            Structure structure = MapManager.Instance.CreateObject(item.prefab, item.position) as Structure;
+            objectList.Add(structure);
+            if(structure.data.isObjective)
             {
-                objectivesList.Add(token);
+                objectivesList.Add(structure);
             }
         }
         startDist = data.StartDist;
@@ -54,9 +54,9 @@ public class StructuresManager : Location
         return smallestDist_Obj.Item2;
     }
 
-    public void RemoveObjective(Token token)
+    public void RemoveObjective(Structure structure)
     {
-        objectivesList.Remove(token);
+        objectivesList.Remove(structure);
     }
 
     public int HowManyObjectivesLeft()
@@ -64,14 +64,14 @@ public class StructuresManager : Location
         return objectivesList.Count;
     }
 
-    public void HighlightObjectives(GameObject player, int dist)
+    public void HighlightObjectives(Token player, int dist)
     {
         foreach (var item in objectivesList)
         {
             if (Pathfinding.Instance.PathLenght(
                 MapManager.Instance.V3toV2I(player.transform.position),
                 MapManager.Instance.V3toV2I(item.transform.position)) < dist)
-                item.GetComponent<Character>().Highlight();
+                item.Highlight();
         }
     }
 }

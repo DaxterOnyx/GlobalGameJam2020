@@ -190,7 +190,7 @@ public class Card : MonoBehaviour
 			} else {
 				//One player is selected
 				//Authorize player to move
-				MapManager.Instance.GenerateCaseMap(GameManager.Instance.PlayerSelected.gameObject, GameManager.Instance.PlayerSelected.actionLeft);
+				MapManager.Instance.GenerateCaseMap(GameManager.Instance.PlayerSelected, GameManager.Instance.PlayerSelected.actionLeft);
 			}
 		} else {
 			//NOT Selected

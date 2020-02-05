@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData")]
+[CreateAssetMenu(fileName = "PlayerData", menuName = "Data/Token/PlayerData")]
 public class PlayerData : CharacterData
 {
 	public int Strengh;
