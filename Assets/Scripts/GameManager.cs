@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 			CardSelected.ActionCard(PlayerSelected, TargetSelected);
 			EndSelectionTarget();
 		} else {
+			// Select target is called when you click on a Character
 			if (target is Player)
 				SelectPlayer(target as Player);
 		}
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
 		if (StructuresManager.Instance.HowManyObjectivesLeft() == 0) {
 			Debug.Log("Tu as Gagné!");
 			winText.SetActive(true);
+			//TODO load winscreen
 			return true;
 		}
 		return false;
@@ -150,7 +152,10 @@ public class GameManager : MonoBehaviour
 						case CardData.TargetType.Objective:
 							StructuresManager.Instance.HighlightObjectives(PlayerSelected.gameObject, CardSelected.data.Range);
 							break;
-						//TODO Case hymslef must automaticly activate the card's effect
+						case CardData.TargetType.Himself:
+							EndSelectionTarget();
+							CardSelected.ActionCard(PlayerSelected, PlayerSelected);
+							break;
 						default:
 							Debug.LogError("target type not defined");
 							break;
