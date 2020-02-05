@@ -18,5 +18,13 @@ public abstract class Token : MonoBehaviour
 			Die();
 	}
 
-	internal abstract void Highlight(bool isTarget = true);
+	internal virtual void Highlight(bool isTarget = true)
+	{
+		highlighter.SetActive(true);
+	}
+
+	public virtual void Delight()
+	{
+		highlighter.SetActive(false);
+	}
 }

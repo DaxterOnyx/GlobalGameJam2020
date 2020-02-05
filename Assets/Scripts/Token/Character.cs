@@ -31,20 +31,7 @@ public abstract class Character : Token
 	{
 		return LifePoint;
 	}
-
-	/// <summary>
-	/// Highlight The Character
-	/// </summary>
-	/// <param name="isTarget">Only need to be set as false when selection player, leave void else</param>
-	internal override void Highlight(bool isTarget = true)
-	{
-		highlighter.SetActive(true);
-	}
-
-	public virtual void Delight()
-	{
-		highlighter.SetActive(false);
-	}
+	
 
 	#region Animator Control
 	public void Punch()

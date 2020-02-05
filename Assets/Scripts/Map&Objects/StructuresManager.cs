@@ -16,7 +16,7 @@ public class StructuresManager : Location
             return _instance;
         }
     }
-    public ObjectsManagerData data;
+    public StructuresManagerData data;
     void Awake()
     {
         _instance = this;

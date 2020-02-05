@@ -72,7 +72,7 @@ public abstract class Location : MonoBehaviour
     {
         foreach (var item in objectList)
         {
-            item.GetComponent<Character>().Delight();
+            item.GetComponent<Token>().Delight();
         }
     }
 

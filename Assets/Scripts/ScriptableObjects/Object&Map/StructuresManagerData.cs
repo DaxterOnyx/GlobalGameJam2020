@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ObjectsManagerData", menuName = "Data/ObjectsManagerData")]
-public class ObjectsManagerData : LocationData
+[CreateAssetMenu(fileName = "StructuresManagerData", menuName = "Data/StructuresManagerData")]
+public class StructuresManagerData : LocationData
 {
 
 }
