@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighter: {fileID: 8556132099950372982}
-  transparentLifeBar: {r: 0, g: 0, b: 0, a: 0.49019608}
+  transparentLifeBar: {r: 1, g: 1, b: 1, a: 0.49019608}
   normalLifeBar: {r: 1, g: 1, b: 1, a: 1}
   LifeBarBack: {fileID: 7151753590247743061}
   LifeBarFont: {fileID: 2071762090969010637}
@@ -576,7 +576,7 @@ Transform:
   m_GameObject: {fileID: 7650702492325471037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 3259974812128987831}
   m_RootOrder: 4
