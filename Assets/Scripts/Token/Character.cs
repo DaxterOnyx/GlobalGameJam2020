@@ -47,7 +47,10 @@ public abstract class Character : Token
 		animator.transform.DORotate(new Vector3(0, 0, angle), 0.1f);
 	}
 
-	protected abstract void UpdateArmorDisplay();
+	protected  void UpdateArmorDisplay()
+	{
+		ArmorBar.fillAmount = (float)armorAmount / MaxLifePoint;
+	}
 
 	internal void AddArmor(int amount)
 	{
@@ -84,9 +87,9 @@ public abstract class Character : Token
 
 	internal override void TakeDamage(int damage)
 	{
-		//TODO HEAL WILL UPGRADE THE ARMOR MAKE SPECIAL FUNCTION 
 		int trueDamage = damage;
 
+		//ARMOR
 		if (armorAmount > 0) {
 			trueDamage -= armorAmount;
 			armorAmount -= damage;
@@ -95,9 +98,15 @@ public abstract class Character : Token
 			UpdateArmorDisplay();
 		}
 
+		//Animation of damage
 		Hurt();
 
 		base.TakeDamage(trueDamage);
+	}
+
+	internal override void UpdateLifeDisplay()
+	{
+		LifeBarFont.fillAmount = (float)LifePoint / MaxLifePoint;
 	}
 	#endregion
 }

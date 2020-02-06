@@ -10,7 +10,7 @@ public class Monster : Character
 
     protected override void Start()
     {
-        LifePoint = data.nbMaxLP;
+		Init(data.nbMaxLP);
         highlighter.SetActive(false);
         canvas.SetActive(false);
 		base.Start();
@@ -21,12 +21,6 @@ public class Monster : Character
 		MonstersManager.Instance.Kill(this);
 	}
 
-	internal override void TakeDamage(int damage)
-    {
-        base.TakeDamage(damage);
-        LifeBarFont.fillAmount = (float)LifePoint / data.nbMaxLP;
-    }
-
     private void OnMouseOver()
     {
         canvas.SetActive(true);
@@ -36,9 +30,4 @@ public class Monster : Character
         canvas.SetActive(false);
         
     }
-
-	protected override void UpdateArmorDisplay()
-	{
-		ArmorBar.fillAmount = (float)armorAmount / data.nbMaxLP;
-	}
 }

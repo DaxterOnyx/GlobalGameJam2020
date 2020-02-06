@@ -18,7 +18,7 @@ public class Player : Character
 
     protected override void Start()
 	{
-		LifePoint = data.nbMaxLP;
+		Init(data.nbMaxLP);
 		ResetActionPoint();
 		RefreshActionPointDisplay();
 		//TODO IS BAD VERY BAD, YOU ARE A BAD BOY ROMAIN 
@@ -47,12 +47,6 @@ public class Player : Character
 	internal override void Die()
 	{
 		PlayersManager.Instance.Kill(this);
-	}
-	internal override void TakeDamage(int damage)
-	{
-		Hurt();
-		base.TakeDamage(damage);
-		LifeBarFont.fillAmount =(float) LifePoint / data.nbMaxLP;
 	}
 
 	internal void Unselect()
@@ -153,11 +147,5 @@ public class Player : Character
 	{
 		base.Delight();
 		playerHighlighter.SetActive(false);
-	}
-
-	protected override void UpdateArmorDisplay()
-	{
-		ArmorBar.fillAmount = (float)armorAmount / data.nbMaxLP;
-			
 	}
 }

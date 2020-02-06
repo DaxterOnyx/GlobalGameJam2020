@@ -57,4 +57,9 @@ public class Structure : Token
 		}
 	}
 
+	internal override void UpdateLifeDisplay()
+	{
+		//TODO SHOW LIFE STRUCTURE
+		throw new System.NotImplementedException();
+	}
 }

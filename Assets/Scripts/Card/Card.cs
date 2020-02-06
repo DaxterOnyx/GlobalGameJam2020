@@ -101,9 +101,8 @@ public class Card : MonoBehaviour
 				actor.AddArmor(1);
 				break;
 			case CardData.CardAction.Heal:
-				//TODO ADD VISUAL EFFECT
 				//TODO REMOVE HARC VALUE
-				target.TakeDamage(-2);
+				target.Heal(2);
 				break;
 			case CardData.CardAction.Attack:
 				FMODUnity.RuntimeManager.PlayOneShot(gunSound);

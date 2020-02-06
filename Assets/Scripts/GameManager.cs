@@ -99,11 +99,19 @@ public class GameManager : MonoBehaviour
 
 	internal void EndPlayerTurn()
 	{
+		ResetSelection();
+	}
+
+	private void ResetSelection()
+	{
 		if (CardSelected != null) {
 			CardSelected.Unselect();
 			CardSelected = null;
 		}
-		PlayerSelected = null;
+		if (PlayerSelected != null) {
+			PlayerSelected.Unselect();
+			PlayerSelected = null;
+		}
 		TargetSelected = null;
 	}
 

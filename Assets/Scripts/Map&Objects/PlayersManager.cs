@@ -22,7 +22,7 @@
 	{
 		GameManager.Instance.IsGameLost();
 		foreach (var item in objectList) {
-			item.GetComponent<Player>().ResetActionPoint();
+			(item as Player).ResetActionPoint();
 		}
 	}
 
@@ -35,9 +35,9 @@
 	{
 		foreach (var item in objectList)
 		{
-			if (item.GetComponent<Player>().actionLeft >= cost)
+			if ((item as Player).actionLeft >= cost)
 			{
-				item.GetComponent<Player>().Highlight(false);
+				(item as Player).Highlight(false);
 			}
 		}
 	}
