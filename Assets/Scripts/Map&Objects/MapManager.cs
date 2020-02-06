@@ -65,7 +65,7 @@ public class MapManager : MonoBehaviour
 			(pos.x <= maxX && pos.x >= minX && pos.y >= minY && pos.y <= maxY))//In the grid
 		{
 			if (CalculateCost(pos, initialPos) <= maxCost) {
-				GameObject @case = Instantiate(data.caseObject);
+				GameObject @case = Instantiate(data.caseObject,transform);
 				Vector3 vector3 = V2ItoV3(pos);
 				vector3.z = 10;
 				@case.transform.position = vector3;
