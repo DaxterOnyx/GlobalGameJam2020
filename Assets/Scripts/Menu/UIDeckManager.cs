@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class UIDeckManager : MonoBehaviour
@@ -15,19 +14,19 @@ public class UIDeckManager : MonoBehaviour
 	}
 
 	[SerializeField]
-	public Dictionary<Card,int> deck;
+	public List<CardCounter> deck;
 
-	public 
+	public
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
 		_instance = this;
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
 }

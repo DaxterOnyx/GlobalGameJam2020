@@ -7,4 +7,5 @@ public class PlayerData : CharacterData
 {
 	public int Strengh;
     public int FireGunDamage;
+	public CardCounter[] CardAddinTeam;
 }
