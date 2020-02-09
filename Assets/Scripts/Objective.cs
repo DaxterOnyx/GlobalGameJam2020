@@ -8,6 +8,6 @@ public class Objective : MonoBehaviour
     {
         Debug.Log("Entered");
         TutoManager.Instance.Next();
-        GameObject.Destroy(this);
+        Destroy(this);
     }
 }

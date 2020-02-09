@@ -2288,6 +2288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53dcb871f1961c240b7b22a80301c211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterTuto:
+    prefab: {fileID: 1282000221399074654, guid: a94b735ac34bb184ab3184e36489daad,
+      type: 3}
+    position: {x: 2, y: 4}
   bubbles:
   - bubble: {fileID: 206603889}
     isFollowed: 0

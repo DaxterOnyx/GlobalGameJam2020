@@ -14,9 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDist: 100
   prefabCharacterPositionList: []
-  retardedSpawns:
-  - turn: 0
-    newObject:
-      prefab: {fileID: 1282000221399074654, guid: a94b735ac34bb184ab3184e36489daad,
-        type: 3}
-      position: {x: 2, y: 4}
+  retardedSpawns: []

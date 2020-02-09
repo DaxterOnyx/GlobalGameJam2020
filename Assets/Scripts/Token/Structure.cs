@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Structure : Token
 {
-    public StrutureData data;
+    public StructureData data;
 	public Image repairBar;
 	public GameObject canvas;
 	int repairPoint;

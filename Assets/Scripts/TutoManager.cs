@@ -14,7 +14,7 @@ public class TutoManager : MonoBehaviour
             return _instance;
         }
     }
-
+    public Prefab_Pos monsterTuto;
     public List<Bubble> bubbles; //bool to know if the next bubble is to be printed now or after
 
     private void Start()

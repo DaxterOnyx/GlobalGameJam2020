@@ -254,7 +254,10 @@ public class CardManager : MonoBehaviour
 		OrganizeHand();
 		UpdateShowCount();
 		if (GameManager.Instance.isTuto)
+		{
 			TutoManager.Instance.Next();
+			DrawOneCard();
+		}
 
 		///Show player movement again
 

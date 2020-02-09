@@ -41,7 +41,11 @@ public class TurnManager : MonoBehaviour
 			StartMonsterTurn();
 		}
 		if (GameManager.Instance.isTuto)
+		{
 			TutoManager.Instance.Next();
+			if(Turn==1)
+				MonstersManager.Instance.SpawnMonster(TutoManager.Instance.monsterTuto);
+		}
 	}
 
 	private void StartMonsterTurn()
