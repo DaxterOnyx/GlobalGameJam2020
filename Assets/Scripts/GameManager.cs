@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
 	internal Token TargetSelected;
 	private bool SelectingTarget;
 	public GameObject winText;
+	public bool isTuto { get; private set; }
 	// Start is called before the first frame update
 	void Start()
 	{
 		Instance = this;
+		isTuto = SceneManager.GetActiveScene().name == "Tuto";
 	}
 
 	// Update is called once per frame

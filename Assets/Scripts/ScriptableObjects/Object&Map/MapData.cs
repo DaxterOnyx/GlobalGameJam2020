@@ -7,4 +7,10 @@ public class MapData : ScriptableObject
 {
     public float moveDuration;
     public GameObject caseObject;
+    [Header("Camera limits")]
+    public float CamMinX;
+    public float CamMinY, CamMaxX, CamMaxY;
+    [Header("Map limits")]
+    public int MapMinX;
+    public int MapMinY, MapMaxX, MapMaxY;
 }

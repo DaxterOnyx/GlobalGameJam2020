@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ab05af6581a89449e78024ccc46448, type: 3}
+  m_Name: PlayerManagerData Tuto
+  m_EditorClassIdentifier: 
+  StartDist: 100
+  prefabCharacterPositionList:
+  - prefab: {fileID: 7067821016749783108, guid: f959c0aff2f20ba47b265044312143b1,
+      type: 3}
+    position: {x: 9, y: -6}
+  - prefab: {fileID: 5796349384072476518, guid: 4ad1385b902092044813987ad7cf2428,
+      type: 3}
+    position: {x: 7, y: -8}

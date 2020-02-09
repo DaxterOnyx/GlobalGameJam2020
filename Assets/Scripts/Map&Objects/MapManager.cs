@@ -18,12 +18,18 @@ public class MapManager : MonoBehaviour
 	public MapData data;
 	public List<CaseObject> caseList = new List<CaseObject>();
 	private Dictionary<Token, Vector2Int> dico = new Dictionary<Token, Vector2Int>();
-	public int minX, minY, maxX, maxY;
-
+	public int minX { get; private set; } 
+	public int minY { get; private set; }
+	public int maxX { get; private set; }
+	public int maxY { get; private set; }
 	#endregion
 	private void Awake()
 	{
 		_instance = this;
+		minX = data.MapMinX; 
+		minY = data.MapMinY; 
+		maxX = data.MapMaxX; 
+		maxY = data.MapMaxY;
 	}
 	private void Update()
 	{
