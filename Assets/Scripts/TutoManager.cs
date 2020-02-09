@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutoManager : MonoBehaviour
 {
@@ -38,7 +39,8 @@ public class TutoManager : MonoBehaviour
             Next();
         else
             Time.timeScale = 1;
-        //TODO end tuto level when bubbles is empty
+        if (bubbles.Count == 0)
+            SceneManager.LoadScene("");
     }
 }
 [System.Serializable]

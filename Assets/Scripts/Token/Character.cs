@@ -103,10 +103,10 @@ public abstract class Character : Token
 
 		base.TakeDamage(trueDamage);
 	}
+	#endregion
 
 	internal override void UpdateLifeDisplay()
 	{
 		LifeBarFont.fillAmount = (float)LifePoint / MaxLifePoint;
 	}
-	#endregion
 }
