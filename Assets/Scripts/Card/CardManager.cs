@@ -64,7 +64,7 @@ public class CardManager : MonoBehaviour
 	#endregion
 
 	#region Initialise
-	void Awake()
+	void Start()
 	{
 		_instance = this;
 		InvokeDeck();
@@ -76,7 +76,8 @@ public class CardManager : MonoBehaviour
 		hand = new List<Card>();
 		discard = new List<Card>();
 		DrawCardAtStartTurn = data.DrawCardAtStartTurn;
-		ShuffleDeck();
+		if(!GameManager.Instance.isTuto) //Don't shuffle at start for tuto
+			ShuffleDeck();
 		UpdateShowCount();
 	}
 	#endregion
@@ -252,6 +253,8 @@ public class CardManager : MonoBehaviour
 
 		OrganizeHand();
 		UpdateShowCount();
+		if (GameManager.Instance.isTuto)
+			TutoManager.Instance.Next();
 
 		///Show player movement again
 

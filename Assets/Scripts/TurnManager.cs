@@ -40,6 +40,8 @@ public class TurnManager : MonoBehaviour
 			EndPlayerTurn();
 			StartMonsterTurn();
 		}
+		if (GameManager.Instance.isTuto)
+			TutoManager.Instance.Next();
 	}
 
 	private void StartMonsterTurn()
