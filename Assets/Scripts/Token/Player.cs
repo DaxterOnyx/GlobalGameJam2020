@@ -21,11 +21,14 @@ public class Player : Character
 		Init(data.nbMaxLP);
 		ResetActionPoint();
 		RefreshActionPointDisplay();
-		//TODO IS BAD VERY BAD, YOU ARE A BAD BOY ROMAIN 
-		foreach (var item in GetComponentsInChildren<Image>())
+		foreach (var image in listActionPoints)
 		{
-			item.color = transparentLifeBar;
+			image.color = transparentLifeBar;
 		}
+		LifeBarFont.color = transparentLifeBar;
+		LifeBarBack.color = transparentLifeBar;
+		ArmorBar.color = transparentLifeBar;
+
 		highlighter.SetActive(false);
 		playerHighlighter.SetActive(false);
 		base.Start();
@@ -121,7 +124,7 @@ public class Player : Character
 		foreach (var image in listActionPoints)
 		{
 			image.color = normalLifeBar;
-  }
+		}
 		LifeBarBack.color = normalLifeBar;
 		LifeBarFont.color = normalLifeBar;
 		ArmorBar.color = normalLifeBar;

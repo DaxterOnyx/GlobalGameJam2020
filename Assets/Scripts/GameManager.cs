@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 	public GameObject winText;
 	public bool isTuto { get; private set; }
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
 	{
 		Instance = this;
 		isTuto = SceneManager.GetActiveScene().name == "Tuto";
@@ -141,7 +141,6 @@ public class GameManager : MonoBehaviour
 	{
 		if (CardSelected.data.Cost <= PlayerSelected.actionLeft) {
 			if (CardSelected.data.Cost <= PlayerSelected.actionLeft) {
-				//TODO SHOW POSSIBLE Targets
 
 				//Hide deplacement Case
 				MapManager.Instance.DestroyCaseMap();
@@ -178,7 +177,6 @@ public class GameManager : MonoBehaviour
 
 	private void EndSelectionTarget()
 	{
-		//TODO HIDE POSSIBLE Targets
 		SelectingTarget = false;
 		PlayersManager.Instance.DelightTargets();
 		MonstersManager.Instance.DelightTargets();

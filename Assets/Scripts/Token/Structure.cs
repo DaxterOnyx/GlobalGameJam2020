@@ -7,11 +7,14 @@ public class Structure : Token
 {
     public StructureData data;
 	public Image repairBar;
-	public GameObject canvas;
+	public GameObject objectiveBar;
+	public GameObject lifeBar;
+	public Image lifeBarFont;
 	int repairPoint;
 
 	protected override void Start()
 	{
+		lifeBar.SetActive(false);
 		LifePoint = data.nbMaxLP;
 		repairPoint = 0;
 		if (data.isObjective)
@@ -19,7 +22,7 @@ public class Structure : Token
 			UpdateRepair();
 		}
 		highlighter.SetActive(false);
-		canvas.SetActive(false);
+		objectiveBar.SetActive(false);
 	}
 
 	internal override void Die()
@@ -33,7 +36,6 @@ public class Structure : Token
 		UpdateRepair();
 		if (repairPoint >= data.repairCount && data.isObjective)
 		{
-			//TODO Check if another objectif is necesarry
 			Debug.Log("One Objectif Repaired");
 			StructuresManager.Instance.RemoveObjective(this);
 			GameManager.Instance.IsGameWin();
@@ -47,19 +49,21 @@ public class Structure : Token
 
 	private void OnMouseOver()
 	{
-		canvas.SetActive(data.isObjective);
+		objectiveBar.SetActive(data.isObjective);
+		if (LifePoint < MaxLifePoint)
+			lifeBar.SetActive(true);
 	}
 	private void OnMouseExit()
 	{
 		if (data.isObjective)
 		{
-			canvas.SetActive(false);
+			objectiveBar.SetActive(false);
 		}
+		lifeBar.SetActive(false);
 	}
 
 	internal override void UpdateLifeDisplay()
 	{
-		//TODO SHOW LIFE STRUCTURE
-		throw new System.NotImplementedException();
+		lifeBarFont.fillAmount = (float)LifePoint / MaxLifePoint;
 	}
 }

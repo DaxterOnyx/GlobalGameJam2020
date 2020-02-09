@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43c259678bf0ca34094486b5b29dbf8e, type: 3}
-  m_Name: Wall
+  m_Name: Barricade
   m_EditorClassIdentifier: Assembly-CSharp::StrutureData
   nbMaxLP: 50
-  repairCount: 0
-  isObjective: 0
+  repairCount: 50
+  isObjective: 1
