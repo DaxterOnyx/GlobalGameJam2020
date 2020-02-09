@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDist: 100
   prefabCharacterPositionList:
-  - prefab: {fileID: 7067821016749783108, guid: f959c0aff2f20ba47b265044312143b1,
-      type: 3}
-    position: {x: 9, y: -6}
   - prefab: {fileID: 5796349384072476518, guid: 4ad1385b902092044813987ad7cf2428,
       type: 3}
-    position: {x: 7, y: -8}
+    position: {x: -3, y: -4}

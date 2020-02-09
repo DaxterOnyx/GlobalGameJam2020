@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5515b9390febc144295079c411ff1c45, type: 3}
+  m_Name: ManagerCardData 1
+  m_EditorClassIdentifier: 
+  MaxCardInHand: 10
+  DrawCardAtStartTurn: 3
+  CardPrefab: {fileID: 2905902147597637931, guid: 4ff05e089abde284dad5e858aa1f8ef9,
+    type: 3}
+  DrawOneCardTime: 0.3
+  CardSize: 160
+  InitialCard:
+  - {fileID: 11400000, guid: 15db960f242b71148a8156c34c9427e4, type: 2}
+  - {fileID: 11400000, guid: 15db960f242b71148a8156c34c9427e4, type: 2}
+  - {fileID: 11400000, guid: 15db960f242b71148a8156c34c9427e4, type: 2}
+  - {fileID: 11400000, guid: 15db960f242b71148a8156c34c9427e4, type: 2}
+  - {fileID: 11400000, guid: 15db960f242b71148a8156c34c9427e4, type: 2}
+  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
+  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
+  - {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
+  - {fileID: 11400000, guid: a4a04749bd7b56f42a00040a245f8721, type: 2}
+  - {fileID: 11400000, guid: a4a04749bd7b56f42a00040a245f8721, type: 2}
+  - {fileID: 11400000, guid: add68ce5b128c8e4ea35fb48ceb8cb46, type: 2}
+  - {fileID: 11400000, guid: add68ce5b128c8e4ea35fb48ceb8cb46, type: 2}
+  - {fileID: 11400000, guid: add68ce5b128c8e4ea35fb48ceb8cb46, type: 2}
+  - {fileID: 11400000, guid: dbac74b61f30c8143bb3fca98576f0a7, type: 2}
+  - {fileID: 11400000, guid: dbac74b61f30c8143bb3fca98576f0a7, type: 2}
