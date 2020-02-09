@@ -85,15 +85,19 @@ public class MonstersManager : Location
         if (atkCount > 0 && hitList.Count > 0)
         {
 			Token target = MapManager.Instance.TryGetTokenByPos(hitList[0].destination);
-			if (target != null)
+            while (hitList.Count > 0)
             {
-				Monster actor = (hitList[0].token as Monster);
-				actor.Punch();
-				actor.LookAt(target);
+                if (target != null)
+                {
+				    Monster actor = (hitList[0].token as Monster);
+				    actor.Punch();
+				    actor.LookAt(target);
 
-				target.TakeDamage(actor.data.Strengh);
+				    target.TakeDamage(actor.data.Strengh);
+                }
+                hitList.RemoveAt(0);
+
             }
-            hitList.RemoveAt(0);
             atkCount = 0;
         }
         

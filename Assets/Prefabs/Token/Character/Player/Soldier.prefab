@@ -292,6 +292,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: df79f58fe5309a04a93022fe05013708,
         type: 2}
+    - target: {fileID: 1485329112915151435, guid: 705ebc992fe8ada4f9552dacfdf21508,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3259974812128987831, guid: 705ebc992fe8ada4f9552dacfdf21508,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -356,7 +361,7 @@ PrefabInstance:
     - target: {fileID: 8121187900906208034, guid: 705ebc992fe8ada4f9552dacfdf21508,
         type: 3}
       propertyPath: m_Name
-      value: Soldier 1
+      value: Soldier
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705ebc992fe8ada4f9552dacfdf21508, type: 3}
