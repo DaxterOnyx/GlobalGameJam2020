@@ -40,7 +40,7 @@ public class TutoManager : MonoBehaviour
         else
             Time.timeScale = 1;
         if (bubbles.Count == 0)
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("CharacterSelection");
     }
 }
 [System.Serializable]
