@@ -25,4 +25,4 @@ MonoBehaviour:
     newObject:
       prefab: {fileID: 6112836037674785876, guid: 611a2ccee8577c74b929b3a1b2a6c6cc,
         type: 3}
-      position: {x: 5, y: 2}
+      position: {x: -3, y: -4}
