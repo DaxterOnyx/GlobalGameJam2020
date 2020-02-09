@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 	public GameObject winText;
 	public bool isTuto { get; private set; }
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
 	{
 		Instance = this;
 		isTuto = SceneManager.GetActiveScene().name == "Tuto";
