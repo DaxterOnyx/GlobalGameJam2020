@@ -31,13 +31,12 @@ public class CardManager : MonoBehaviour
     private Card[] InitialCards
 	{
 		get {
-			//TODO ADD CARDS OF PLAYERS 
 			CardData[] cardDatas = data.InitialCard;
 			int nb = cardDatas.Length;
 			Card[] cards = new Card[nb];
 			for (int i = 0; i < nb; i++) {
 				Card card = Instantiate(data.CardPrefab, transform).GetComponent<Card>();
-				card.Init(cardDatas[i]);
+				card.Init(cardDatas[i],true);
 				card.RecTransform.anchoredPosition = new Vector2(0, 0);
 				card.gameObject.SetActive(false);
 				cards[i] = card;

@@ -1,5 +1,5 @@
 ﻿[System.Serializable]
-public struct CardCounter
+public class CardCounter
 {
 	public CardData card;
 	public int count;

@@ -15,6 +15,10 @@ public class UIPlayerDisplay : MonoBehaviour
 	public TextMeshProUGUI GunFireDisplay;
 	public TextMeshProUGUI CardListDisplay;
 
+	public GameObject selecter;
+
+	internal bool isSelected = false;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -37,11 +41,23 @@ public class UIPlayerDisplay : MonoBehaviour
 		CardListDisplay.text = cards;
 
 		//TODO Dsiplay card on hover name of card
+
+		selecter.SetActive(false);
 	}
 
-	// Update is called once per frame
-	void Update()
+	public void OnClick()
 	{
+		isSelected = !isSelected;
+		if (isSelected) {
+			selecter.SetActive(true);
 
+			Debug.Log(data.CardAddinTeam.Length);
+			UIDeckManager.Instance.AddCard(data.CardAddinTeam);
+		}
+		else {
+			selecter.SetActive(false);
+			Debug.Log(data.CardAddinTeam.Length);
+			UIDeckManager.Instance.RemoveCard(data.CardAddinTeam);
+		}
 	}
 }

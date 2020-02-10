@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +9,7 @@ public class Card : MonoBehaviour
 {
 	public CardData data;
 	public RectTransform RecTransform;
+	internal float CardSize { get { return RecTransform.rect.width * 3; } }
 	public Image Image;
 	public TextMeshProUGUI Name;
 	public TextMeshProUGUI Cost;
@@ -33,6 +33,8 @@ public class Card : MonoBehaviour
 	public string punchSound;
 
 	private bool interactable;
+	private bool inPlay;
+	private bool isInit;
 
 	public bool Interactable
 	{
@@ -47,12 +49,13 @@ public class Card : MonoBehaviour
 	private void Start()
 	{
 		//actions = new List<(float, Action)>();
-		if (data != null)
-			Init(data);
+		if (data != null && !isInit)
+			Init(data, true);
 	}
 
-	public void Init(CardData data)
+	public void Init(CardData data, bool inPlay)
 	{
+		isInit = true;
 		this.data = data;
 		gameObject.name = data.Name;
 		Image.sprite = data.Image;
@@ -60,6 +63,7 @@ public class Card : MonoBehaviour
 		Cost.text = data.Cost.ToString();
 		Description.text = data.Description;
 		Range.text = data.Range.ToString();
+		this.inPlay = inPlay;
 	}
 
 	private void Update()
@@ -172,6 +176,8 @@ public class Card : MonoBehaviour
 	/// </summary>
 	internal void Unselect()
 	{
+		if (!inPlay)
+			return;
 		if (GameManager.Instance.CardSelected == this) {
 			//Selected
 			GameManager.Instance.CardSelected = null;
@@ -193,7 +199,8 @@ public class Card : MonoBehaviour
 
 	internal void Select()
 	{
-		
+		if (!inPlay)
+			return;
 		animator.SetBool("Selected", true);
 	}
 
@@ -235,6 +242,8 @@ public class Card : MonoBehaviour
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
+		if (!inPlay)
+			return;
 		FMODUnity.RuntimeManager.PlayOneShot(touchSound);
 		animator.SetTrigger("Click");
 		RecTransform.SetAsLastSibling();
@@ -244,6 +253,8 @@ public class Card : MonoBehaviour
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
+		if (!inPlay)
+			return;
 		FMODUnity.RuntimeManager.PlayOneShot(touchSound);
 		CardManager.Instance.MouseOver = true;
 		RecTransform.SetAsLastSibling();
@@ -252,6 +263,8 @@ public class Card : MonoBehaviour
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
+		if (!inPlay)
+			return;
 		CardManager.Instance.MouseOver = false;
 		animator.SetBool("Over", false);
 	}

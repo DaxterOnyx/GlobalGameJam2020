@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UITeamManager : MonoBehaviour
 {
@@ -15,7 +17,9 @@ public class UITeamManager : MonoBehaviour
 	}
 
 	public RectTransform PlayersRef;
-	
+	public TextMeshProUGUI counter;
+	public Button Play; 
+
 	public GameObject PlayerPrefab;
 	public List<UIPlayerDisplay> players;
 
@@ -30,6 +34,20 @@ public class UITeamManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		//TODO Cest moche
+		int count = 0;
+		foreach (var item in players) {
+			if (item.isSelected)
+				count++;
+		}
+
+		//TODO CHEAT IS HERE
+		counter.text = count + "/2";
+
+
+		if (count == 2)
+			Play.interactable = true;
+		else
+			Play.interactable = false;
     }
 }
