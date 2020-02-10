@@ -27,7 +27,6 @@ public class TutoManager : MonoBehaviour
     public void Next()
     {
         bubbles[0].bubble.SetActive(true);
-        Time.timeScale = 0;
     }
 
     public void Remove()
@@ -37,8 +36,6 @@ public class TutoManager : MonoBehaviour
         bubbles.RemoveAt(0);
         if (isFollowed)
             Next();
-        else
-            Time.timeScale = 1;
         if (bubbles.Count == 0)
             SceneManager.LoadScene("CharacterSelection");
     }
