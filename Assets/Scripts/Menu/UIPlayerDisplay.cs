@@ -13,8 +13,7 @@ public class UIPlayerDisplay : MonoBehaviour
 	public TextMeshProUGUI LifeDisplay;
 	public TextMeshProUGUI StrenghDisplay;
 	public TextMeshProUGUI GunFireDisplay;
-	public RectTransform CardRef;
-	public GameObject CardPrefab;
+	public TextMeshProUGUI CardListDisplay;
 
 	// Start is called before the first frame update
 	void Start()
@@ -31,17 +30,13 @@ public class UIPlayerDisplay : MonoBehaviour
 		StrenghDisplay.text = data.Strengh.ToString();
 		GunFireDisplay.text = data.FireGunDamage.ToString();
 
-		List<Card> cards = new List<Card>();
+		string cards = "";
 		foreach (CardCounter cardCounter in data.CardAddinTeam) {
-			for (int i = 0; i < cardCounter.count; i++) {
-				var go = Instantiate(CardPrefab);
-				var card = go.GetComponent<Card>();
-				card.Init(cardCounter.card);
-				cards.Add(card);
-			}
+			cards += cardCounter.card.Name + " x " + cardCounter.count + "\n";
 		}
+		CardListDisplay.text = cards;
 
-
+		//TODO Dsiplay card on hover name of card
 	}
 
 	// Update is called once per frame

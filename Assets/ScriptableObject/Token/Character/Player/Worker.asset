@@ -16,3 +16,6 @@ MonoBehaviour:
   nbActionPoint: 5
   Strengh: 2
   FireGunDamage: 2
+  CardAddinTeam:
+  - card: {fileID: 11400000, guid: f787f6e9a14b050428bd006bc24773aa, type: 2}
+    count: 3

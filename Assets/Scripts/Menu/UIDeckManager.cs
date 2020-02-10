@@ -13,6 +13,8 @@ public class UIDeckManager : MonoBehaviour
 		}
 	}
 
+	public GameObject CardPrefab;
+
 	[SerializeField]
 	public List<CardCounter> deck;
 
@@ -22,6 +24,17 @@ public class UIDeckManager : MonoBehaviour
 	void Start()
 	{
 		_instance = this;
+
+		List<Card> cards = new List<Card>();
+		foreach (CardCounter cardCounter in deck) {
+			for (int i = 0; i < cardCounter.count; i++) {
+				var go = Instantiate(CardPrefab);
+				var card = go.GetComponent<Card>();
+				card.Init(cardCounter.card);
+				cards.Add(card);
+			}
+		}
+		//TODO SET AS A GOOD PLACE
 	}
 
 	// Update is called once per frame
