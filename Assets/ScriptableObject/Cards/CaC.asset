@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb120990307ccd749989379053e05d55, type: 3}
   m_Name: CaC
   m_EditorClassIdentifier: 
-  Name: Punch
+  Name: Uppercut
   Image: {fileID: 21300000, guid: 77f51f7d2d78c564fbcd737cb789b589, type: 3}
-  Description: The player gives a punch to an ennemy
+  Description: "Le personnage Attaque un ennemi au corps \xE0 corps"
   Cost: 1
   Action: 2
   Range: 1

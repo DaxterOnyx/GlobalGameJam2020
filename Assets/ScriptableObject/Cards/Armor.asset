@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb120990307ccd749989379053e05d55, type: 3}
   m_Name: Armor
   m_EditorClassIdentifier: 
-  Name: Armor
+  Name: A couvert
   Image: {fileID: 21300000, guid: af0f6cd8b85817141a20196781cab095, type: 3}
-  Description: Put a shield that absorb 1 degat point
+  Description: "Prot\xE8ge le personnage cibl\xE9 de 1 d\xE9g\xE2t."
   Cost: 1
   Action: 3
   Range: 0

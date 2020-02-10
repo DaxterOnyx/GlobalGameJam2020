@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb120990307ccd749989379053e05d55, type: 3}
   m_Name: Repair
   m_EditorClassIdentifier: 
-  Name: Repair
+  Name: "R\xE9paration"
   Image: {fileID: 21300000, guid: 37dfb8b6a4e95df4cb1798d4a9150d6b, type: 3}
-  Description: Repair target of 25 points
+  Description: "R\xE9pare 25 points de structure"
   Cost: 1
   Action: 1
   Range: 1

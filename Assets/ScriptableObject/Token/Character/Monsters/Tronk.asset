@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tronk
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   nbMaxLP: 15
-  nbActionPoint: 20
+  nbActionPoint: 3
   Strengh: 2
   target: 0
