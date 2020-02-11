@@ -163,8 +163,8 @@ public class GameManager : MonoBehaviour
 							StructuresManager.Instance.HighlightObjectives(PlayerSelected, CardSelected.data.Range);
 							break;
 						case CardData.TargetType.Himself:
-							EndSelectionTarget();
 							CardSelected.ActionCard(PlayerSelected, PlayerSelected);
+							EndSelectionTarget();
 							break;
 						default:
 							Debug.LogError("target type not defined");
