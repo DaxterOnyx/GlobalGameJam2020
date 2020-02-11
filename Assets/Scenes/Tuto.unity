@@ -865,7 +865,7 @@ PrefabInstance:
       propertyPath: m_text
       value: "Vous-etes efficace ! Vous pourriez Reparer cette barricade tant que
         vous y etes ? Il suffit d\u2019utiliser la carte Reparation pour le mettre
-        en \xE9tat. Attention, elle n\u2019a qu\u2019une portee de  1, rapprochez-vous
+        en etat. Attention, elle n\u2019a qu\u2019une portee de  1, rapprochez-vous
         donc au plus pret."
       objectReference: {fileID: 0}
     - target: {fileID: 7471410291916829464, guid: fd05cb09561615342b62da3c1f960c7b,
@@ -3965,7 +3965,7 @@ PrefabInstance:
       value: "Des saletees de plantes nous attaquent ! Selectionnez la carte Salve
         de tir que vous avez pioche, puis l\u2019unite qui l\u2019utilisera et enfin
         votre cible pour l\u2019envoyer bouffer les pissenlits par la racine. Chaque
-        carte \xE0 un cout en points d\u2019action (a droite) et une portee (a gauche)."
+        carte a un cout en points d\u2019action (a droite) et une portee (a gauche)."
       objectReference: {fileID: 0}
     - target: {fileID: 7471410291916829464, guid: fd05cb09561615342b62da3c1f960c7b,
         type: 3}

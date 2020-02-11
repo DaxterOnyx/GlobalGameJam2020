@@ -18,10 +18,12 @@ public class ObjectiveUI : MonoBehaviour , IPointerEnterHandler , IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         structure.ShowRepair();
+        structure.Highlight();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         structure.HideRepair();
+        structure.Delight();
     }
 }
