@@ -194,6 +194,7 @@ public class Card : MonoBehaviour
 			Debug.LogWarning("Unselect not selected card.");
 		}
 
+		animator.SetBool("Over", false);
 		animator.SetBool("Selected", false);
 	}
 
