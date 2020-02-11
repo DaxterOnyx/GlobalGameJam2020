@@ -156,7 +156,7 @@ public class Card : MonoBehaviour
 						isValable = true;
 					break;
 				case CardData.TargetType.Objective:
-					if (target is Structure && (target as Structure).data.isObjective)
+					if (target is Structure && StructuresManager.Instance.IsObjective(target as Structure))
 						isValable = true;
 					break;
 				default:

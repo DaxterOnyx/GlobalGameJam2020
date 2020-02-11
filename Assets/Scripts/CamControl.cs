@@ -30,7 +30,12 @@ public class CamControl : MonoBehaviour
         }
         else
         {
-            x = Mathf.Floor(x*gain/div)/gain;
+            if (x != 0)
+            {
+                x /= div;
+                if (Mathf.Abs(x) < gain)
+                    x = 0;
+            }
         }
 
         if (n.touched)
@@ -46,7 +51,12 @@ public class CamControl : MonoBehaviour
         }
         else
         {
-            y = Mathf.Floor(y * gain / div) / gain;
+            if (y != 0)
+            {
+                y /= div;
+                if (Mathf.Abs(y) < gain)
+                    y = 0;
+            }
         }
         axis = new Vector2(x, y);
     }

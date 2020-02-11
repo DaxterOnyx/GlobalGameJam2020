@@ -89,4 +89,9 @@ public class StructuresManager : Location
                 item.Highlight();
         }
     }
+
+    public bool IsObjective(Structure struc)
+    {
+        return objectivesList.Contains(struc);
+    }
 }
