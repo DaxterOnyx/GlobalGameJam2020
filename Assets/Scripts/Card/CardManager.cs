@@ -140,6 +140,7 @@ public class CardManager : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot(drawSound);
         nbCardToDraw--;
 		var card = deck[0];
+		card.Unselect();
 		card.transform.SetAsLastSibling();
 		card.Interactable = true;
 		card.Return(true);
