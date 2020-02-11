@@ -7,4 +7,5 @@ public class StructureData : TokenData
 {
     public int repairCount;
     public bool isObjective;
+    public string objectiveText;
 }

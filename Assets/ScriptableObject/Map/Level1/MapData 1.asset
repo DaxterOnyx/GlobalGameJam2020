@@ -15,6 +15,8 @@ MonoBehaviour:
   moveDuration: 0.5
   caseObject: {fileID: 3938646487395902612, guid: d32182db0345d4340953058624e2f235,
     type: 3}
+  objectiveUI: {fileID: 8765843255248360668, guid: f94346ae28c8bf043a2e2aae480f8edc,
+    type: 3}
   CamMinX: -5
   CamMinY: -8
   CamMaxX: 5
