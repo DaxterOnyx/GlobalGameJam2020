@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
 			if (selected == CardSelected) {
 				//unselect Actual Card
 				CardSelected.Unselect();
+				PlayersManager.Instance.DelightTargets();
 				CardSelected = null;
 				if (PlayerSelected != null) {
 					//player can move
@@ -178,6 +179,8 @@ public class GameManager : MonoBehaviour
 	private void EndSelectionTarget()
 	{
 		SelectingTarget = false;
+		PlayerSelected.Unselect();
+		PlayerSelected = null;
 		PlayersManager.Instance.DelightTargets();
 		MonstersManager.Instance.DelightTargets();
 		StructuresManager.Instance.DelightTargets();
