@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Objective : MonoBehaviour
+public class MarkedArea : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
