@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
 		if (StructuresManager.Instance.HowManyObjectivesLeft() == 0) {
 			Debug.Log("Tu as Gagné!");
 			winText.SetActive(true);
-			//TODO load winscreen
+			SceneManager.LoadScene("Victory");
 			return true;
 		}
 		return false;

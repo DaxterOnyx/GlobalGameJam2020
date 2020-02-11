@@ -94,6 +94,7 @@ public class MonstersManager : Location
 				    actor.LookAt(target);
 
 				    target.TakeDamage(actor.data.Strengh);
+                    GameManager.Instance.IsGameLost();
                 }
                 hitList.RemoveAt(0);
 
