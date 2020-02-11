@@ -2869,3 +2869,6 @@ MonoBehaviour:
   s: {fileID: 1723041936}
   e: {fileID: 1502723222}
   w: {fileID: 643559522}
+  augSpeed: 0.015
+  gain: 1e+14
+  div: 1.2

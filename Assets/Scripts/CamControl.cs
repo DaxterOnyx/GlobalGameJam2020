@@ -7,7 +7,9 @@ public class CamControl : MonoBehaviour
     public static CamControl Instance { get; private set; }
     public CamMover n, s, e, w;
     public Vector2 axis { get; private set; }
-
+    private float x, y;
+    public float augSpeed;
+    public float gain, div;
     private void Awake()
     {
         Instance = this;
@@ -17,28 +19,35 @@ public class CamControl : MonoBehaviour
     {
         if (e.touched)
         {
-            axis = new Vector2(1, axis.y);
+            x += augSpeed;
+            x = Mathf.Clamp(x, 0, 1);
         }
         else if (w.touched)
         {
-            axis = new Vector2(-1, axis.y);
+            x -= augSpeed;
+
+            x = Mathf.Clamp(x, -1, 0);
         }
         else
         {
-            axis = new Vector2(0, axis.y);
+            x = Mathf.Floor(x*gain/div)/gain;
         }
 
         if (n.touched)
         {
-            axis = new Vector2(axis.x, 1);
+            y += augSpeed;
+
+            y = Mathf.Clamp(y, 0, 1);
         }
         else if (s.touched)
         {
-            axis = new Vector2(axis.x, -1);
+            y -= augSpeed;
+            y = Mathf.Clamp(y, -1, 0);
         }
         else
         {
-            axis = new Vector2(axis.x, 0);
+            y = Mathf.Floor(y * gain / div) / gain;
         }
+        axis = new Vector2(x, y);
     }
 }
