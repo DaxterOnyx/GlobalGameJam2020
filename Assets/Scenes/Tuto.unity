@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -559,6 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: a0ef941cc95967545a0e722ea5489ff6, type: 2}
+  objectivesPanel: {fileID: 0}
 --- !u!114 &291764791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2610,7 +2611,6 @@ GameObject:
   - component: {fileID: 1214948984}
   - component: {fileID: 1214948988}
   - component: {fileID: 1214948987}
-  - component: {fileID: 1214948986}
   - component: {fileID: 1214948985}
   m_Layer: 0
   m_Name: Main Camera
@@ -2675,19 +2675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: -1
---- !u!114 &1214948986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214948983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b799a79dca32cf046876a19006dd2777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.25
 --- !u!114 &1214948987
 MonoBehaviour:
   m_ObjectHideFlags: 0
