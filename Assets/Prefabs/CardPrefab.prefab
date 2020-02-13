@@ -668,6 +668,7 @@ MonoBehaviour:
   touchSound: event:/Touch Card
   gunSound: event:/Gunshot
   punchSound: event:/Hit
+  repairSound: event:/Repair
 --- !u!95 &7161724733475435165
 Animator:
   serializedVersion: 3

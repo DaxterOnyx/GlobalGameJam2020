@@ -74,8 +74,8 @@ public abstract class Character : Token
 
 	public void StartWalk()
 	{
-		//TODO MONSTE NOT MAKE SOUND ON WALK
-		FMODUnity.RuntimeManager.PlayOneShot(stepSound);
+        //TODO MONSTE NOT MAKE SOUND ON WALK
+        FMODUnity.RuntimeManager.CreateInstance(stepSound);
 		animator.SetBool("Walk", true);
 	}
 
@@ -83,7 +83,9 @@ public abstract class Character : Token
 	{
 		Debug.Log("Stop walking");
 		animator.SetBool("Walk", false);
-	}
+        
+
+    }
 
 	internal override void TakeDamage(int damage)
 	{

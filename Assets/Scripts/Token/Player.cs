@@ -15,7 +15,6 @@ public class Player : Character
 	public List<Image> listActionPoints;
 	public GameObject Selector;
 
-
     protected override void Start()
 	{
 		Init(data.nbMaxLP);
@@ -42,7 +41,6 @@ public class Player : Character
 			{
 				StopWalk();
 				isWalking = false;
-
 			}
 		}
 	}

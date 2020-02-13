@@ -292,6 +292,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2a7a0c10e95799f4b84f960d41b9b4c2,
         type: 2}
+    - target: {fileID: 660561158085846480, guid: 705ebc992fe8ada4f9552dacfdf21508,
+        type: 3}
+      propertyPath: stepSound
+      value: event:/Step
+      objectReference: {fileID: 0}
     - target: {fileID: 3259974812128987831, guid: 705ebc992fe8ada4f9552dacfdf21508,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -356,7 +361,7 @@ PrefabInstance:
     - target: {fileID: 8121187900906208034, guid: 705ebc992fe8ada4f9552dacfdf21508,
         type: 3}
       propertyPath: m_Name
-      value: Worker 1
+      value: Worker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705ebc992fe8ada4f9552dacfdf21508, type: 3}
