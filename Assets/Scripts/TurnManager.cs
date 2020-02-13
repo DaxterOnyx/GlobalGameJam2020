@@ -38,18 +38,18 @@ public class TurnManager : MonoBehaviour
 		if (PlayerTurn) {
             if (Turn != 0)
             {
-                FMODUnity.RuntimeManager.PlayOneShot(startTurnSound);
+                FMODUnity.RuntimeManager.PlayOneShot(endTurnSound);
             }
             else
             {
-                FMODUnity.RuntimeManager.PlayOneShot(endTurnSound);
+                FMODUnity.RuntimeManager.PlayOneShot(startTurnSound);
             }
             TurnDisplay.color = Color.black;
 			TurnButton.interactable = true;
 			EndMonsterTurn();
 			StartPlayerTurn();
 		} else {
-            FMODUnity.RuntimeManager.PlayOneShot(endTurnSound);
+            FMODUnity.RuntimeManager.PlayOneShot(startTurnSound);
             TurnDisplay.color = Color.green;
 			TurnButton.interactable = false;
 			EndPlayerTurn();
