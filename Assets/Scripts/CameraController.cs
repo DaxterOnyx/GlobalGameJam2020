@@ -16,8 +16,8 @@ public class CameraController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		var x = Input.GetAxis("Horizontal");
-		var y = Input.GetAxis("Vertical");
+		var x = Mathf.Clamp(Input.GetAxis("Horizontal") + CamControl.Instance.axis.x,-1,1);
+		var y = Mathf.Clamp(Input.GetAxis("Vertical") + CamControl.Instance.axis.y,-1,1);
 
 
 		transform.position = new Vector3(

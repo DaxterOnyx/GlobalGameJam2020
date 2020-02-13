@@ -559,6 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: a0ef941cc95967545a0e722ea5489ff6, type: 2}
+  objectivesPanel: {fileID: 0}
 --- !u!114 &291764791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Tour
+  m_text: Tour suivant
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 097f3752f384a3444941e4ce6d9f019d, type: 2}
   m_sharedMaterial: {fileID: 5404233199288968251, guid: 097f3752f384a3444941e4ce6d9f019d,
@@ -743,7 +744,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 318271390}
-    characterCount: 9
+    characterCount: 12
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -864,7 +865,7 @@ PrefabInstance:
       propertyPath: m_text
       value: "Vous-etes efficace ! Vous pourriez Reparer cette barricade tant que
         vous y etes ? Il suffit d\u2019utiliser la carte Reparation pour le mettre
-        en \xE9tat. Attention, elle n\u2019a qu\u2019une portee de  1, rapprochez-vous
+        en etat. Attention, elle n\u2019a qu\u2019une portee de  1, rapprochez-vous
         donc au plus pret."
       objectReference: {fileID: 0}
     - target: {fileID: 7471410291916829464, guid: fd05cb09561615342b62da3c1f960c7b,
@@ -2610,7 +2611,6 @@ GameObject:
   - component: {fileID: 1214948984}
   - component: {fileID: 1214948988}
   - component: {fileID: 1214948987}
-  - component: {fileID: 1214948986}
   - component: {fileID: 1214948985}
   m_Layer: 0
   m_Name: Main Camera
@@ -2675,19 +2675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: -1
---- !u!114 &1214948986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214948983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b799a79dca32cf046876a19006dd2777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.25
 --- !u!114 &1214948987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3978,7 +3965,7 @@ PrefabInstance:
       value: "Des saletees de plantes nous attaquent ! Selectionnez la carte Salve
         de tir que vous avez pioche, puis l\u2019unite qui l\u2019utilisera et enfin
         votre cible pour l\u2019envoyer bouffer les pissenlits par la racine. Chaque
-        carte \xE0 un cout en points d\u2019action (a droite) et une portee (a gauche)."
+        carte a un cout en points d\u2019action (a droite) et une portee (a gauche)."
       objectReference: {fileID: 0}
     - target: {fileID: 7471410291916829464, guid: fd05cb09561615342b62da3c1f960c7b,
         type: 3}

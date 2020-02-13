@@ -15,3 +15,4 @@ MonoBehaviour:
   nbMaxLP: 50
   repairCount: 100
   isObjective: 1
+  objectiveText: Reparer les pieces du moteur

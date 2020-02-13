@@ -49,21 +49,30 @@ public class Structure : Token
 
 	private void OnMouseOver()
 	{
-		objectiveBar.SetActive(data.isObjective);
+		ShowRepair();
 		if (LifePoint < MaxLifePoint)
 			lifeBar.SetActive(true);
 	}
 	private void OnMouseExit()
 	{
-		if (data.isObjective)
-		{
-			objectiveBar.SetActive(false);
-		}
+		HideRepair();
 		lifeBar.SetActive(false);
 	}
 
 	internal override void UpdateLifeDisplay()
 	{
 		lifeBarFont.fillAmount = (float)LifePoint / MaxLifePoint;
+	}
+
+	public void ShowRepair()
+	{
+		objectiveBar.SetActive(data.isObjective);
+	}
+	public void HideRepair()
+	{
+		if (data.isObjective)
+		{
+			objectiveBar.SetActive(false);
+		}
 	}
 }

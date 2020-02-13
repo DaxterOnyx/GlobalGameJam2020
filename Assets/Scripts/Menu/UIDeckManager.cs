@@ -57,6 +57,7 @@ public class UIDeckManager : MonoBehaviour
 			Destroy(item.gameObject);
 		}
 		countsDisplay.Clear();
+		counts.Clear();
 
 		foreach (var item in cards) {
 			Destroy(item.gameObject);

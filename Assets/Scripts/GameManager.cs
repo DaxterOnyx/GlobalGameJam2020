@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
 			if (selected == CardSelected) {
 				//unselect Actual Card
 				CardSelected.Unselect();
+				PlayersManager.Instance.DelightTargets();
 				CardSelected = null;
 				if (PlayerSelected != null) {
 					//player can move
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
 		if (StructuresManager.Instance.HowManyObjectivesLeft() == 0) {
 			Debug.Log("Tu as Gagné!");
 			winText.SetActive(true);
-			//TODO load winscreen
+			SceneManager.LoadScene("Victory");
 			return true;
 		}
 		return false;
@@ -162,8 +163,8 @@ public class GameManager : MonoBehaviour
 							StructuresManager.Instance.HighlightObjectives(PlayerSelected, CardSelected.data.Range);
 							break;
 						case CardData.TargetType.Himself:
-							EndSelectionTarget();
 							CardSelected.ActionCard(PlayerSelected, PlayerSelected);
+							EndSelectionTarget();
 							break;
 						default:
 							Debug.LogError("target type not defined");
@@ -178,6 +179,8 @@ public class GameManager : MonoBehaviour
 	private void EndSelectionTarget()
 	{
 		SelectingTarget = false;
+		PlayerSelected.Unselect();
+		PlayerSelected = null;
 		PlayersManager.Instance.DelightTargets();
 		MonstersManager.Instance.DelightTargets();
 		StructuresManager.Instance.DelightTargets();

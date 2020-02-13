@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StructuresManager : Location
 {
 
     private static StructuresManager _instance;
     private List<Structure> objectivesList = new List<Structure>();
+    private List<ObjectiveUI> objectivesUiList = new List<ObjectiveUI>();
     public static StructuresManager Instance
     {
         get
@@ -17,7 +19,8 @@ public class StructuresManager : Location
         }
     }
     public StructuresManagerData data;
-    void Awake()
+    public GameObject objectivesPanel;
+    void Start()
     {
         _instance = this;
         Initialize(data);
@@ -32,6 +35,14 @@ public class StructuresManager : Location
             if(structure.data.isObjective)
             {
                 objectivesList.Add(structure);
+                if (objectivesPanel != null)
+                {
+                    GameObject objUi = Instantiate(MapManager.Instance.data.objectiveUI,objectivesPanel.transform);
+                    ObjectiveUI ui = objUi.GetComponent<ObjectiveUI>();
+                    ui.Initialize(structure.data.objectiveText,structure);
+
+                    objectivesUiList.Add(ui);
+                }
             }
         }
         startDist = data.StartDist;
@@ -56,7 +67,11 @@ public class StructuresManager : Location
 
     public void RemoveObjective(Structure structure)
     {
+        int id = objectivesList.IndexOf(structure);
         objectivesList.Remove(structure);
+        GameObject objUi = objectivesUiList[id].gameObject;
+        objectivesUiList.RemoveAt(id);
+        Destroy(objUi);
     }
 
     public int HowManyObjectivesLeft()
@@ -73,5 +88,10 @@ public class StructuresManager : Location
                 MapManager.Instance.V3toV2I(item.transform.position)) < dist)
                 item.Highlight();
         }
+    }
+
+    public bool IsObjective(Structure struc)
+    {
+        return objectivesList.Contains(struc);
     }
 }
