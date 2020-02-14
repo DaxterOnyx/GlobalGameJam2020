@@ -31,8 +31,10 @@ public class Card : MonoBehaviour
 	public string gunSound;
 	[FMODUnity.EventRef]
 	public string punchSound;
+    [FMODUnity.EventRef]
+    public string repairSound;
 
-	private bool interactable;
+    private bool interactable;
 	private bool inPlay;
 	private bool isInit;
 
@@ -116,7 +118,8 @@ public class Card : MonoBehaviour
 			case CardData.CardAction.Repair:
 				//TODO REMOVE Hard Value
 				(target as Structure).Repair(25);
-				break;
+                FMODUnity.RuntimeManager.PlayOneShot(repairSound);
+                break;
 			default:
 				Debug.LogError("Not Defined Action : " + data.Action.ToString());
 				break;

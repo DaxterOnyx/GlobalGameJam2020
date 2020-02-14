@@ -304,36 +304,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &660561158085846480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8121187900906208034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6321bf2a0c030644cac6147775127eef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlighter: {fileID: 8556132099950372982}
-  transparentLifeBar: {r: 1, g: 1, b: 1, a: 0.49019608}
-  normalLifeBar: {r: 1, g: 1, b: 1, a: 1}
-  LifeBarBack: {fileID: 7151753590247743061}
-  LifeBarFont: {fileID: 2071762090969010637}
-  ArmorBar: {fileID: 2872595830526716838}
-  animator: {fileID: 6201165440791611459}
-  stepSound: 
-  data: {fileID: 0}
-  playerHighlighter: {fileID: 7650702492325471037}
-  listActionPoints:
-  - {fileID: 5259196824511231946}
-  - {fileID: 1791870838052595103}
-  - {fileID: 1502110546924187395}
-  - {fileID: 271486639326671625}
-  - {fileID: 1597342295872437218}
-  - {fileID: 2800299366834923331}
-  Selector: {fileID: 1129179612137586968}
 --- !u!1 &5867629870554742087
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +608,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &660561158085846480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121187900906208034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6321bf2a0c030644cac6147775127eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlighter: {fileID: 8556132099950372982}
+  transparentLifeBar: {r: 1, g: 1, b: 1, a: 0.49019608}
+  normalLifeBar: {r: 1, g: 1, b: 1, a: 1}
+  LifeBarBack: {fileID: 7151753590247743061}
+  LifeBarFont: {fileID: 2071762090969010637}
+  ArmorBar: {fileID: 2872595830526716838}
+  animator: {fileID: 6201165440791611459}
+  stepSound: event:/Step
+  data: {fileID: 0}
+  playerHighlighter: {fileID: 7650702492325471037}
+  listActionPoints:
+  - {fileID: 5259196824511231946}
+  - {fileID: 1791870838052595103}
+  - {fileID: 1502110546924187395}
+  - {fileID: 271486639326671625}
+  - {fileID: 1597342295872437218}
+  - {fileID: 2800299366834923331}
+  Selector: {fileID: 1129179612137586968}
 --- !u!1001 &4173628217143878120
 PrefabInstance:
   m_ObjectHideFlags: 0

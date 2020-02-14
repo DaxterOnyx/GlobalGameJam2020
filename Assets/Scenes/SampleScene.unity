@@ -2349,6 +2349,8 @@ MonoBehaviour:
   PlayerTurn: 0
   TurnDisplay: {fileID: 884413639}
   TurnButton: {fileID: 1207285007}
+  endTurnSound: event:/Turn end
+  startTurnSound: event:/Start Turn
 --- !u!1 &1534730360
 GameObject:
   m_ObjectHideFlags: 0

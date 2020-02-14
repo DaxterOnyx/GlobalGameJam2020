@@ -14,15 +14,21 @@ public class TurnManager : MonoBehaviour
 	public TextMeshProUGUI TurnDisplay;
 	public Button TurnButton;
 
-	private void Start()
+    [FMODUnity.EventRef]
+    public string endTurnSound;
+    [FMODUnity.EventRef]
+    public string startTurnSound;
+
+    private void Start()
 	{
 		Instance = this;
 	}
 
 	public void NextTurn()
 	{
-		if (!PlayerTurn) {
-			Turn++;
+
+        if (!PlayerTurn) {
+            Turn++;
 			TurnDisplay.text = "Tour " + Turn;
 		}
 
@@ -30,12 +36,21 @@ public class TurnManager : MonoBehaviour
 
 
 		if (PlayerTurn) {
-			TurnDisplay.color = Color.black;
+            if (Turn != 0)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(endTurnSound);
+            }
+            else
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(startTurnSound);
+            }
+            TurnDisplay.color = Color.black;
 			TurnButton.interactable = true;
 			EndMonsterTurn();
 			StartPlayerTurn();
 		} else {
-			TurnDisplay.color = Color.green;
+            FMODUnity.RuntimeManager.PlayOneShot(startTurnSound);
+            TurnDisplay.color = Color.green;
 			TurnButton.interactable = false;
 			EndPlayerTurn();
 			StartMonsterTurn();

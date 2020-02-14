@@ -14,8 +14,7 @@ public class Player : Character
 	public List<Image> listActionPoints;
 	public GameObject Selector;
 
-
-	protected override void Start()
+    protected override void Start()
 	{
 		Init(data.nbMaxLP);
 		ResetActionPoint();
@@ -38,7 +37,6 @@ public class Player : Character
 			if (sequence.Elapsed() >= sequence.Duration()) {
 				StopWalk();
 				isWalking = false;
-
 			}
 		}
 	}
