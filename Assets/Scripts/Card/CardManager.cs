@@ -87,8 +87,6 @@ public class CardManager : MonoBehaviour
 		if (Input.GetKeyDown("p")) {
 			Draw(DrawCardAtStartTurn);
 		}
-		if (Input.GetKeyDown(KeyCode.Escape))
-			Debug.Break();
 #endif       
 		//DRAW ALL CARD WITH ANIMATION
 		if (isDrawing && !isShuffling) {

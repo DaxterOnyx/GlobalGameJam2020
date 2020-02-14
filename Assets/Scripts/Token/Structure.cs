@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Structure : Token
 {
-    public StructureData data;
+	public StructureData data;
 	public Image repairBar;
 	public GameObject objectiveBar;
 	public GameObject lifeBar;
@@ -17,8 +16,7 @@ public class Structure : Token
 		lifeBar.SetActive(false);
 		LifePoint = data.nbMaxLP;
 		repairPoint = 0;
-		if (data.isObjective)
-		{
+		if (data.isObjective) {
 			UpdateRepair();
 		}
 		highlighter.SetActive(false);
@@ -34,8 +32,7 @@ public class Structure : Token
 	{
 		repairPoint += value;
 		UpdateRepair();
-		if (repairPoint >= data.repairCount && data.isObjective)
-		{
+		if (repairPoint >= data.repairCount && data.isObjective) {
 			Debug.Log("One Objectif Repaired");
 			StructuresManager.Instance.RemoveObjective(this);
 			GameManager.Instance.IsGameWin();
@@ -49,9 +46,12 @@ public class Structure : Token
 
 	private void OnMouseOver()
 	{
-		ShowRepair();
-		if (LifePoint < MaxLifePoint)
-			lifeBar.SetActive(true);
+		if (!EventSystem.current.IsPointerOverGameObject()) {
+
+			ShowRepair();
+			if (LifePoint < MaxLifePoint)
+				lifeBar.SetActive(true);
+		}
 	}
 	private void OnMouseExit()
 	{
@@ -70,8 +70,7 @@ public class Structure : Token
 	}
 	public void HideRepair()
 	{
-		if (data.isObjective)
-		{
+		if (data.isObjective) {
 			objectiveBar.SetActive(false);
 		}
 	}

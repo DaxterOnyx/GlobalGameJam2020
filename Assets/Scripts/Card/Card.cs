@@ -243,6 +243,7 @@ public class Card : MonoBehaviour
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
+		eventData.Use();
 		if (!inPlay)
 			return;
 		FMODUnity.RuntimeManager.PlayOneShot(touchSound);
@@ -254,6 +255,7 @@ public class Card : MonoBehaviour
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
+		eventData.Use();
 		if (!inPlay)
 			return;
 		FMODUnity.RuntimeManager.PlayOneShot(touchSound);
@@ -264,6 +266,7 @@ public class Card : MonoBehaviour
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
+		eventData.Use();
 		if (!inPlay)
 			return;
 		CardManager.Instance.MouseOver = false;

@@ -6,18 +6,22 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 
 	public Camera MainCamera;
+	public PauseManager PauseManager;
 
 	internal Card CardSelected;
 	internal Player PlayerSelected;
 	internal Token TargetSelected;
 	private bool SelectingTarget;
 	public GameObject winText;
+	private bool isPaused;
+
 	public bool isTuto { get; private set; }
 	// Start is called before the first frame update
 	void Awake()
 	{
 		Instance = this;
 		isTuto = SceneManager.GetActiveScene().name == "Tuto";
+		PauseManager.Init();
 	}
 
 	// Update is called once per frame
@@ -184,5 +188,16 @@ public class GameManager : MonoBehaviour
 		PlayersManager.Instance.DelightTargets();
 		MonstersManager.Instance.DelightTargets();
 		StructuresManager.Instance.DelightTargets();
+	}
+
+	private void Update()
+	{
+
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+#if UNITY_EDITOR
+			Debug.Break();
+#endif
+			PauseManager.Instance.Pause();
+		}
 	}
 }

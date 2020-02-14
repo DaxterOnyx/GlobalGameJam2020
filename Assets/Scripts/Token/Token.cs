@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public abstract class Token : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public abstract class Token : MonoBehaviour
 
 	protected virtual void OnMouseDown()
 	{
-		GameManager.Instance.SelectTarget(this);
+		if (!EventSystem.current.IsPointerOverGameObject())
+			GameManager.Instance.SelectTarget(this);
 	}
 
 	internal virtual void Heal(int amount)

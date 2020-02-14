@@ -1,8 +1,7 @@
 ﻿using DG.Tweening;
-using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Player : Character
@@ -16,13 +15,12 @@ public class Player : Character
 	public GameObject Selector;
 
 
-    protected override void Start()
+	protected override void Start()
 	{
 		Init(data.nbMaxLP);
 		ResetActionPoint();
 		RefreshActionPointDisplay();
-		foreach (var image in listActionPoints)
-		{
+		foreach (var image in listActionPoints) {
 			image.color = transparentLifeBar;
 		}
 		LifeBarFont.color = transparentLifeBar;
@@ -36,10 +34,8 @@ public class Player : Character
 
 	private void Update()
 	{
-		if (isWalking)
-		{
-			if (sequence.Elapsed()>=sequence.Duration())
-			{
+		if (isWalking) {
+			if (sequence.Elapsed() >= sequence.Duration()) {
 				StopWalk();
 				isWalking = false;
 
@@ -62,8 +58,7 @@ public class Player : Character
 	{
 		Selector.SetActive(true);
 
-		if (GameManager.Instance.CardSelected == null)
-		{
+		if (GameManager.Instance.CardSelected == null) {
 			MapManager.Instance.GenerateCaseMap(this, actionLeft);
 		}
 	}
@@ -75,7 +70,7 @@ public class Player : Character
 
 	public void ResetActionPoint()
 	{
-        actionLeft = data.nbActionPoint;
+		actionLeft = data.nbActionPoint;
 		RefreshActionPointDisplay();
 	}
 
@@ -90,22 +85,19 @@ public class Player : Character
 
 	private void RefreshActionPointDisplay()
 	{
-		for (int i = 0; i < actionLeft; i++)
-		{
+		for (int i = 0; i < actionLeft; i++) {
 			listActionPoints[i].gameObject.SetActive(true);
 		}
-		for (int i = actionLeft; i < listActionPoints.Count; i++)
-		{
+		for (int i = actionLeft; i < listActionPoints.Count; i++) {
 			listActionPoints[i].gameObject.SetActive(false);
 		}
-		if (MapManager.Instance.caseList.Count > 0)
-		{
+		if (MapManager.Instance.caseList.Count > 0) {
 			MapManager.Instance.DestroyCaseMap();
 			MapManager.Instance.GenerateCaseMap(this, actionLeft);
 		}
 	}
 
-	public void SetDestination(Vector2Int position,int moveCost)
+	public void SetDestination(Vector2Int position, int moveCost)
 	{
 		StartWalk();
 		MapManager.Instance.DestroyCaseMap();
@@ -121,13 +113,15 @@ public class Player : Character
 
 	private void OnMouseOver()
 	{
-		foreach (var image in listActionPoints)
-		{
-			image.color = normalLifeBar;
+		if (!EventSystem.current.IsPointerOverGameObject()) {
+
+			foreach (var image in listActionPoints) {
+				image.color = normalLifeBar;
+			}
+			LifeBarBack.color = normalLifeBar;
+			LifeBarFont.color = normalLifeBar;
+			ArmorBar.color = normalLifeBar;
 		}
-		LifeBarBack.color = normalLifeBar;
-		LifeBarFont.color = normalLifeBar;
-		ArmorBar.color = normalLifeBar;
 	}
 
 	private void OnMouseExit()
