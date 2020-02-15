@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MapData", menuName ="Data/MapData")]
 public class MapData : ScriptableObject
 {
-    public float moveDuration;
-    public GameObject caseObject;
-    public GameObject objectiveUI;
     [Header("Camera limits")]
     public float CamMinX;
     public float CamMinY, CamMaxX, CamMaxY;

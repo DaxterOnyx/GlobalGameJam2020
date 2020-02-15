@@ -2245,7 +2245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a081f92376bce46b7762677045bca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: b600459d0e59cb14194e5c90937e465f, type: 2}
+  mapData: {fileID: 11400000, guid: b600459d0e59cb14194e5c90937e465f, type: 2}
+  generalData: {fileID: 11400000, guid: 52be757247fb44e409cd6301e8b9d162, type: 2}
   caseList: []
 --- !u!4 &1525137738
 Transform:

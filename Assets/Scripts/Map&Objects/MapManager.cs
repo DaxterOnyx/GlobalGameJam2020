@@ -15,7 +15,8 @@ public class MapManager : MonoBehaviour
 		}
 	}
 
-	public MapData data;
+	public MapData mapData;
+	public GeneralData generalData;
 	public List<CaseObject> caseList = new List<CaseObject>();
 	private Dictionary<Token, Vector2Int> dico = new Dictionary<Token, Vector2Int>();
 	public int minX { get; private set; } 
@@ -26,10 +27,10 @@ public class MapManager : MonoBehaviour
 	private void Awake()
 	{
 		_instance = this;
-		minX = data.MapMinX; 
-		minY = data.MapMinY; 
-		maxX = data.MapMaxX; 
-		maxY = data.MapMaxY;
+		minX = mapData.MapMinX; 
+		minY = mapData.MapMinY; 
+		maxX = mapData.MapMaxX; 
+		maxY = mapData.MapMaxY;
 	}
 	private void Update()
 	{
@@ -71,7 +72,7 @@ public class MapManager : MonoBehaviour
 			(pos.x <= maxX && pos.x >= minX && pos.y >= minY && pos.y <= maxY))//In the grid
 		{
 			if (CalculateCost(pos, initialPos) <= maxCost) {
-				GameObject @case = Instantiate(data.caseObject,transform);
+				GameObject @case = Instantiate(generalData.caseObject,transform);
 				Vector3 vector3 = V2ItoV3(pos);
 				vector3.z = 10;
 				@case.transform.position = vector3;
@@ -119,7 +120,7 @@ public class MapManager : MonoBehaviour
 			if (dico.ContainsValue(position)) {
 				Debug.LogWarning("Error: Current Position Already Taken!");
 			} else {
-				sequence.Append(item.transform.DOMove(V2ItoV3(position), data.moveDuration));
+				sequence.Append(item.transform.DOMove(V2ItoV3(position), generalData.moveDuration));
 			}
 		}
 		dico.Remove(item);

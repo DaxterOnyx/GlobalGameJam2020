@@ -7,10 +7,10 @@ public class CameraController : MonoBehaviour
 
 	private void Start()
 	{
-		minX = MapManager.Instance.data.CamMinX;
-		minY = MapManager.Instance.data.CamMinY;
-		maxX = MapManager.Instance.data.CamMaxX;
-		maxY = MapManager.Instance.data.CamMaxY;
+		minX = MapManager.Instance.mapData.CamMinX;
+		minY = MapManager.Instance.mapData.CamMinY;
+		maxX = MapManager.Instance.mapData.CamMaxX;
+		maxY = MapManager.Instance.mapData.CamMaxY;
 	}
 
 	// Update is called once per frame

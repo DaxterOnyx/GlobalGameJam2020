@@ -37,7 +37,7 @@ public class StructuresManager : Location
                 objectivesList.Add(structure);
                 if (objectivesPanel != null)
                 {
-                    GameObject objUi = Instantiate(MapManager.Instance.data.objectiveUI,objectivesPanel.transform);
+                    GameObject objUi = Instantiate(MapManager.Instance.generalData.objectiveUI,objectivesPanel.transform);
                     ObjectiveUI ui = objUi.GetComponent<ObjectiveUI>();
                     ui.Initialize(structure.data.objectiveText,structure);
 
