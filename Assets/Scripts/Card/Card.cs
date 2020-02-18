@@ -103,11 +103,9 @@ public class Card : MonoBehaviour
 				target.TakeDamage(actor.data.Strengh);
 				break;
 			case CardData.CardAction.Armor:
-				//TODO REMOVE HARD VALUE
 				actor.AddArmor(actor.data.Defence);
 				break;
 			case CardData.CardAction.Heal:
-				//TODO REMOVE HARC VALUE
 				target.Heal(data.Value);
 				break;
 			case CardData.CardAction.Attack:
@@ -116,7 +114,6 @@ public class Card : MonoBehaviour
 				target.TakeDamage(actor.data.FireGunDamage);
 				break;
 			case CardData.CardAction.Repair:
-				//TODO REMOVE Hard Value
 				(target as Structure).Repair(25);
                 FMODUnity.RuntimeManager.PlayOneShot(repairSound);
                 break;
