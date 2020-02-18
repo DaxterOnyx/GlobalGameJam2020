@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 	internal Token TargetSelected;
 	private bool SelectingTarget;
 	public GameObject winText;
-	private bool isPaused;
 
 	public bool isTuto { get; private set; }
 	// Start is called before the first frame update

@@ -65,7 +65,6 @@ public class TurnManager : MonoBehaviour
 
 	private void StartMonsterTurn()
 	{
-		//TODO Start monster Turn
 		MonstersManager.Instance.StartMonsterTurn();
 	}
 
@@ -77,17 +76,14 @@ public class TurnManager : MonoBehaviour
 
 	private void StartPlayerTurn()
 	{
-		//TODO Start Player Turn
 		PlayersManager.Instance.StartPlayerTurn();
 		CardManager.Instance.StartPlayerTurn();
 	}
 
 	private void EndPlayerTurn()
 	{
-		//TODO End player Turn
 		CardManager.Instance.EndPlayerTurn();
 		GameManager.Instance.EndPlayerTurn();
-
 	}
 
 }

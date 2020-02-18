@@ -27,7 +27,6 @@ public class UIPlayerDisplay : MonoBehaviour
 			return;
 		}
 
-		//TODO PLAYER IMAGE DISPLAY
 		NameDisplay.text = data.name;
 		LifeDisplay.text = data.nbMaxLP.ToString();
 		ActionDisplay.text = data.nbActionPoint.ToString();
@@ -40,7 +39,7 @@ public class UIPlayerDisplay : MonoBehaviour
 		}
 		CardListDisplay.text = cards;
 
-		//TODO Dsiplay card on hover name of card
+		//TODO Display card on hover name of card
 
 		selecter.SetActive(false);
 	}

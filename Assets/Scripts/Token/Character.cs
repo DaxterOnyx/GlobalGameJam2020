@@ -16,6 +16,7 @@ public abstract class Character : Token
 	protected Image ArmorBar;
 
 	public Animator animator;
+	public float RotationSpeed = 0.1f;
 
 	[FMODUnity.EventRef]
 	public string stepSound;
@@ -43,8 +44,7 @@ public abstract class Character : Token
 		var angle = Mathf.Atan2(-dif.x, dif.y) * Mathf.Rad2Deg;
 		var actualAngle = animator.transform.rotation.eulerAngles.z;
 		//actor.animator.transform.rotation = Quaternion.Euler(0, 0, angle);
-		//TODO Remove hard value
-		animator.transform.DORotate(new Vector3(0, 0, angle), 0.1f);
+		animator.transform.DORotate(new Vector3(0, 0, angle), RotationSpeed);
 	}
 
 	protected  void UpdateArmorDisplay()

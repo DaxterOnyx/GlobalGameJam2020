@@ -118,7 +118,7 @@ public class MonstersManager : Location
         }
         monsterTurn = true;
         attakingMonsters = new List<Token>();
-		//TODO SET TIME TO ADD ANIMATIOn OR SE THIS IN UPDATE
+		//TODO SET TIME TO ADD ANIMATIOn OR SET THIS IN UPDATE
         foreach (var item in objectList)
         {
             attakingMonsters.Add(item);

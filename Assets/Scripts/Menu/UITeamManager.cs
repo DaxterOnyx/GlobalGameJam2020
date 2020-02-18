@@ -34,7 +34,7 @@ public class UITeamManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//TODO Cest moche
+		//TODO Count the number of player selected not in Update
 		int count = 0;
 		foreach (var item in players) {
 			if (item.isSelected)

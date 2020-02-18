@@ -34,9 +34,11 @@ public class UIDeckManager : MonoBehaviour
 		ShowCards();
 	}
 
+	/// <summary>
+	/// Move the cards at hte good place
+	/// </summary>
 	private void ShowCards()
 	{
-		//TODO SET AS A GOOD PLACE
 		int count = cards.Count;
 		for (int i = 0; i < count; i++) {
 			Vector3 pos = CardPosition(i);
@@ -50,9 +52,12 @@ public class UIDeckManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Create all different card displays in the deck
+	/// </summary>
 	private void InitCards()
 	{
-		//TODO IS SAD
+		//TODO Save card displays and not recreate
 		foreach (var item in countsDisplay) {
 			Destroy(item.gameObject);
 		}
@@ -79,6 +84,11 @@ public class UIDeckManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Calcul the position in the hand of the card with his index
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	private Vector3 CardPosition(int index)
 	{
 		int count = cards.Count;
@@ -89,7 +99,11 @@ public class UIDeckManager : MonoBehaviour
 		return new Vector2(originPosition + delta * (index - ((count - 1) / 2f)), transform.position.y);
 	}
 
-	public void AddCard(CardCounter[] newCards)
+	/// <summary>
+	/// Add card in the deck
+	/// </summary>
+	/// <param name="newCards">List of cards added and how many</param>
+	public void AddCard(params CardCounter[] newCards)
 	{
 		bool initCards = false;
 		foreach (var item in newCards) {
@@ -111,7 +125,11 @@ public class UIDeckManager : MonoBehaviour
 		ShowCards();
 	}
 
-	public void RemoveCard(CardCounter[] oldCards)
+	/// <summary>
+	/// Remove card of deck
+	/// </summary>
+	/// <param name="oldCards">List of cards to remove</param>
+	public void RemoveCard(params CardCounter[] oldCards)
 	{
 		bool initCards = false;
 		foreach (var item in oldCards) {

@@ -10,7 +10,7 @@ public class CardData : ScriptableObject
 	public CardAction Action;
 	public int Range;
 	public TargetType[] targetTypes;
-	[Header("Value of the action (for defence per example)")]
+	[Tooltip("Value of the action (for defence per example)")]
 	public int Value;
 
 	public enum CardAction
