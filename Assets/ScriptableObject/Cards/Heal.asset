@@ -19,3 +19,4 @@ MonoBehaviour:
   Action: 4
   Range: 0
   targetTypes: 01000000
+  Value: 5

@@ -104,11 +104,11 @@ public class Card : MonoBehaviour
 				break;
 			case CardData.CardAction.Armor:
 				//TODO REMOVE HARD VALUE
-				actor.AddArmor(1);
+				actor.AddArmor(actor.data.Defence);
 				break;
 			case CardData.CardAction.Heal:
 				//TODO REMOVE HARC VALUE
-				target.Heal(2);
+				target.Heal(data.Value);
 				break;
 			case CardData.CardAction.Attack:
 				FMODUnity.RuntimeManager.PlayOneShot(gunSound);

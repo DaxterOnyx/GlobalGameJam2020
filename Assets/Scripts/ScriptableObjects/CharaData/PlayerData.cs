@@ -7,6 +7,8 @@ public class PlayerData : CharacterData
 {
 	public int Strengh;
     public int FireGunDamage;
+	public int Defence;
+	public int Repair;
 	//TODO ADD PROFILE IMAGE
 	public CardCounter[] CardAddinTeam;
 }
