@@ -5,13 +5,14 @@ public class Monster : Character
 {
 	public MonsterData data;
 	public GameObject canvas;
-
+	public MonsterActions actions { get; private set; }
 	protected override void Start()
 	{
 		Init(data.nbMaxLP);
 		highlighter.SetActive(false);
 		canvas.SetActive(false);
 		base.Start();
+		actions = GetComponent<MonsterActions>();
 	}
 
 	internal override void Die()
