@@ -114,7 +114,7 @@ public class Card : MonoBehaviour
 				target.TakeDamage(actor.data.FireGunDamage);
 				break;
 			case CardData.CardAction.Repair:
-				(target as Structure).Repair(25);
+				(target as Structure).Repair(actor.data.Repair);
                 FMODUnity.RuntimeManager.PlayOneShot(repairSound);
                 break;
 			default:
