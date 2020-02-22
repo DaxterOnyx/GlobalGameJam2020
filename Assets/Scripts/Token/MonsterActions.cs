@@ -12,11 +12,20 @@ public class MonsterActions : MonoBehaviour
     private Sequence sequence;
     private int atkCount;
     private List<Vector2Int> hitList;
+    public float atkTime;
+    private float timer;
     private void Start()
     {
         monster = this.GetComponent<Monster>();
         targetPos = new Vector2Int();
         hitList = new List<Vector2Int>();
+        /*foreach (AnimationClip clip in monster.animator.runtimeAnimatorController.animationClips)
+        {
+            if(clip.name == "_Punch")
+            {
+                atkTime = clip.length + 0.2f;
+            }
+        }*/
     }
     #endregion
 
@@ -25,26 +34,31 @@ public class MonsterActions : MonoBehaviour
         if (sequence != null)
         {
             //Hit the player only when in contact
-            if (atkCount > 0 && hitList.Count > 0)
+            if (sequence.Elapsed() >= sequence.Duration())
             {
-                target = MapManager.Instance.TryGetTokenByPos(hitList[0]);
-                while (hitList.Count > 0)
+                if(timer <= 0)
                 {
-                    if (target != null)
+                    if (hitList.Count > 0)
                     {
-                        monster.Punch();
-                        monster.LookAt(target);
+                        target = MapManager.Instance.TryGetTokenByPos(hitList[0]);
+                        if (target != null)
+                        {
+                            monster.Punch();
+                            monster.LookAt(target);
 
-                        target.TakeDamage(monster.data.Strengh);
-                        GameManager.Instance.IsGameLost();
+                            target.TakeDamage(monster.data.Strengh);
+                            GameManager.Instance.IsGameLost();
+                        }
+                        hitList.RemoveAt(0);
+                        timer = atkTime;
                     }
-                    hitList.RemoveAt(0);
-
+                    else
+                        EndAction();
                 }
-                atkCount = 0;
+                else
+                    timer -= Time.deltaTime;
+
             }
-            else if (sequence.Elapsed() >= sequence.Duration())
-                EndAction();
         }
     }
 
@@ -64,6 +78,7 @@ public class MonsterActions : MonoBehaviour
 
     public void EndAction()
     {
+        timer = 0;
         sequence = null;
         targetPos = new Vector2Int();
         target = null;
@@ -105,11 +120,7 @@ public class MonsterActions : MonoBehaviour
         moveCount -= Mathf.FloorToInt((pathComplete.Count - 2) / 2); // - 2 : fisrt and last case (initial case and player case)
         while (moveCount > 0 && lifePointTarget > 0)
         {
-
-            sequence.Append(DOTween.To(() => atkCount, x => atkCount = x, 1, 0));
-
             hitList.Add(destination);
-
             moveCount--;
             lifePointTarget -= monster.data.Strengh;
         }
